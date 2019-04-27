@@ -9,7 +9,7 @@ package Ludo.funktion;
  *
  * @author s184805
  */
-public class Banefelt {
+public class Banefelt implements Felt {
 
     /**
      * @param args the command line arguments

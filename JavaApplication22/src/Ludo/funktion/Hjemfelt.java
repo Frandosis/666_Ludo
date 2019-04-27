@@ -5,10 +5,34 @@
  */
 package Ludo.funktion;
 
+import Ludo.enheder.Brik;
+
 /**
  *
  * @author s184805
  */
-public class Hjemfelt {
-    
+public class Hjemfelt implements Felt {
+
+    final String farve;
+    final int feltnr;
+    final int startfeltnr;
+    boolean indeholderBrik;
+
+    public Hjemfelt(String spFarve, int spFeltnr, int spStartfeltnr) {
+        this.farve = spFarve;
+        this.feltnr = spFeltnr;
+        this.startfeltnr = spStartfeltnr;
+
+    }
+
+    @Override
+    public void landet(Brik brikInd) {
+        if (this.farve.equals(brikInd.getFarve())) {
+
+            this.indeholderBrik = true;
+            
+            
+        }
+    }
+
 }

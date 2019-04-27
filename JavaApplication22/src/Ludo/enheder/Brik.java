@@ -11,17 +11,27 @@ package Ludo.enheder;
  */
 public class Brik {
     String farve;
+    final int hjemfeltnr;
     int feltnr;
-    public Brik (String spFarve){
+    public Brik (String spFarve, int spHjemfeltnr){
         this.farve = spFarve;
+        this.hjemfeltnr = spHjemfeltnr;
+    }
+    
+    public String getFarve(){
+        return this.farve;
+    }
+    
+    public int getHjemFeltnr(){
+        return this.hjemfeltnr;
     }
     
     public int getFeltnr(){
-        return feltnr;
+        return this.feltnr;
     }
     
     public void setFeltnr(int nyfelt){
-        feltnr = nyfelt;
+        this.feltnr = nyfelt;
     }
     
 }

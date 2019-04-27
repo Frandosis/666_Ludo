@@ -9,6 +9,6 @@ package Ludo.funktion;
  *
  * @author s184805
  */
-public class Målfelt {
+public class Målfelt implements Felt {
     
 }

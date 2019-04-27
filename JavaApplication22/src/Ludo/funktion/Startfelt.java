@@ -4,11 +4,26 @@
  * and open the template in the editor.
  */
 package Ludo.funktion;
-
+import Ludo.enheder.*;
+import java.util.ArrayList;
 /**
  *
  * @author s184805
  */
-public class Startfelt {
+public class Startfelt implements Felt {
+    final String farve;
+    final int feltnr;
+    int antalBrikker;
+    ArrayList<Brik> brikker;
+    
+    public Startfelt (String spFarve, int spFeltnr){
+        this.farve = spFarve;
+        this.feltnr = spFeltnr;
+        this.brikker = new ArrayList<Brik> ();
+    }
+    
+    public void landet(Brik brikInd){
+        
+    }
     
 }
