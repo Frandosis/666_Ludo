@@ -20,9 +20,32 @@ public class Startfelt implements Felt {
         this.farve = spFarve;
         this.feltnr = spFeltnr;
         this.brikker = new ArrayList<Brik> ();
+        for(int i = 0; i < 4; i++){
+            this.brikker.add(null);
+        }
     }
     
+    
+    @Override
     public void landet(Brik brikInd){
+        if(this.farve.equals(brikInd.getFarve())){
+            
+            
+            if (brikker.isEmpty() || )
+            brikker.add(brikInd.getID(), brikInd);
+        }
+        else{
+            if(brikker.isEmpty()){
+                brikker.add(brikInd.getID(), brikInd);
+            }
+            else{
+                brikker
+            }
+        }
+    }
+    
+    @Override
+    public void forlader(Brik brikUd){
         
     }
     
