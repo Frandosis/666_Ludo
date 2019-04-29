@@ -13,6 +13,8 @@ public class Brik {
     String farve;
     final int hjemfeltnr;
     int feltnr;
+    int slag;
+    
     public Brik (String spFarve, int spHjemfeltnr){
         this.farve = spFarve;
         this.hjemfeltnr = spHjemfeltnr;
@@ -32,6 +34,14 @@ public class Brik {
     
     public void setFeltnr(int nyfelt){
         this.feltnr = nyfelt;
+    }
+    
+    public int getSlag(){
+        return this.slag;
+    }
+    
+    public void setSlag(int slagInd){
+        this.slag = slagInd;
     }
     
 }
