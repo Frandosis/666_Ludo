@@ -12,14 +12,14 @@ package Ludo.enheder;
 public class Brik {
     String farve;
     final int hjemfeltnr;
-    final int id;
     int feltnr;
     int slag;
+    boolean helle;
     
-    public Brik (String spFarve, int spHjemfeltnr, int ID){
+    public Brik (String spFarve, int spHjemfeltnr){
         this.farve = spFarve;
         this.hjemfeltnr = spHjemfeltnr;
-        this.id = ID;
+        this.helle = false;
     }
     
     public String getFarve(){
@@ -46,8 +46,13 @@ public class Brik {
         this.slag = slagInd;
     }
     
-    public int getID(){
-     return this.id;
+    
+    public boolean getHelle(){
+        return this.helle;
+    }
+    
+    public void setHelle(boolean HelleInd){
+        this.helle = HelleInd;
     }
     
 }

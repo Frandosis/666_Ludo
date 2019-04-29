@@ -11,14 +11,33 @@ import Ludo.enheder.*;
  */
 public class Regler {
     
-    public void kamp(boolean helle, int antalForsvar, Brik forsvarer, Brik angriber){
-        if(helle == true){
-            angriber.setFeltnr(angriber.getHjemFeltnr());
+    /*
+    * kamp mellem brikker
+    * returner om angriberen vandt kampen.
+    */
+    public boolean kamp(int antalForsvar, Brik forsvarer, Brik angriber){
+        if(antalForsvar == 1){
+            if(forsvarer.getHelle() == true && angriber.getHelle() == false){
+                return false;
+            }
+            if(forsvarer.getHelle() == false && angriber.getHelle() == true){
+                return true;
+            }
+            if(forsvarer.getHelle() == false && angriber.getHelle() == false){
+                return true;
+            }
         }
         
-        if (antalForsvar > 1){
+        if(antalForsvar > 1){
             
+            if(angriber.getHelle() == true){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
+        return false;
     }
     
     public boolean forladerHjem(int slag, Hjemfelt hjemfelt){
