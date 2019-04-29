@@ -7,10 +7,6 @@ package Ludo.enheder;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author s184805
- */
 public class Raflebaeger {
 
     ArrayList<Terning> raflebaeger;
@@ -49,7 +45,7 @@ public class Raflebaeger {
         Terning terning = raflebaeger.get(index);
         return terning.getVærdi();
     }
-
+/* // skal ikke bruges i dette projekt 
     public String getAlleVaerdier() {
         String s = "";
         for (int i = 0; i < raflebaeger.size(); i++) {
@@ -85,4 +81,5 @@ public class Raflebaeger {
             
         }
     }
+   */ 
 }
