@@ -11,12 +11,12 @@ import Ludo.enheder.*;
  * @author jcall
  */
 public class Buffer {
-    int antalBrikker;
+    int antalbrikker;
     
     
     public int getAntalBuffer(){
         
-       return this.antalBrikker;
+       return this.antalbrikker;
         
     }
     
