@@ -6,7 +6,6 @@
 package Ludo.funktion;
 
 import Ludo.enheder.Brik;
-import java.util.HashSet;
 
 /**
  *

@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package Ludo.funktion;
-
+import Ludo.enheder.*;
 /**
  *
  * @author s184805
  */
 public interface Felt {
+    
+    public void landet(Brik brikInd);
+    
+    public void forlader(Brik brikUd);
     
 }
