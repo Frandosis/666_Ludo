@@ -15,7 +15,7 @@ public class Endefelt implements Felt {
         int feltnr;
         int antalBrikker;
         int tmp;
-        String out;
+        boolean out = false;
  
     public void moveToBuffer(){
     
@@ -24,15 +24,15 @@ public class Endefelt implements Felt {
     }
         
         
-    public String checkWin() {
+    public Boolean checkWin() {
         tmp = Buffer.getAntalBuffer;
         
         if(tmp== 4){
-            out = ("win");
+            out = true;
            return out;
         }
         else{
-        out = ("continue");
+        out = false;
         }
         return out;
     }
