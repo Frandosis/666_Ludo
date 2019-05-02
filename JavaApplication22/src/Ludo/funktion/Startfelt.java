@@ -83,7 +83,7 @@ public class Startfelt implements Felt {
     }
 
     @Override
-    public void forlader(Brik brikUd) {
+    public void forlader() {
         
         brikUd.setHelle(false);
         

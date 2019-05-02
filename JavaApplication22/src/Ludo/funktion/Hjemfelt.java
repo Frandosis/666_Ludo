@@ -34,7 +34,7 @@ public class Hjemfelt implements Felt {
     }
     
     @Override
-    public void forlader(Brik brikUd){
+    public void forlader(){
         if (brikUd.getSlag() == 6){
             brikUd.setFeltnr(this.startfeltnr);
             this.indeholderBrik = false;

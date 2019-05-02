@@ -40,7 +40,7 @@ public class Banefelt implements Felt {
     }
 
     @Override
-    public void forlader(Brik brikUd) {
+    public void forlader() {
 
     }
 
