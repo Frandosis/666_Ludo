@@ -84,7 +84,9 @@ public class Startfelt implements Felt {
 
     @Override
     public void forlader(Brik brikUd) {
+        
         brikUd.setHelle(false);
+        
 
     }
 
@@ -94,6 +96,7 @@ public class Startfelt implements Felt {
                 Brik brik = brikker.poll();
                 brik.setFeltnr(brik.getHjemFeltnr());
             }
+            brikker.add(brikInd);
         } else {
             brikInd.setFeltnr(brikInd.getHjemFeltnr());
         }
