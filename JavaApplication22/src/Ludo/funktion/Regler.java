@@ -50,4 +50,21 @@ public class Regler {
         }
         return false;
     }
+    
+    public int rykModEndefelt(){
+        int afstand;
+        int ryk;
+        int nyfeltnr;
+        afstand = Brik.getEndefeltnr + Brik.getFeltnr;
+        
+        if(Brik.getSlag>afstand){
+            ryk=afstand - Brik.getSlag;
+          return nyfeltnr = Brik.getEndefeltnr + ryk;
+        }
+        if(Brik.getSlag < afstand){
+            return nyfeltnr = Brik.getFeltnr + Brik.getSlag;
+        }
+        return 0;
+        
+    }
 }
