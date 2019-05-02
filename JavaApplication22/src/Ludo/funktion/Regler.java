@@ -51,19 +51,22 @@ public class Regler {
         return false;
     }
     
-    public int rykModEndefelt(){
+    public int rykModEndefelt(Brik brikInd){
         int afstand;
         int ryk;
         int nyfeltnr;
-        afstand = Brik.getEndefeltnr + Brik.getFeltnr;
         
-        if(Brik.getSlag>afstand){
-            ryk=afstand - Brik.getSlag;
-          return nyfeltnr = Brik.getEndefeltnr + ryk;
+        afstand = brikInd.getEndefeltnr + brikInd.getFeltnr;
+        
+        if(brikInd.getSlag>afstand){       // til at rykke tilbage 
+            ryk=afstand - brikInd.getSlag;
+          return nyfeltnr = brikInd.getEndefeltnr + ryk;
         }
-        if(Brik.getSlag < afstand){
-            return nyfeltnr = Brik.getFeltnr + Brik.getSlag;
+        
+        if(brikInd.getSlag < afstand){     // 
+            return nyfeltnr = brikInd.getFeltnr + brikInd.getSlag;
         }
+        
         return 0;
         
     }
