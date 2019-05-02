@@ -15,11 +15,13 @@ public class Brik {
     int feltnr;
     int slag;
     boolean helle;
+    int bufferfeltnr;
     
-    public Brik (String spFarve, int spHjemfeltnr){
+    public Brik (String spFarve, int spHjemfeltnr, int spBufferfeltnr){
         this.farve = spFarve;
         this.hjemfeltnr = spHjemfeltnr;
         this.helle = false;
+        this.bufferfeltnr = spBufferfeltnr;
     }
     
     public String getFarve(){
@@ -53,6 +55,10 @@ public class Brik {
     
     public void setHelle(boolean HelleInd){
         this.helle = HelleInd;
+    }
+    
+    public int getBufferfeltnr(){
+        return this.bufferfeltnr;
     }
     
 }

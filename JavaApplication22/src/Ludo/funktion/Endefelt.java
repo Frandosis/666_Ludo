@@ -17,15 +17,15 @@ public class Endefelt implements Felt {
         int tmp;
         boolean out = false;
  
-    public void moveToBuffer(){
+    public void moveToBuffer(Brik brikind){
     
-        
+        brik.setFeltnr(brik.getBufferfeltnr());
         
     }
         
         
     public Boolean checkWin() {
-        tmp = Buffer.getAntalBuffer;
+        tmp = Bufferfelt.getAntalBuffer;
         
         if(tmp== 4){
             out = true;
