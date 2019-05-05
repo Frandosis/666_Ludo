@@ -11,14 +11,33 @@ import Ludo.enheder.*;
  */
 public class Regler {
     
-    public void kamp(boolean helle, int antalForsvar, Brik forsvarer, Brik angriber){
-        if(helle == true){
-            angriber.setFeltnr(angriber.getHjemFeltnr());
+    /*
+    * kamp mellem brikker
+    * returner om angriberen vandt kampen.
+    */
+    public boolean kamp(int antalForsvar, Brik forsvarer, Brik angriber){
+        if(antalForsvar == 1){
+            if(forsvarer.getHelle() == true && angriber.getHelle() == false){
+                return false;
+            }
+            if(forsvarer.getHelle() == false && angriber.getHelle() == true){
+                return true;
+            }
+            if(forsvarer.getHelle() == false && angriber.getHelle() == false){
+                return true;
+            }
         }
         
-        if (antalForsvar > 1){
+        if(antalForsvar > 1){
             
+            if(angriber.getHelle() == true){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
+        return false;
     }
     
     public boolean forladerHjem(int slag, Hjemfelt hjemfelt){
@@ -30,5 +49,25 @@ public class Regler {
             else return false;
         }
         return false;
+    }
+    
+    public int rykModEndefelt(Brik brikInd){
+        int afstand;
+        int ryk;
+        int nyfeltnr;
+        
+        afstand = brikInd.getEndefeltnr + brikInd.getFeltnr;
+        
+        if(brikInd.getSlag>afstand){       // til at rykke tilbage 
+            ryk=afstand - brikInd.getSlag;
+          return nyfeltnr = brikInd.getEndefeltnr + ryk;
+        }
+        
+        if(brikInd.getSlag < afstand){     // 
+            return nyfeltnr = brikInd.getFeltnr + brikInd.getSlag;
+        }
+        
+        return 0;
+        
     }
 }

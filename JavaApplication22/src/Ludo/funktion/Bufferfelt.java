@@ -10,7 +10,7 @@ import Ludo.enheder.*;
  *
  * @author jcall
  */
-public class Buffer {
+public class Bufferfelt {
     int antalbrikker;
     
     
