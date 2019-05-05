@@ -10,16 +10,17 @@ import Ludo.enheder.*;
  *
  * @author s184805
  */
-public class Endefelt implements Felt {
+public class Endefelt {
         String farve;
         int feltnr;
         int antalBrikker;
         int tmp;
         boolean out = false;
- 
-    public void moveToBuffer(Brik brikind){
+        
     
-        brik.setFeltnr(brik.getBufferfeltnr());
+    public void moveToBuffer(Brik brikInd){
+    
+        brikInd.setFeltnr(brikInd.getBufferfeltnr());
         
     }
         
@@ -37,3 +38,5 @@ public class Endefelt implements Felt {
         return out;
     }
 }
+    
+    

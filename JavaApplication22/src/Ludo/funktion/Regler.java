@@ -50,4 +50,24 @@ public class Regler {
         }
         return false;
     }
+    
+    public int rykModEndefelt(Brik brikInd){
+        int afstand;
+        int ryk;
+        int nyfeltnr;
+        
+        afstand = brikInd.getEndefeltnr + brikInd.getFeltnr;
+        
+        if(brikInd.getSlag>afstand){       // til at rykke tilbage 
+            ryk=afstand - brikInd.getSlag;
+          return nyfeltnr = brikInd.getEndefeltnr + ryk;
+        }
+        
+        if(brikInd.getSlag < afstand){     // 
+            return nyfeltnr = brikInd.getFeltnr + brikInd.getSlag;
+        }
+        
+        return 0;
+        
+    }
 }
