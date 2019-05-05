@@ -16,7 +16,7 @@ public class Hjemfelt implements Felt {
     final String farve;
     final int feltnr;
     final int startfeltnr;
-    boolean indeholderBrik;
+    Brik brik;
 
     public Hjemfelt(String spFarve, int spFeltnr, int spStartfeltnr) {
         this.farve = spFarve;
@@ -28,17 +28,14 @@ public class Hjemfelt implements Felt {
     @Override
     public void landet(Brik brikInd) {
         if (this.farve.equals(brikInd.getFarve())) {
-            this.indeholderBrik = true;
+            this.brik = brikInd;
         }
         
     }
     
     @Override
     public void forlader(){
-        if (brikUd.getSlag() == 6){
-            brikUd.setFeltnr(this.startfeltnr);
-            this.indeholderBrik = false;
-        }
+        this.brik = null;
     }
     
 }

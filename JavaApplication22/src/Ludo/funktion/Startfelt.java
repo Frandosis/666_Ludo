@@ -84,8 +84,9 @@ public class Startfelt implements Felt {
 
     @Override
     public void forlader() {
-        
+        var brikUd = brikker.poll();
         brikUd.setHelle(false);
+        brikUd = null;
         
 
     }
@@ -93,8 +94,10 @@ public class Startfelt implements Felt {
     public void rykEfterKamp(Brik brikInd) {
         if (angrebVandt == true) {
             while (brikker.isEmpty() == false) {
-                Brik brik = brikker.poll();
+                var brik = brikker.poll();
                 brik.setFeltnr(brik.getHjemFeltnr());
+                brik.setHelle(false);
+                brik = null;
             }
             brikker.add(brikInd);
         } else {

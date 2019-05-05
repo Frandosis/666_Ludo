@@ -7,7 +7,6 @@ package Ludo.funktion;
 
 import Ludo.enheder.*;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  *
@@ -16,13 +15,16 @@ import java.util.Queue;
 public class Banefelt implements Felt {
 
     final int feltnr;
-    Queue<Brik> brikker;
+    LinkedList<Brik> brikker;
     Regler regler;
     boolean angrebVandt;
 
     public Banefelt(int spFeltnr) {
         this.feltnr = spFeltnr;
-        this.brikker = new LinkedList<>();
+        this.brikker = new LinkedList<Brik>();
+        for(int i = 0; i < 4; i++){
+            brikker.add(null);
+        }
         angrebVandt = false;
 
     }
@@ -33,7 +35,8 @@ public class Banefelt implements Felt {
             brikker.add(brikInd);
 
         } else {
-            var forsvarer = brikker.peek();
+            var forsvarer = brikker.;
+            if(forsvarer.getFarve().equals(brikInd.getFarve()))
            angrebVandt = regler.kamp(brikker.size(), forsvarer, brikInd);
            rykEfterKamp (brikInd);
         }
@@ -41,14 +44,28 @@ public class Banefelt implements Felt {
 
     @Override
     public void forlader() {
-
+        brikker.poll();
+        
     }
 
     public void rykEfterKamp(Brik brikInd) {
+        boolean isEmpty = false;
+        int nulls = 0;
+        for (int i = 0; i < 4; i++){
+            var brik = brikker.get(i);
+            if(brik == null){
+                nulls++;
+            }
+            if (nulls == 4){
+                isEmpty = true;
+            }
+        }
+        
         if (angrebVandt == true) {
-            while (brikker.isEmpty() == false) {
-                var brik = brikker.poll();
+            while (isEmpty == false) {
+                var brik = brikker.;
                 brik.setFeltnr(brik.getHjemFeltnr());
+                brik = null;
                 
             }
             brikker.add(brikInd);
