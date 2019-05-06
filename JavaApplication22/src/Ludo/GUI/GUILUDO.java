@@ -21,8 +21,8 @@ public class GUILUDO {
     private final int sizeboard = 15;
     private final int feltsize = 42;
     private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-    private JButton[][] chessBoardSquares = new JButton[15][15];
-    private JPanel chessBoard;
+    private JButton[][] LudoBoardSquares = new JButton[15][15];
+    private JPanel LudoBoard;
     private final JLabel message = new JLabel(
             "LudoManSpillet");
 
@@ -41,19 +41,20 @@ public class GUILUDO {
         tools.add(new JButton("Brik 3")); // TODO - add functionality!
         tools.add(new JButton("Brik 4"));
         tools.addSeparator();
+        tools.add(new JButton("Kast terning"));
         tools.add(new JButton("Genstart")); // TODO - add functionality!
         tools.addSeparator();
         tools.add(message);
 
         //  gui.add(new JLabel("?"), BorderLayout.LINE_START);
-        chessBoard = new JPanel(new GridLayout(0, 15));
-        chessBoard.setBorder(new LineBorder(Color.BLACK));
-        gui.add(chessBoard);
+        LudoBoard = new JPanel(new GridLayout(0, 15));
+        LudoBoard.setBorder(new LineBorder(Color.BLACK));
+        gui.add(LudoBoard);
 
-        // create the chess board squares
+        // create the Ludo board squares
         Insets buttonMargin = new Insets(0, 0, 0, 0);
-        for (int ii = 0; ii < chessBoardSquares.length; ii++) {
-            for (int jj = 0; jj < chessBoardSquares[ii].length; jj++) {
+        for (int ii = 0; ii < LudoBoardSquares.length; ii++) {
+            for (int jj = 0; jj < LudoBoardSquares[ii].length; jj++) {
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
                 // our chess pieces are 64x64 px in size, so  we'll
@@ -61,7 +62,7 @@ public class GUILUDO {
                 ImageIcon icon = new ImageIcon(
                         new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
                 b.setIcon(icon);
-                chessBoardSquares[jj][ii] = b;
+                LudoBoardSquares[jj][ii] = b;
             }
         }
 
@@ -74,7 +75,7 @@ public class GUILUDO {
                         new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
                 b.setIcon(icon);
                 b.setBackground(Color.BLACK);
-                chessBoardSquares[i][j] = b;
+                LudoBoardSquares[i][j] = b;
             }
         }
         for (int i = H / 2 - 1; i < H / 2 + 2; i++) {
@@ -85,7 +86,7 @@ public class GUILUDO {
                         new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
                 b.setIcon(icon);
                 b.setBackground(Color.BLACK);
-                chessBoardSquares[j][i] = b;
+                LudoBoardSquares[j][i] = b;
             }
         }
 
@@ -97,7 +98,7 @@ public class GUILUDO {
                     new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
             b.setIcon(icon);
             b.setBackground(Color.BLUE);
-            chessBoardSquares[H / 2][i] = b;
+            LudoBoardSquares[H / 2][i] = b;
         }
         for (int i = H - 2; i > H - 8; i--) {//yellow
             JButton b = new JButton();
@@ -106,7 +107,7 @@ public class GUILUDO {
                     new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
             b.setIcon(icon);
             b.setBackground(Color.YELLOW);
-            chessBoardSquares[H / 2][i] = b;
+            LudoBoardSquares[H / 2][i] = b;
         }
         for (int i = 1; i < 7; i++) {//blue
             JButton b = new JButton();
@@ -115,7 +116,7 @@ public class GUILUDO {
                     new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
             b.setIcon(icon);
             b.setBackground(Color.GREEN);
-            chessBoardSquares[i][L / 2] = b;
+            LudoBoardSquares[i][L / 2] = b;
         }
         for (int i = H - 2; i > L - 8; i--) {//yellow
             JButton b = new JButton();
@@ -124,7 +125,7 @@ public class GUILUDO {
                     new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
             b.setIcon(icon);
             b.setBackground(Color.RED);
-            chessBoardSquares[i][L / 2] = b;
+            LudoBoardSquares[i][L / 2] = b;
         }
         for (int i = 0; i < 4; i++) {
             JButton b = new JButton();
@@ -134,19 +135,24 @@ public class GUILUDO {
             b.setIcon(icon);
             if (i == 0) {
                 b.setBackground(Color.YELLOW);
-                chessBoardSquares[L / 2 - 1][13] = b;
+                LudoBoardSquares[L / 2 - 1][13] = b;
+                /*  for (int j = 0; i < 2; j++) { // test for 2x2 til brikker
+                    for (int k = 0; k < 2; k++) {
+                        LudoBoardSquares[3 + j][12 + k] = b;
+                    }
+                }*/
             }
             if (i == 1) {
                 b.setBackground(Color.BLUE);
-                chessBoardSquares[L / 2 + 1][1] = b;
+                LudoBoardSquares[L / 2 + 1][1] = b;
             }
             if (i == 2) {
                 b.setBackground(Color.RED);
-                chessBoardSquares[13][8] = b;
+                LudoBoardSquares[13][8] = b;
             }
             if (i == 3) {
                 b.setBackground(Color.GREEN);
-                chessBoardSquares[1][6] = b;
+                LudoBoardSquares[1][6] = b;
             }
         }
 
@@ -158,15 +164,15 @@ public class GUILUDO {
                     //   chessBoard.add(new JLabel("" + (ii + 1),
                     //         SwingConstants.CENTER));
                     default:
-                        chessBoard.add(chessBoardSquares[jj][ii]);
+                        LudoBoard.add(LudoBoardSquares[jj][ii]);
                 }
             }
         }
 
     }
 
-    public final JComponent getChessBoard() {
-        return chessBoard;
+    public final JComponent getLudoBoard() {
+        return LudoBoard;
     }
 
     public final JComponent getGui() {
