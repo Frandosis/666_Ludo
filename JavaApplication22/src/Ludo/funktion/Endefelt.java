@@ -17,16 +17,18 @@ public class Endefelt {
         int tmp;
         boolean out = false;
         
+        
     
     public void moveToBuffer(Brik brikInd){
-    
+        
+        
         brikInd.setFeltnr(brikInd.getBufferfeltnr());
         
     }
         
         
     public Boolean checkWin() {
-        tmp = Bufferfelt.getAntalBuffer;
+        tmp = Bufferfelt.getAntalBuffer();
         
         if(tmp== 4){
             out = true;

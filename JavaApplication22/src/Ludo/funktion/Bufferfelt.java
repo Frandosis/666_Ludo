@@ -6,19 +6,25 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
+import java.util.Queue;
 /**
  *
  * @author jcall
  */
 public class Bufferfelt {
-    int antalbrikker;
-    
+
+    String farve;
+    int feltnr;
+    Queue<Brik> brikker;
     
     public int getAntalBuffer(){
-        
-       return this.antalbrikker;
-        
+       
+        return brikker.size();
     }
     
     
+    public void tilqueue(Brik brikInd){
+        
+             brikker.add(brikInd);    
+    }
 }
