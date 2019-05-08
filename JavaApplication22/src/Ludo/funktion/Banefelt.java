@@ -6,6 +6,7 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
+import java.util.Queue;
 import java.util.LinkedList;
 
 /**
@@ -15,14 +16,14 @@ import java.util.LinkedList;
 public class Banefelt implements Felt {
 
     final int feltnr;
-    LinkedList<Brik> brikker;
+    Queue<Brik> brikker;
     Regler regler;
     boolean angrebVandt;
 
     public Banefelt(int spFeltnr) {
         this.feltnr = spFeltnr;
         this.brikker = new LinkedList<Brik>();
-        for(int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             brikker.add(null);
         }
         angrebVandt = false;
@@ -31,47 +32,40 @@ public class Banefelt implements Felt {
 
     @Override
     public void landet(Brik brikInd) {
+        //Der er ingen brikker paa feltet
         if (brikker.isEmpty()) {
             brikker.add(brikInd);
 
-        } else {
-            var forsvarer = brikker.;
-            if(forsvarer.getFarve().equals(brikInd.getFarve()))
-           angrebVandt = regler.kamp(brikker.size(), forsvarer, brikInd);
-           rykEfterKamp (brikInd);
+        } //Der er brikker paa feltet i forvejen.
+        else {
+            var forsvarer = brikker.peek();
+            //Check om brikkerne der er i forvejen er ens med den brik der lander.
+            if (forsvarer.getFarve().equals(brikInd.getFarve())) {
+                brikker.add(brikInd);
+            } //Brikken er ikke ens.
+            else {
+                angrebVandt = regler.kamp(brikker.size(), forsvarer, brikInd);
+                rykEfterKamp(brikInd);
+            }
         }
     }
 
     @Override
     public void forlader() {
         brikker.poll();
-        
+
     }
 
     public void rykEfterKamp(Brik brikInd) {
-        boolean isEmpty = false;
-        int nulls = 0;
-        for (int i = 0; i < 4; i++){
-            var brik = brikker.get(i);
-            if(brik == null){
-                nulls++;
-            }
-            if (nulls == 4){
-                isEmpty = true;
-            }
-        }
-        
-        if (angrebVandt == true) {
-            while (isEmpty == false) {
-                var brik = brikker.;
+         if (angrebVandt == true) {
+            while (brikker.isEmpty() == false) {
+                var brik = brikker.poll();
                 brik.setFeltnr(brik.getHjemFeltnr());
                 brik = null;
-                
             }
             brikker.add(brikInd);
         } else {
             brikInd.setFeltnr(brikInd.getHjemFeltnr());
-            
         }
     }
 }
