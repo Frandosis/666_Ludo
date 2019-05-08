@@ -12,11 +12,13 @@ package Ludo.enheder;
 public class Brik {
     String farve;
     final int hjemfeltnr;
+    final int bufferfeltnr;
+    final int endefeltnr;
     int feltnr;
     int slag;
     boolean helle;
-    int bufferfeltnr;
-    int endefeltnr;
+    boolean erHjemme;
+  
     
     public Brik (String spFarve, int spHjemfeltnr,int spEndefeltnr , int spBufferfeltnr){
         this.farve = spFarve;
@@ -25,6 +27,8 @@ public class Brik {
         this.bufferfeltnr = spBufferfeltnr;
         this.endefeltnr = spEndefeltnr;
     }
+    
+    
     
     public String getFarve(){
         return this.farve;

@@ -40,8 +40,8 @@ public class Regler {
         return false;
     }
     
-    public boolean forladerHjem(int slag, Hjemfelt hjemfelt){
-        if(hjemfelt.getIndeholderBrik() == true){
+    public boolean forladerHjem(Brik brikind, Hjemfelt hjemfelt){
+        if(hjemfelt. = true){
             if(slag == 6){
                 hjemfelt.setIndeholderBrik(false);
                return true;

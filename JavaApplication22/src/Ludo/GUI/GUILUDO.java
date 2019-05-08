@@ -179,7 +179,7 @@ public class GUILUDO {
             b.setBackground(Color.YELLOW);
             LudoBoardSquares[H / 2][i] = b;
         }
-        for (int i = 1; i < 7; i++) {//blue
+        for (int i = 1; i < 7; i++) {//Green
             JButton b = new JButton();
             b.setMargin(buttonMargin);
 /*
@@ -193,7 +193,7 @@ public class GUILUDO {
             b.setBackground(Color.GREEN);
             LudoBoardSquares[i][L / 2] = b;
         }
-        for (int i = H - 2; i > L - 8; i--) {//yellow
+        for (int i = H - 2; i > L - 8; i--) {//Red
             JButton b = new JButton();
             b.setMargin(buttonMargin);
             ImageIcon icon = new ImageIcon(
@@ -202,7 +202,7 @@ public class GUILUDO {
             b.setBackground(Color.RED);
             LudoBoardSquares[i][L / 2] = b;
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) { //set start felt
             JButton b = new JButton();
             b.setMargin(buttonMargin);
             ImageIcon icon = new ImageIcon(
