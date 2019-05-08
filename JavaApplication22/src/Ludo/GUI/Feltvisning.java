@@ -11,12 +11,12 @@ package Ludo.GUI;
  */
 class Feltvisning {
 
-  public int x;
-  public int y;
+    public int x;
+    public int y;
 
-  Feltvisning(int i, int i0) {
-    x = i;
-    y = i0;
-  }
+    Feltvisning(int i, int j) {
+        x = i;
+        y = j;
+    }
 
 }
