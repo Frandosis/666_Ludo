@@ -40,16 +40,15 @@ public class GUILUDO {
         initializeGui();
         model.brikker = new ArrayList<Brik>();
         Brik b = new Brik("rød", 4, 10, 14);
-        model.brikker.add(b);
+        model.brikker.add(b);/*
         model.brikker.add(new Brik("rød", 6, 10, 14));
         model.brikker.add(new Brik("rød", 7, 10, 14));
-        model.brikker.add(new Brik("rød", 10, 10, 14));
+        model.brikker.add(new Brik("rød", 10, 10, 14));*/
 
-        model.brikker.get(0).setFeltnr(2);
-        model.brikker.get(1).setFeltnr(4);
-        model.brikker.get(2).setFeltnr(5);
-        model.brikker.get(3).setFeltnr(7);
-
+        //model.brikker.get(0).setFeltnr(2);
+        // model.brikker.get(1).setFeltnr(4);
+        // model.brikker.get(2).setFeltnr(5);
+        // model.brikker.get(3).setFeltnr(7);
         model.felter = new ArrayList<Feltvisning>();
         model.felter.add(new Feltvisning(8, 1)); // Blå startfelt
         model.felter.add(new Feltvisning(8, 2));
@@ -106,10 +105,51 @@ public class GUILUDO {
         model.felter.add(new Feltvisning(6, 1));
         model.felter.add(new Feltvisning(6, 0));
         model.felter.add(new Feltvisning(7, 0)); // Blå safefelt indgang
-        model.felter.add(new Feltvisning(8, 0));
+        model.felter.add(new Feltvisning(8, 0));// ende
+        model.felter.add(new Feltvisning(7, 1));// Blå endefelt top
+        model.felter.add(new Feltvisning(7, 2));
+        model.felter.add(new Feltvisning(7, 3));
+        model.felter.add(new Feltvisning(7, 4));
+        model.felter.add(new Feltvisning(7, 5));
+        model.felter.add(new Feltvisning(7, 6)); // Blå slut felt
+        model.felter.add(new Feltvisning(1, 7)); // Grønt endefelt top
+        model.felter.add(new Feltvisning(2, 7));
+        model.felter.add(new Feltvisning(3, 7));
+        model.felter.add(new Feltvisning(4, 7));
+        model.felter.add(new Feltvisning(5, 7));
+        model.felter.add(new Feltvisning(6, 7)); // Grønt endefelt
+        model.felter.add(new Feltvisning(7, 13)); // Gul endefelt top
+        model.felter.add(new Feltvisning(7, 12));
+        model.felter.add(new Feltvisning(7, 11));
+        model.felter.add(new Feltvisning(7, 10));
+        model.felter.add(new Feltvisning(7, 9));
+        model.felter.add(new Feltvisning(7, 8)); // Gul endefelt
+        model.felter.add(new Feltvisning(13, 7)); // Rød endefelt top
+        model.felter.add(new Feltvisning(12, 7));
+        model.felter.add(new Feltvisning(11, 7));
+        model.felter.add(new Feltvisning(10, 7));
+        model.felter.add(new Feltvisning(9, 7));
+        model.felter.add(new Feltvisning(8, 7)); // Grønt endefelt
+        model.felter.add(new Feltvisning(11, 2)); // Blå Start 1
+        model.felter.add(new Feltvisning(12, 2)); // Blå Start 2
+        model.felter.add(new Feltvisning(11, 3)); // Blå Start 3
+        model.felter.add(new Feltvisning(12, 3)); // Blå Start 4
+        model.felter.add(new Feltvisning(11, 11)); // Rød Start 1
+        model.felter.add(new Feltvisning(12, 11)); // Rød Start 2
+        model.felter.add(new Feltvisning(11, 12)); // Rød Start 3
+        model.felter.add(new Feltvisning(12, 12)); // Rød Start 4
+        model.felter.add(new Feltvisning(2, 11));  // Gul Start 1
+        model.felter.add(new Feltvisning(3, 11)); // Gul start 2
+        model.felter.add(new Feltvisning(2, 12)); // Gul start 3
+        model.felter.add(new Feltvisning(3, 12)); // Gul start 4
+        model.felter.add(new Feltvisning(2, 2)); // Grøn start 1
+        model.felter.add(new Feltvisning(3, 2)); // Grøn start 2
+        model.felter.add(new Feltvisning(2, 3)); // Grøn start 3
+        model.felter.add(new Feltvisning(3, 3)); // Grøn start 4
         opdaterGuiFraModel();
     }
 
+    //
     private void opdaterGuiFraModel() {
         for (Feltvisning fv : model.felter) {
             JButton b = LudoBoardSquares[fv.x][fv.y];
@@ -128,6 +168,7 @@ public class GUILUDO {
 
     }
 
+    // Print koordinater on click
     private void knapTrykketPåKoordinat(int x, int y) {
         System.out.println("Der blev trykket på " + x + " , " + y);
     }
@@ -142,13 +183,13 @@ public class GUILUDO {
         JToolBar tools = new JToolBar();
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
-        tools.add(new JButton("Brik 1")); // TODO - add functionality!
-        tools.add(new JButton("Brik 2")); // TODO - add functionality!
-        tools.add(new JButton("Brik 3")); // TODO - add functionality!
+        tools.add(new JButton("Brik 1"));
+        tools.add(new JButton("Brik 2"));
+        tools.add(new JButton("Brik 3"));
         tools.add(new JButton("Brik 4"));
         tools.addSeparator();
         tools.add(new JButton("Kast terning"));
-        tools.add(new JButton("Genstart")); // TODO - add functionality!
+        tools.add(new JButton("Genstart"));
         tools.addSeparator();
         tools.add(message);
 
@@ -179,14 +220,11 @@ public class GUILUDO {
             }
         }
 
-        int feltNr = 1;
         // Std Felter
         for (int i = L / 2 - 1; i < L / 2 + 2; i++) {
             for (int j = 0; j < H; j++) {
                 JButton b = LudoBoardSquares[i][j];
                 b.setBackground(Color.BLACK);
-                b.setText("" + feltNr);
-                feltNr++;
             }
         }
         for (int i = H / 2 - 1; i < H / 2 + 2; i++) {
@@ -233,7 +271,7 @@ public class GUILUDO {
             }
         }
 
-        // fill the black non-pawn piece row
+        // fill the board out with all the stuff we made 
         for (int ii = 0; ii < sizeboard; ii++) {
             for (int jj = 0; jj < sizeboard; jj++) {
                 LudoBoard.add(LudoBoardSquares[jj][ii]);
@@ -252,15 +290,15 @@ public class GUILUDO {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        GUILUDO cb = new GUILUDO();
+        GUILUDO LudoBoard = new GUILUDO();
 
         Runnable r = new Runnable() {
 
             @Override
             public void run() {
 
-                JFrame f = new JFrame("ChessChamp");
-                f.add(cb.getGui());
+                JFrame f = new JFrame("LudoChamp");
+                f.add(LudoBoard.getGui());
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 f.setLocationByPlatform(true);
 
@@ -273,11 +311,16 @@ public class GUILUDO {
             }
         };
         SwingUtilities.invokeLater(r);
-
-        for (int i = 0; i < 64; i++) {
+        // while (){
+        for (int i = 0; i < 100; i++) {
             Thread.sleep(500);
-            cb.model.brikker.get(3).setFeltnr(i);
-            cb.opdaterGuiFraModel();
+            LudoBoard.model.brikker.get(0).setFeltnr(i);
+            LudoBoard.opdaterGuiFraModel();
+            if (i == LudoBoard.model.felter.size() - 1) {
+                i = -1;
+                // }
+            }
         }
+
     }
 }
