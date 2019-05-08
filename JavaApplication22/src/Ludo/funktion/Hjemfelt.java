@@ -15,13 +15,11 @@ public class Hjemfelt implements Felt {
 
     final String farve;
     final int feltnr;
-    final int startfeltnr;
     Brik brik;
 
-    public Hjemfelt(String spFarve, int spFeltnr, int spStartfeltnr) {
+    public Hjemfelt(String spFarve, int spFeltnr) {
         this.farve = spFarve;
         this.feltnr = spFeltnr;
-        this.startfeltnr = spStartfeltnr;
 
     }
 

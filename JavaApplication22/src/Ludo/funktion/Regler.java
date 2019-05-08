@@ -47,7 +47,7 @@ public class Regler {
             }
         return false;
     }
-    
+    /* udkommenteret indtil den virker
     public int rykModEndefelt(Brik brikInd){
         int afstand;
         int ryk;
@@ -67,4 +67,5 @@ public class Regler {
         return 0;
         
     }
+/*
 }
