@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Ludo.funktion;
-
+import Ludo.enheder.*;
 import java.util.*;
 /**
  *
@@ -14,17 +14,8 @@ public class Test {
     
     public static void main(String [] arg){
         
-        LinkedList list = new LinkedList<>();
+        Brik grøn = new Brik("green", 0, 2, 4)
         
-        for (int i = 0; i < 10; i++){
-            list.add(i);
-            System.out.println(list.get(i));
-        }
-        
-        list.poll();
-        System.out.println(list);
-        list.set(7, 10);
-        System.out.println(list);
         
         
     }
