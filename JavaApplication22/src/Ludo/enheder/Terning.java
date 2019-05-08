@@ -11,24 +11,24 @@ package Ludo.enheder;
  */
 public class Terning {
     
-    public int værdi;
+    public int vaerdi;
     
     public Terning (){
         kast();
     }
     
-    public int getVærdi(){
-        return værdi;
+    public int getVaerdi(){
+        return vaerdi;
     }
     
-    public void setVærdi(int nyværdi){
-        værdi = nyværdi;
+    public void setVaerdi(int nyvaerdi){
+        vaerdi = nyvaerdi;
     }
     
     public void kast(){
-       double tilfældigværdi = Math.random() % 6;
+       double tilfaeldigvaerdi = Math.random() % 6;
        
-       værdi = (int) (tilfældigværdi * 6 + 1);
+       vaerdi = (int) (tilfaeldigvaerdi * 6 + 1);
     }
     
 }

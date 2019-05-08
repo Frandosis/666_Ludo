@@ -52,7 +52,7 @@ public class Test {
         main.brikker.get(0).setFeltnr(3);
         main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
         
-        main.opdaterBrættet();
+        main.opdaterBraettet();
         
         
         
@@ -64,7 +64,7 @@ public class Test {
         
     }
     
-    public void opdaterBrættet(){
+    public void opdaterBraettet(){
         for(Brik brik : this.brikker ){
             this.felter.get(brik.getFeltnr()).landet(brik);
         }

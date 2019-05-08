@@ -39,18 +39,18 @@ public class GUILUDO {
     GUILUDO() {
         initializeGui();
         model.brikker = new ArrayList<Brik>();
-        Brik b = new Brik("rød", 4, 10, 14);
+        Brik b = new Brik("roed", 4, 10, 14);
         model.brikker.add(b);/*
-        model.brikker.add(new Brik("rød", 6, 10, 14));
-        model.brikker.add(new Brik("rød", 7, 10, 14));
-        model.brikker.add(new Brik("rød", 10, 10, 14));*/
+        model.brikker.add(new Brik("roed", 6, 10, 14));
+        model.brikker.add(new Brik("roed", 7, 10, 14));
+        model.brikker.add(new Brik("roed", 10, 10, 14));*/
 
         //model.brikker.get(0).setFeltnr(2);
         // model.brikker.get(1).setFeltnr(4);
         // model.brikker.get(2).setFeltnr(5);
         // model.brikker.get(3).setFeltnr(7);
         model.felter = new ArrayList<Feltvisning>();
-        model.felter.add(new Feltvisning(8, 1)); // Blå startfelt
+        model.felter.add(new Feltvisning(8, 1)); // Blaa startfelt
         model.felter.add(new Feltvisning(8, 2));
         model.felter.add(new Feltvisning(8, 3));
         model.felter.add(new Feltvisning(8, 4));
@@ -62,9 +62,9 @@ public class GUILUDO {
         model.felter.add(new Feltvisning(12, 6));
         model.felter.add(new Feltvisning(13, 6));
         model.felter.add(new Feltvisning(14, 6));
-        model.felter.add(new Feltvisning(14, 7)); // Rød safefelt indgang
+        model.felter.add(new Feltvisning(14, 7)); // Roed safefelt indgang
         model.felter.add(new Feltvisning(14, 8));
-        model.felter.add(new Feltvisning(13, 8)); // Rød startfelt
+        model.felter.add(new Feltvisning(13, 8)); // Roed startfelt
         model.felter.add(new Feltvisning(12, 8));
         model.felter.add(new Feltvisning(11, 8));
         model.felter.add(new Feltvisning(10, 8));
@@ -90,9 +90,9 @@ public class GUILUDO {
         model.felter.add(new Feltvisning(2, 8));
         model.felter.add(new Feltvisning(1, 8));
         model.felter.add(new Feltvisning(0, 8));
-        model.felter.add(new Feltvisning(0, 7)); // Grøn safefelt indgang
+        model.felter.add(new Feltvisning(0, 7)); // Groen safefelt indgang
         model.felter.add(new Feltvisning(0, 6));
-        model.felter.add(new Feltvisning(1, 6)); // Grøn startfel
+        model.felter.add(new Feltvisning(1, 6)); // Groen startfel
         model.felter.add(new Feltvisning(2, 6));
         model.felter.add(new Feltvisning(3, 6));
         model.felter.add(new Feltvisning(4, 6));
@@ -104,48 +104,48 @@ public class GUILUDO {
         model.felter.add(new Feltvisning(6, 2));
         model.felter.add(new Feltvisning(6, 1));
         model.felter.add(new Feltvisning(6, 0));
-        model.felter.add(new Feltvisning(7, 0)); // Blå safefelt indgang
+        model.felter.add(new Feltvisning(7, 0)); // Blaa safefelt indgang
         model.felter.add(new Feltvisning(8, 0));// ende
-        model.felter.add(new Feltvisning(7, 1));// Blå endefelt top
+        model.felter.add(new Feltvisning(7, 1));// Blaa endefelt top
         model.felter.add(new Feltvisning(7, 2));
         model.felter.add(new Feltvisning(7, 3));
         model.felter.add(new Feltvisning(7, 4));
         model.felter.add(new Feltvisning(7, 5));
-        model.felter.add(new Feltvisning(7, 6)); // Blå slut felt
-        model.felter.add(new Feltvisning(1, 7)); // Grønt endefelt top
+        model.felter.add(new Feltvisning(7, 6)); // Blaa slut felt
+        model.felter.add(new Feltvisning(1, 7)); // Groent endefelt top
         model.felter.add(new Feltvisning(2, 7));
         model.felter.add(new Feltvisning(3, 7));
         model.felter.add(new Feltvisning(4, 7));
         model.felter.add(new Feltvisning(5, 7));
-        model.felter.add(new Feltvisning(6, 7)); // Grønt endefelt
+        model.felter.add(new Feltvisning(6, 7)); // Groent endefelt
         model.felter.add(new Feltvisning(7, 13)); // Gul endefelt top
         model.felter.add(new Feltvisning(7, 12));
         model.felter.add(new Feltvisning(7, 11));
         model.felter.add(new Feltvisning(7, 10));
         model.felter.add(new Feltvisning(7, 9));
         model.felter.add(new Feltvisning(7, 8)); // Gul endefelt
-        model.felter.add(new Feltvisning(13, 7)); // Rød endefelt top
+        model.felter.add(new Feltvisning(13, 7)); // Roed endefelt top
         model.felter.add(new Feltvisning(12, 7));
         model.felter.add(new Feltvisning(11, 7));
         model.felter.add(new Feltvisning(10, 7));
         model.felter.add(new Feltvisning(9, 7));
-        model.felter.add(new Feltvisning(8, 7)); // Grønt endefelt
-        model.felter.add(new Feltvisning(11, 2)); // Blå Start 1
-        model.felter.add(new Feltvisning(12, 2)); // Blå Start 2
-        model.felter.add(new Feltvisning(11, 3)); // Blå Start 3
-        model.felter.add(new Feltvisning(12, 3)); // Blå Start 4
-        model.felter.add(new Feltvisning(11, 11)); // Rød Start 1
-        model.felter.add(new Feltvisning(12, 11)); // Rød Start 2
-        model.felter.add(new Feltvisning(11, 12)); // Rød Start 3
-        model.felter.add(new Feltvisning(12, 12)); // Rød Start 4
+        model.felter.add(new Feltvisning(8, 7)); // Groent endefelt
+        model.felter.add(new Feltvisning(11, 2)); // Blaa Start 1
+        model.felter.add(new Feltvisning(12, 2)); // Blaa Start 2
+        model.felter.add(new Feltvisning(11, 3)); // Blaa Start 3
+        model.felter.add(new Feltvisning(12, 3)); // Blaa Start 4
+        model.felter.add(new Feltvisning(11, 11)); // Roed Start 1
+        model.felter.add(new Feltvisning(12, 11)); // Roed Start 2
+        model.felter.add(new Feltvisning(11, 12)); // Roed Start 3
+        model.felter.add(new Feltvisning(12, 12)); // Roed Start 4
         model.felter.add(new Feltvisning(2, 11));  // Gul Start 1
         model.felter.add(new Feltvisning(3, 11)); // Gul start 2
         model.felter.add(new Feltvisning(2, 12)); // Gul start 3
         model.felter.add(new Feltvisning(3, 12)); // Gul start 4
-        model.felter.add(new Feltvisning(2, 2)); // Grøn start 1
-        model.felter.add(new Feltvisning(3, 2)); // Grøn start 2
-        model.felter.add(new Feltvisning(2, 3)); // Grøn start 3
-        model.felter.add(new Feltvisning(3, 3)); // Grøn start 4
+        model.felter.add(new Feltvisning(2, 2)); // Groen start 1
+        model.felter.add(new Feltvisning(3, 2)); // Groen start 2
+        model.felter.add(new Feltvisning(2, 3)); // Groen start 3
+        model.felter.add(new Feltvisning(3, 3)); // Groen start 4
         opdaterGuiFraModel();
     }
 
@@ -169,8 +169,8 @@ public class GUILUDO {
     }
 
     // Print koordinater on click
-    private void knapTrykketPåKoordinat(int x, int y) {
-        System.out.println("Der blev trykket på " + x + " , " + y);
+    private void knapTrykketPaaKoordinat(int x, int y) {
+        System.out.println("Der blev trykket paa " + x + " , " + y);
     }
 
     public final void initializeGui() {
@@ -213,10 +213,10 @@ public class GUILUDO {
                 b.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        knapTrykketPåKoordinat(x, y);
+                        knapTrykketPaaKoordinat(x, y);
                     }
                 });
-                // b.addActionListener( (e) -> knapTrykketPåKoordinat(x, y) );
+                // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) );
             }
         }
 
@@ -234,7 +234,7 @@ public class GUILUDO {
             }
         }
 
-        // Opsætter safefelter
+        // Opsaetter safefelter
         for (int i = 1; i < 7; i++) {//blue
             JButton b = LudoBoardSquares[H / 2][i];
             b.setBackground(Color.BLUE);

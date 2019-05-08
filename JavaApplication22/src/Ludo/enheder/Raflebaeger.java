@@ -43,7 +43,7 @@ public class Raflebaeger {
 
     public int getTerningVaerdi(int index) {
         Terning terning = raflebaeger.get(index);
-        return terning.getVærdi();
+        return terning.getVaerdi();
     }
 /* // skal ikke bruges i dette projekt 
     public String getAlleVaerdier() {
@@ -51,10 +51,10 @@ public class Raflebaeger {
         for (int i = 0; i < raflebaeger.size(); i++) {
             Terning terning = raflebaeger.get(i);
             if (i == raflebaeger.size() - 1) {
-                s += terning.getVærdi();
+                s += terning.getVaerdi();
                 break;
             }
-            s += terning.getVærdi() + ",";
+            s += terning.getVaerdi() + ",";
         }
         return s;
     }

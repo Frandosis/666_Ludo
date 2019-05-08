@@ -42,10 +42,10 @@ public class Startfelt implements Felt {
 
         }
 
-        // Check om der er brikker på feltet.
+        // Check om der er brikker paa feltet.
         if (brikker.isEmpty()) {
             brikker.add(brikInd);
-        } // Der er brikker på feltet.
+        } // Der er brikker paa feltet.
         else {
 
             Brik tmp = brikker.peek();
@@ -54,8 +54,8 @@ public class Startfelt implements Felt {
             if (tmp.getFarve().equals(this.farve)) {
 
                 /*
-                * 1. Brikken der lander på feltet er den samme type, som den/de eksisterende brik/ker
-                * 2. Brikken der lander på feltet er forskellig fra den/de eksisterende brik/ker
+                * 1. Brikken der lander paa feltet er den samme type, som den/de eksisterende brik/ker
+                * 2. Brikken der lander paa feltet er forskellig fra den/de eksisterende brik/ker
                  */
                 if (brikInd.getFarve().equals(tmp.getFarve())) {
                     brikker.add(brikInd);
@@ -66,11 +66,11 @@ public class Startfelt implements Felt {
                 }
             } // Brikkerne har en anden farve end feltet.
             else {
-                // Check om brikken der lander på feltet har den samme farve, som den/de eksisterende brik/ker.
+                // Check om brikken der lander paa feltet har den samme farve, som den/de eksisterende brik/ker.
                 if (brikInd.getFarve().equals(tmp.getFarve())) {
                     brikker.add(brikInd);
                 } else {
-                    // Check om brikken der lander på feltet har den samme farve som feltet.
+                    // Check om brikken der lander paa feltet har den samme farve som feltet.
                     if (brikInd.getFarve().equals(this.farve)) {
 
                         angrebVandt = regler.kamp(brikker.size(), tmp, brikInd);
