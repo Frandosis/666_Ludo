@@ -40,14 +40,11 @@ public class Regler {
         return false;
     }
     
-    public boolean forladerHjem(Brik brikind, Hjemfelt hjemfelt){
-        if(hjemfelt. = true){
-            if(slag == 6){
-                hjemfelt.setIndeholderBrik(false);
+    public boolean forladerHjem(Brik brikInd, int slag){
+        if(brikInd.getHelle() == true){
+            if(slag== 6){
                return true;
             }
-            else return false;
-        }
         return false;
     }
     

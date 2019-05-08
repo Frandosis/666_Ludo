@@ -29,13 +29,16 @@ public class Hjemfelt implements Felt {
     public void landet(Brik brikInd) {
         if (this.farve.equals(brikInd.getFarve())) {
             this.brik = brikInd;
+            this.brik.setHelle(true);
         }
         
     }
     
     @Override
     public void forlader(){
+        this.brik.setHelle(false);
         this.brik = null;
+        
     }
     
 }
