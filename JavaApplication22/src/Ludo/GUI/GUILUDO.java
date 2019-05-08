@@ -5,7 +5,6 @@ package Ludo.GUI;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jeppe
@@ -33,10 +32,9 @@ public class GUILUDO {
     private final JLabel message = new JLabel(
             "LudoManSpillet");
 
-
     LudoSpilModel model = new LudoSpilModel();
-  private ImageIcon ingenBrik;
-  private ImageIcon lillaBrik;
+    private ImageIcon ingenBrik;
+    private ImageIcon lillaBrik;
 
     GUILUDO() {
         initializeGui();
@@ -52,54 +50,92 @@ public class GUILUDO {
         model.brikker.get(2).setFeltnr(5);
         model.brikker.get(3).setFeltnr(7);
 
-
         model.felter = new ArrayList<Feltvisning>();
-        model.felter.add(new Feltvisning(8,1));
-        model.felter.add(new Feltvisning(8,2));
-        model.felter.add(new Feltvisning(8,3));
-        model.felter.add(new Feltvisning(8,4));
-        model.felter.add(new Feltvisning(8,5));
-        model.felter.add(new Feltvisning(8,6));
-        model.felter.add(new Feltvisning(9,6));
-        model.felter.add(new Feltvisning(10,6));
-        model.felter.add(new Feltvisning(11,6));
-        model.felter.add(new Feltvisning(12,6));
-        model.felter.add(new Feltvisning(13,6));
-        model.felter.add(new Feltvisning(14,6));
-
+        model.felter.add(new Feltvisning(8, 1)); // Blå startfelt
+        model.felter.add(new Feltvisning(8, 2));
+        model.felter.add(new Feltvisning(8, 3));
+        model.felter.add(new Feltvisning(8, 4));
+        model.felter.add(new Feltvisning(8, 5));
+        model.felter.add(new Feltvisning(8, 6));
+        model.felter.add(new Feltvisning(9, 6));
+        model.felter.add(new Feltvisning(10, 6));
+        model.felter.add(new Feltvisning(11, 6));
+        model.felter.add(new Feltvisning(12, 6));
+        model.felter.add(new Feltvisning(13, 6));
+        model.felter.add(new Feltvisning(14, 6));
+        model.felter.add(new Feltvisning(14, 7)); // Rød safefelt indgang
+        model.felter.add(new Feltvisning(14, 8));
+        model.felter.add(new Feltvisning(13, 8)); // Rød startfelt
+        model.felter.add(new Feltvisning(12, 8));
+        model.felter.add(new Feltvisning(11, 8));
+        model.felter.add(new Feltvisning(10, 8));
+        model.felter.add(new Feltvisning(9, 8));
+        model.felter.add(new Feltvisning(8, 8));
+        model.felter.add(new Feltvisning(8, 9));
+        model.felter.add(new Feltvisning(8, 10));
+        model.felter.add(new Feltvisning(8, 11));
+        model.felter.add(new Feltvisning(8, 12));
+        model.felter.add(new Feltvisning(8, 13));
+        model.felter.add(new Feltvisning(8, 14));
+        model.felter.add(new Feltvisning(7, 14)); // Gul safefelt indgang
+        model.felter.add(new Feltvisning(6, 14));
+        model.felter.add(new Feltvisning(6, 13)); // Gul startfelt
+        model.felter.add(new Feltvisning(6, 12));
+        model.felter.add(new Feltvisning(6, 11));
+        model.felter.add(new Feltvisning(6, 10));
+        model.felter.add(new Feltvisning(6, 9));
+        model.felter.add(new Feltvisning(6, 8));
+        model.felter.add(new Feltvisning(5, 8));
+        model.felter.add(new Feltvisning(4, 8));
+        model.felter.add(new Feltvisning(3, 8));
+        model.felter.add(new Feltvisning(2, 8));
+        model.felter.add(new Feltvisning(1, 8));
+        model.felter.add(new Feltvisning(0, 8));
+        model.felter.add(new Feltvisning(0, 7)); // Grøn safefelt indgang
+        model.felter.add(new Feltvisning(0, 6));
+        model.felter.add(new Feltvisning(1, 6)); // Grøn startfel
+        model.felter.add(new Feltvisning(2, 6));
+        model.felter.add(new Feltvisning(3, 6));
+        model.felter.add(new Feltvisning(4, 6));
+        model.felter.add(new Feltvisning(5, 6));
+        model.felter.add(new Feltvisning(6, 6));
+        model.felter.add(new Feltvisning(6, 5));
+        model.felter.add(new Feltvisning(6, 4));
+        model.felter.add(new Feltvisning(6, 3));
+        model.felter.add(new Feltvisning(6, 2));
+        model.felter.add(new Feltvisning(6, 1));
+        model.felter.add(new Feltvisning(6, 0));
+        model.felter.add(new Feltvisning(7, 0)); // Blå safefelt indgang
+        model.felter.add(new Feltvisning(8, 0));
         opdaterGuiFraModel();
     }
 
+    private void opdaterGuiFraModel() {
+        for (Feltvisning fv : model.felter) {
+            JButton b = LudoBoardSquares[fv.x][fv.y];
+            b.setText("t");
+            b.setIcon(ingenBrik);
+        }
 
+        for (Brik brik : model.brikker) {
+            int fn = brik.getFeltnr();
+            Feltvisning fv = model.felter.get(fn);
 
-  private void opdaterGuiFraModel() {
-     for (Feltvisning fv : model.felter) {
-       JButton b = LudoBoardSquares[fv.x][fv.y];
-       b.setText("t");
-       b.setIcon(ingenBrik);
-     }
+            JButton b = LudoBoardSquares[fv.x][fv.y];
+            b.setText("b");
+            b.setIcon(lillaBrik);
+        }
 
-     for (Brik brik : model.brikker) {
-       int fn = brik.getFeltnr();
-       Feltvisning fv = model.felter.get(fn);
+    }
 
-       JButton b = LudoBoardSquares[fv.x][fv.y];
-       b.setText("b");
-       b.setIcon(lillaBrik);
-     }
-
-  }
-
-
-  private void knapTrykketPåKoordinat(int x, int y) {
-    System.out.println("Der blev trykket på "+x+" , "+y);
-  }
+    private void knapTrykketPåKoordinat(int x, int y) {
+        System.out.println("Der blev trykket på " + x + " , " + y);
+    }
 
     public final void initializeGui() {
         ingenBrik = new ImageIcon(
-                        new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
+                new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
         lillaBrik = new ImageIcon("ludobrik.png");//BufferedImage.TYPE_INT_ARGB
-
 
         // set up the main GUI
         gui.setBorder(new EmptyBorder(size, size, size, size));
@@ -134,10 +170,10 @@ public class GUILUDO {
                 final int x = jj;
                 final int y = ii;
                 b.addActionListener(new ActionListener() {
-                  @Override
-                  public void actionPerformed(ActionEvent e) {
-                    knapTrykketPåKoordinat(x, y);
-                  }
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        knapTrykketPåKoordinat(x, y);
+                    }
                 });
                 // b.addActionListener( (e) -> knapTrykketPåKoordinat(x, y) );
             }
@@ -149,7 +185,7 @@ public class GUILUDO {
             for (int j = 0; j < H; j++) {
                 JButton b = LudoBoardSquares[i][j];
                 b.setBackground(Color.BLACK);
-                b.setText(""+feltNr);
+                b.setText("" + feltNr);
                 feltNr++;
             }
         }
@@ -162,85 +198,46 @@ public class GUILUDO {
 
         // Opsætter safefelter
         for (int i = 1; i < 7; i++) {//blue
-            JButton b = new JButton();
-            b.setMargin(buttonMargin);
-            ImageIcon icon = new ImageIcon(
-                    new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
-            //b.setIcon(icon);
+            JButton b = LudoBoardSquares[H / 2][i];
             b.setBackground(Color.BLUE);
-            LudoBoardSquares[H / 2][i] = b;
         }
         for (int i = H - 2; i > H - 8; i--) {//yellow
-            JButton b = new JButton();
-            b.setMargin(buttonMargin);
-            ImageIcon icon = new ImageIcon(
-                    new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
-            //b.setIcon(icon);
+            JButton b = LudoBoardSquares[H / 2][i];
             b.setBackground(Color.YELLOW);
-            LudoBoardSquares[H / 2][i] = b;
         }
-        for (int i = 1; i < 7; i++) {//blue
-            JButton b = new JButton();
-            b.setMargin(buttonMargin);
-/*
-            ImageIcon icon = new ImageIcon(
-                    new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
-
-            */
-            ImageIcon lillaBrik = new ImageIcon("ludobrik.png");//BufferedImage.TYPE_INT_ARGB
-            b.setIcon(lillaBrik);
-//            b.setText("1");
+        for (int i = 1; i < 7; i++) {//green
+            JButton b = LudoBoardSquares[i][L / 2];
             b.setBackground(Color.GREEN);
-            LudoBoardSquares[i][L / 2] = b;
         }
-        for (int i = H - 2; i > L - 8; i--) {//yellow
-            JButton b = new JButton();
-            b.setMargin(buttonMargin);
-            ImageIcon icon = new ImageIcon(
-                    new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
-            //b.setIcon(icon);
+        for (int i = H - 2; i > L - 8; i--) {//red
+            JButton b = LudoBoardSquares[i][L / 2];
             b.setBackground(Color.RED);
-            LudoBoardSquares[i][L / 2] = b;
+
         }
         for (int i = 0; i < 4; i++) {
-            JButton b = new JButton();
-            b.setMargin(buttonMargin);
-            ImageIcon icon = new ImageIcon(
-                    new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
-            //b.setIcon(icon);
             if (i == 0) {
+                JButton b = LudoBoardSquares[L / 2 - 1][13];
                 b.setBackground(Color.YELLOW);
-                LudoBoardSquares[L / 2 - 1][13] = b;
-                /*  for (int j = 0; i < 2; j++) { // test for 2x2 til brikker
-                    for (int k = 0; k < 2; k++) {
-                        LudoBoardSquares[3 + j][12 + k] = b;
-                    }
-                }*/
             }
             if (i == 1) {
+                JButton b = LudoBoardSquares[L / 2 + 1][1];
                 b.setBackground(Color.BLUE);
-                LudoBoardSquares[L / 2 + 1][1] = b;
             }
             if (i == 2) {
+                JButton b = LudoBoardSquares[13][8];
                 b.setBackground(Color.RED);
-                LudoBoardSquares[13][8] = b;
             }
             if (i == 3) {
+                JButton b = LudoBoardSquares[1][6];
                 b.setBackground(Color.GREEN);
-                LudoBoardSquares[1][6] = b;
             }
         }
 
         // fill the black non-pawn piece row
         for (int ii = 0; ii < sizeboard; ii++) {
             for (int jj = 0; jj < sizeboard; jj++) {
-                switch (jj) {
-                    // case 0:
-                    //   chessBoard.add(new JLabel("" + (ii + 1),
-                    //         SwingConstants.CENTER));
-                    default:
-                        LudoBoard.add(LudoBoardSquares[jj][ii]);
-                }
+                LudoBoard.add(LudoBoardSquares[jj][ii]);
+
             }
         }
 
@@ -276,21 +273,11 @@ public class GUILUDO {
             }
         };
         SwingUtilities.invokeLater(r);
-        Thread.sleep(2000);
-        cb.model.brikker.get(3).setFeltnr(8);
-        cb.opdaterGuiFraModel();
 
-        Thread.sleep(500);
-        cb.model.brikker.get(3).setFeltnr(9);
-        cb.opdaterGuiFraModel();
-
-        Thread.sleep(500);
-        cb.model.brikker.get(3).setFeltnr(10);
-        cb.opdaterGuiFraModel();
-
-        Thread.sleep(500);
-        cb.model.brikker.get(3).setFeltnr(11);
-        cb.opdaterGuiFraModel();
-
+        for (int i = 0; i < 64; i++) {
+            Thread.sleep(500);
+            cb.model.brikker.get(3).setFeltnr(i);
+            cb.opdaterGuiFraModel();
+        }
     }
 }
