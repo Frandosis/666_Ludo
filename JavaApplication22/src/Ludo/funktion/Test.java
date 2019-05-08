@@ -12,43 +12,62 @@ import java.util.*;
  */
 public class Test {
     
+      ArrayList<Brik> brikker = new ArrayList<Brik>();
+    ArrayList<Felt> felter = new ArrayList();
+    
     public static void main(String [] arg){
+        try{
+        Test main = new Test();
+            
+        main.brikker.add(new Brik("green", 0, 2, 5, 7));
+        main.brikker.add(new Brik ("red", 1, 3, 5, 6));
         
-        Brik groen = new Brik("green", 0, 2, 5, 7);
-        Brik roed = new Brik ("red", 1, 3, 5, 6);
         
         
-        ArrayList<Felt> felter = new ArrayList();
-        felter.add(new Hjemfelt("green", 0));
-        felter.add(new Hjemfelt("red", 1));
-        felter.add(new Startfelt("green", 2));
-        felter.add(new Startfelt("red", 3));
+        main.felter.add(new Hjemfelt("green", 0));
+        main.felter.add(new Hjemfelt("red", 1));
+        main.felter.add(new Startfelt("green", 2));
+        main.felter.add(new Startfelt("red", 3));
         for(int i = 4; i < 8; i++){
-        felter.add(new Banefelt(i));
+        main.felter.add(new Banefelt(i));
         }
         
-        var tmp = felter.get(groen.getHjemFeltnr());
-        groen.setFeltnr(groen.getHjemFeltnr());
-        tmp.landet(groen);
+        var tmp = main.felter.get(main.brikker.get(0).getHjemFeltnr());
+        main.brikker.get(0).setFeltnr(main.brikker.get(0).getHjemFeltnr());
+        tmp.landet(main.brikker.get(0));
         
-        var tmp1 = felter.get(roed.getHjemFeltnr());
-        roed.setFeltnr(roed.getHjemFeltnr());
-        tmp1.landet(roed);
+        var tmp1 = main.felter.get(main.brikker.get(1).getHjemFeltnr());
+        main.brikker.get(1).setFeltnr(main.brikker.get(1).getHjemFeltnr());
+        tmp1.landet(main.brikker.get(1));
         
-        felter.get(roed.getFeltnr()).forlader();
-        roed.setFeltnr(3);
-        felter.get(roed.getFeltnr()).landet(roed);
+        main.felter.get(main.brikker.get(1).getFeltnr()).forlader();
+        main.brikker.get(1).setFeltnr(3);
+        main.felter.get(main.brikker.get(1).getFeltnr()).landet(main.brikker.get(1));
         
-        felter.get(groen.getFeltnr()).forlader();
-        groen.setFeltnr(2);
-        felter.get(groen.getFeltnr()).landet(groen);
+        main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
+        main.brikker.get(0).setFeltnr(2);
+        main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
         
-        felter.get(groen.getFeltnr()).forlader();
-        groen.setFeltnr(3);
-        felter.get(groen.getFeltnr()).landet(groen);
+        main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
+        main.brikker.get(0).setFeltnr(3);
+        main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
+        
+        main.opdaterBrættet();
         
         
         
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
+    }
+    
+    public void opdaterBrættet(){
+        for(Brik brik : this.brikker ){
+            this.felter.get(brik.getFeltnr()).landet(brik);
+        }
         
     }
     

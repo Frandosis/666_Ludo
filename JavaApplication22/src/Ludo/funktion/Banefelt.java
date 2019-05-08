@@ -32,6 +32,10 @@ public class Banefelt implements Felt {
 
     @Override
     public void landet(Brik brikInd) {
+        if(brikker.contains(brikInd)){
+            return;
+        }
+        
         //Der er ingen brikker paa feltet
         if (brikker.isEmpty()) {
             brikker.add(brikInd);

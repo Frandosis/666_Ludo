@@ -25,14 +25,19 @@ public class Startfelt implements Felt {
         this.farve = spFarve;
         this.feltnr = spFeltnr;
         this.brikker = new LinkedList<>();
-        Regler regler = new Regler();
+        this.regler = new Regler();
+        this.angrebVandt = false;
 
     }
 
     @Override
     public void landet(Brik brikInd) {
-
-        if (brikInd.equals(this.farve)) {
+        
+        if (this.brikker.contains(brikInd)){
+            return;
+        }
+        
+        if (brikInd.getFarve().equals(this.farve)) {
             brikInd.setHelle(true);
 
         }
