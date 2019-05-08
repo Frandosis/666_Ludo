@@ -6,8 +6,8 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
-import java.util.LinkedList;
 import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  *
@@ -22,39 +22,50 @@ public class Banefelt implements Felt {
 
     public Banefelt(int spFeltnr) {
         this.feltnr = spFeltnr;
-        this.brikker = new LinkedList<>();
+        this.brikker = new LinkedList<Brik>();
+        for (int i = 0; i < 4; i++) {
+            brikker.add(null);
+        }
         angrebVandt = false;
 
     }
 
     @Override
     public void landet(Brik brikInd) {
+        //Der er ingen brikker paa feltet
         if (brikker.isEmpty()) {
             brikker.add(brikInd);
 
-        } else {
+        } //Der er brikker paa feltet i forvejen.
+        else {
             var forsvarer = brikker.peek();
-           angrebVandt = regler.kamp(brikker.size(), forsvarer, brikInd);
-           rykEfterKamp (brikInd);
+            //Check om brikkerne der er i forvejen er ens med den brik der lander.
+            if (forsvarer.getFarve().equals(brikInd.getFarve())) {
+                brikker.add(brikInd);
+            } //Brikken er ikke ens.
+            else {
+                angrebVandt = regler.kamp(brikker.size(), forsvarer, brikInd);
+                rykEfterKamp(brikInd);
+            }
         }
     }
 
     @Override
     public void forlader() {
+        brikker.poll();
 
     }
 
     public void rykEfterKamp(Brik brikInd) {
-        if (angrebVandt == true) {
+         if (angrebVandt == true) {
             while (brikker.isEmpty() == false) {
                 var brik = brikker.poll();
                 brik.setFeltnr(brik.getHjemFeltnr());
-                
+                brik = null;
             }
             brikker.add(brikInd);
         } else {
             brikInd.setFeltnr(brikInd.getHjemFeltnr());
-            
         }
     }
 }

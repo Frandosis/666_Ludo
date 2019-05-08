@@ -40,17 +40,14 @@ public class Regler {
         return false;
     }
     
-    public boolean forladerHjem(int slag, Hjemfelt hjemfelt){
-        if(hjemfelt.getIndeholderBrik() == true){
-            if(slag == 6){
-                hjemfelt.setIndeholderBrik(false);
+    public boolean forladerHjem(Brik brikInd, int slag){
+        if(brikInd.getHelle() == true){
+            if(slag== 6){
                return true;
             }
-            else return false;
-        }
         return false;
     }
-    
+    /* udkommenteret indtil den virker
     public int rykModEndefelt(Brik brikInd){
         int afstand;
         int ryk;
@@ -70,4 +67,5 @@ public class Regler {
         return 0;
         
     }
+/*
 }
