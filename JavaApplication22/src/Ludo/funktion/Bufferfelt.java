@@ -20,7 +20,7 @@ public class Bufferfelt implements Felt {
     Queue<Brik> brikker;
     boolean win = false;
     
-    public Bufferfelt (int spFeltnr, String spFarve){
+    public Bufferfelt (String spFarve, int spFeltnr){
     this.feltnr = spFeltnr;
     this.farve = spFarve;
         this.brikker = new LinkedList<Brik>();

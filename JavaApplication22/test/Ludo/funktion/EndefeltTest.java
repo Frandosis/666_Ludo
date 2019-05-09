@@ -17,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Valdemar Landberg
  */
-public class StartfeltTest {
+public class EndefeltTest {
     
-    public StartfeltTest() {
+    public EndefeltTest() {
     }
     
     @BeforeAll
@@ -39,40 +39,27 @@ public class StartfeltTest {
     }
 
     /**
-     * Test of landet method, of class Startfelt.
+     * Test of landet method, of class Hjemfelt.
      */
     @Test
     public void testLandet() {
         System.out.println("landet");
         Brik brikInd = null;
-        Felt instance = new Startfelt ("green", 40);
+        Hjemfelt instance = null;
         instance.landet(brikInd);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of forlader method, of class Startfelt.
+     * Test of forlader method, of class Hjemfelt.
      */
     @Test
     public void testForlader() {
         System.out.println("forlader");
         Brik brikUd = null;
-        Startfelt instance = null;
+        Hjemfelt instance = null;
         instance.forlader();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of rykEfterKamp method, of class Startfelt.
-     */
-    @Test
-    public void testRykEfterKamp() {
-        System.out.println("rykEfterKamp");
-        Brik brikInd = null;
-        Startfelt instance = null;
-        instance.rykEfterKamp(brikInd);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

@@ -20,7 +20,7 @@ public class Endefelt implements Felt {
         Queue<Brik> brikker;
         
         
-    public Endefelt (int spFeltnr, String spFarve){
+    public Endefelt (String spFarve,int spFeltnr){
     this.feltnr = spFeltnr;
     this.farve = spFarve;
         this.brikker = new LinkedList<Brik>();
