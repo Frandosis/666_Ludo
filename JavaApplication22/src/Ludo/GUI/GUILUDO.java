@@ -39,7 +39,7 @@ public class GUILUDO {
     GUILUDO() {
         initializeGui();
         model.brikker = new ArrayList<Brik>();
-         Brik b = new Brik("roed", 4, 10, 14);
+        Brik b = new Brik("roed", 4, 10, 14, 0);
         model.brikker.add(b);/*
         model.brikker.add(new Brik("roed", 6, 10, 14));
         model.brikker.add(new Brik("roed", 7, 10, 14));
@@ -271,7 +271,7 @@ public class GUILUDO {
             }
         }
 
-        // fill the board out with all the stuff we made 
+        // fill the board out with all the stuff we made
         for (int ii = 0; ii < sizeboard; ii++) {
             for (int jj = 0; jj < sizeboard; jj++) {
                 LudoBoard.add(LudoBoardSquares[jj][ii]);
