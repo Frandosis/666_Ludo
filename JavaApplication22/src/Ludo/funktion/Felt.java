@@ -13,6 +13,6 @@ public interface Felt {
     
     public void landet(Brik brikInd);
     
-    public void forlader();
+    public void forlader(Brik brikUd);
     
 }

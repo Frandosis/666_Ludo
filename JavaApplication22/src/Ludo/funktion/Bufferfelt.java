@@ -47,7 +47,7 @@ public class Bufferfelt implements Felt {
     }
 
     @Override
-    public void forlader() {
+    public void forlader(Brik brikUd) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
