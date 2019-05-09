@@ -134,5 +134,8 @@ public class Braet {
         System.out.println("Size after Bufferfelt: "+ braet.size());
          
     }
-
+    
+    public ArrayList<Felt> getBraet(){
+        return this.braet;
+    } 
 }
