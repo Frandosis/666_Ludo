@@ -15,7 +15,6 @@ import java.util.Queue;
 public class Bufferfelt implements Felt {
 
     int antalbuffer;
-    String farve;
     final int feltnr;
     Queue<Brik> brikker;
     boolean win = false;

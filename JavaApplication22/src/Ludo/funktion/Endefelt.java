@@ -13,16 +13,16 @@ import java.util.Queue;
  * @author s184805
  */
 public class Endefelt implements Felt {
-        String farve;
-        int feltnr;
+        final String farve;
+        final int feltnr;
         int antalBrikker;
-        int tmp;
         boolean out = false;
         Queue<Brik> brikker;
         
         
-    public Endefelt (int spFeltnr){
+    public Endefelt (int spFeltnr, String spFarve){
     this.feltnr = spFeltnr;
+    this.farve = spFarve;
         this.brikker = new LinkedList<Brik>();
         for (int i = 0; i < 4; i++) {
             brikker.add(null);
@@ -35,14 +35,13 @@ public class Endefelt implements Felt {
         
         brikker.add(brikInd);
         
-        var brik = brikker.poll();
-        brik.setFeltnr(brik.getBufferfeltnr());
-        brik = null;
+        
     }
 
     @Override
     public void forlader() {
-       brikker.poll();
+         brikker.poll();
+        
 }
 }
     
