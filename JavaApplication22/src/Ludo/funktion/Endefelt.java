@@ -28,7 +28,7 @@ public class Endefelt {
         
         
     public Boolean checkWin() {
-        tmp = Bufferfelt.getAntalBuffer();
+        tmp = Bufferfelt.getAntalBuffer;
         
         if(tmp== 4){
             out = true;

@@ -13,18 +13,20 @@ import java.util.Queue;
  */
 public class Bufferfelt {
 
+    int antalbuffer;
     String farve;
     int feltnr;
     Queue<Brik> brikker;
     
     public int getAntalBuffer(){
        
-        return brikker.size();
+        return this.antalbuffer;
     }
     
     
     public void tilqueue(Brik brikInd){
         
-             brikker.add(brikInd);    
+             brikker.add(brikInd);   
+              antalbuffer =  brikker.size();
     }
 }
