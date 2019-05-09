@@ -25,20 +25,6 @@ public class Endefelt {
         brikInd.setFeltnr(brikInd.getBufferfeltnr());
         
     }
-        
-        
-    public Boolean checkWin() {
-        tmp = Bufferfelt.getAntalBuffer();
-        
-        if(tmp== 4){
-            out = true;
-           return out;
-        }
-        else{
-        out = false;
-        }
-        return out;
-    }
 }
     
     

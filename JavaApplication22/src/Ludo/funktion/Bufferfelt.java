@@ -13,18 +13,29 @@ import java.util.Queue;
  */
 public class Bufferfelt {
 
+    int antalbuffer;
     String farve;
     int feltnr;
     Queue<Brik> brikker;
-    
-    public int getAntalBuffer(){
-       
-        return brikker.size();
-    }
+    boolean win = false;
     
     
     public void tilqueue(Brik brikInd){
         
-             brikker.add(brikInd);    
+             brikker.add(brikInd);   
+              
+    }
+    
+    public Boolean checkWin() {
+        
+        
+        if(brikker.size() == 4){
+            win = true;
+           return win;
+        }
+        else{
+        win = false;
+        }
+        return win;
     }
 }
