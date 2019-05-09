@@ -19,11 +19,13 @@ public class Spiller {
     final String farve;
     ArrayList<Brik> brikker;
     boolean vundet;
+    Raflebaeger raflebaeger;
     
     public Spiller (String spName, String spFarve){
         this.name = spName;
         this.farve = spFarve;
         this.brikker = new ArrayList ();
+        this.raflebaeger = new Raflebaeger(1);
         
         vundet = false;
     }
@@ -37,6 +39,12 @@ public class Spiller {
         return this.brikker;
     }
     
+    public void kast(){
+        this.raflebaeger.ryst();
+    }
     
+    public int getSlag(){
+        return this.raflebaeger.getTerningVaerdi(0);
+    }
     
 }
