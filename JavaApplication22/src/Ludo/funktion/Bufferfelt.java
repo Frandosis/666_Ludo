@@ -17,16 +17,25 @@ public class Bufferfelt {
     String farve;
     int feltnr;
     Queue<Brik> brikker;
-    
-    public int getAntalBuffer(){
-       
-        return this.antalbuffer;
-    }
+    boolean win = false;
     
     
     public void tilqueue(Brik brikInd){
         
              brikker.add(brikInd);   
-              antalbuffer =  brikker.size();
+              
+    }
+    
+    public Boolean checkWin() {
+        
+        
+        if(brikker.size() == 4){
+            win = true;
+           return win;
+        }
+        else{
+        win = false;
+        }
+        return win;
     }
 }
