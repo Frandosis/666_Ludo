@@ -32,6 +32,9 @@ public class Endefelt implements Felt {
 
     @Override
     public void landet(Brik brikInd) {
+        if(brikInd.getEndefeltnr() == feltnr){
+            brikInd.setFeltnr(brikInd.getBufferfeltnr());
+        }
         
         brikker.add(brikInd);
         
