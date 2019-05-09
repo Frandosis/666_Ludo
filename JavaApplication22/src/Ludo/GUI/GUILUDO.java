@@ -149,7 +149,7 @@ public class GUILUDO {
         opdaterGuiFraModel();
     }
 
-    //
+    //Maybe optimize later
     private void opdaterGuiFraModel() {
         for (Feltvisning fv : model.felter) {
             JButton b = LudoBoardSquares[fv.x][fv.y];
