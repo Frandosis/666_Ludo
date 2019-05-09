@@ -20,15 +20,27 @@ public class ClassicLudo {
     public ClassicLudo (){
         this.spillere = new ArrayList();
         
-        Braet braet1 = new Braet();
-        this.braet = braet1.getBraet();
+        this.braet = new ArrayList();
         
         this.regler = new Regler();
         
         
     }
     
-    
+    public void setUpGame(){
+        
+        //Først lav braettet
+        Braet tmp = new Braet();
+        
+        this.braet = tmp.getBraet();
+        
+        //Gør Blaa spiller klar.
+        
+        
+        
+        
+        
+    }
     
     
 }
