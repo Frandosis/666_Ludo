@@ -6,26 +6,29 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
+import java.util.LinkedList;
 import java.util.Queue;
 /**
  *
  * @author jcall
  */
-public class Bufferfelt {
+public class Bufferfelt implements Felt {
 
     int antalbuffer;
     String farve;
-    int feltnr;
+    final int feltnr;
     Queue<Brik> brikker;
     boolean win = false;
     
-    
-    public void tilqueue(Brik brikInd){
-        
-             brikker.add(brikInd);   
-              
+    public Bufferfelt (int spFeltnr){
+    this.feltnr = spFeltnr;
+        this.brikker = new LinkedList<Brik>();
+        for (int i = 0; i < 4; i++) {
+            brikker.add(null);
+        }
     }
     
+    /*
     public Boolean checkWin() {
         
         
@@ -37,5 +40,15 @@ public class Bufferfelt {
         win = false;
         }
         return win;
+    }
+*/
+    @Override
+    public void landet(Brik brikInd) {
+        brikker.add(brikInd); 
+    }
+
+    @Override
+    public void forlader() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
