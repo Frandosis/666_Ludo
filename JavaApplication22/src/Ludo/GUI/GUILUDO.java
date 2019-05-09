@@ -35,6 +35,10 @@ public class GUILUDO {
     LudoSpilModel model = new LudoSpilModel();
     private ImageIcon ingenBrik;
     private ImageIcon lillaBrik;
+    private ImageIcon redBrik;
+    private ImageIcon greenBrik;
+    private ImageIcon yellowBrik;
+    private ImageIcon blueBrik;
 
     GUILUDO() {
         initializeGui();
@@ -44,6 +48,7 @@ public class GUILUDO {
         model.brikker.add(new Brik("roed", 6, 10, 14));
         model.brikker.add(new Brik("roed", 7, 10, 14));
         model.brikker.add(new Brik("roed", 10, 10, 14));*/
+
 
         //model.brikker.get(0).setFeltnr(2);
         // model.brikker.get(1).setFeltnr(4);
@@ -163,7 +168,7 @@ public class GUILUDO {
 
             JButton b = LudoBoardSquares[fv.x][fv.y];
             b.setText("b");
-            b.setIcon(lillaBrik);
+            b.setIcon(redBrik);
         }
 
     }
@@ -171,13 +176,25 @@ public class GUILUDO {
     // Print koordinater on click
     private void knapTrykketPaaKoordinat(int x, int y) {
         System.out.println("Der blev trykket paa " + x + " , " + y);
+        Feltvisning tmp = new Feltvisning(x, y);
+        int test = model.felter.indexOf(tmp);
+        System.out.println(test);
+    }
+
+    private void checkfelt(int x, int y) {
+        Feltvisning tmp = new Feltvisning(x, y);
+        model.felter.indexOf(tmp);
+
     }
 
     public final void initializeGui() {
         ingenBrik = new ImageIcon(
-                new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));//BufferedImage.TYPE_INT_ARGB
-        lillaBrik = new ImageIcon("ludobrik.png");//BufferedImage.TYPE_INT_ARGB
-
+                new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));
+        lillaBrik = new ImageIcon("ludobrik.png");
+        redBrik = new ImageIcon("ludobrikRed.png");
+        blueBrik = new ImageIcon("ludobrikBlue.png");
+        yellowBrik = new ImageIcon("ludobrikYellow.png");
+        greenBrik = new ImageIcon("ludobrikGreen.png");
         // set up the main GUI
         gui.setBorder(new EmptyBorder(size, size, size, size));
         JToolBar tools = new JToolBar();
@@ -204,8 +221,6 @@ public class GUILUDO {
             for (int jj = 0; jj < LudoBoardSquares[ii].length; jj++) {
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
-                // our chess pieces are 64x64 px in size, so  we'll
-                // 'fill this in' using a transparent icon..
                 b.setIcon(ingenBrik);
                 LudoBoardSquares[jj][ii] = b;
                 final int x = jj;
@@ -291,7 +306,7 @@ public class GUILUDO {
 
     public static void main(String[] args) throws InterruptedException {
         GUILUDO LudoBoard = new GUILUDO();
-
+        boolean start = true;
         Runnable r = new Runnable() {
 
             @Override
@@ -311,15 +326,17 @@ public class GUILUDO {
             }
         };
         SwingUtilities.invokeLater(r);
-        // while (){
-        for (int i = 0; i < 100; i++) {
+        while (start == true) {
+
+            /*for (int i = 0; i < 100; i++) {
             Thread.sleep(500);
             LudoBoard.model.brikker.get(0).setFeltnr(i);
             LudoBoard.opdaterGuiFraModel();
             if (i == LudoBoard.model.felter.size() - 1) {
                 i = -1;
-                // }
+                 }
             }
+             */
         }
 
     }
