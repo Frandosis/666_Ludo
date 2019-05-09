@@ -93,28 +93,28 @@ public class Braet {
         
         //indsaet Endefelter
         while (tmp < i + 6){
-            braet.add(new Endefelt(tmp, "blue"));
+            braet.add(new Endefelt("blue", tmp));
             tmp++;
         }
         
         i = tmp;
         
         while (tmp < i + 6){
-            braet.add(new Endefelt(tmp, "red"));
+            braet.add(new Endefelt("red", tmp));
             tmp++;
         }
         
         i = tmp;
         
         while (tmp < i + 6){
-            braet.add(new Endefelt(tmp, "yellow"));
+            braet.add(new Endefelt("yellow", tmp));
             tmp++;
         }
         
         i = tmp;
         
         while (tmp < i + 6){
-            braet.add(new Endefelt(tmp, "green"));
+            braet.add(new Endefelt("green", tmp));
             tmp++;
         }
         i = tmp;
@@ -123,13 +123,13 @@ public class Braet {
         
         //Tilfoej bufferfelter
         
-        braet.add(new Bufferfelt(i, "blue"));
+        braet.add(new Bufferfelt("blue", i));
         i++;
-        braet.add(new Bufferfelt(i, "red"));
+        braet.add(new Bufferfelt("red", i));
         i++;
-        braet.add(new Bufferfelt(i, "yellow"));
+        braet.add(new Bufferfelt("yellow", i));
         i++;
-        braet.add(new Bufferfelt(i, "green"));
+        braet.add(new Bufferfelt("green", i));
         
         System.out.println("Size after Bufferfelt: "+ braet.size());
          
