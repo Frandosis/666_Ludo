@@ -18,7 +18,9 @@ public class Test {
     public static void main(String [] arg){
         try{
         Test main = new Test();
-            
+        
+        Braet braet = new Braet();
+        
         main.brikker.add(new Brik("green", 0, 2, 5, 7));
         main.brikker.add(new Brik ("red", 1, 3, 5, 6));
         

@@ -15,16 +15,16 @@ import java.util.Queue;
 public class Bufferfelt implements Felt {
 
     int antalbuffer;
+    final String farve;
     final int feltnr;
     Queue<Brik> brikker;
     boolean win = false;
     
-    public Bufferfelt (int spFeltnr){
+    public Bufferfelt (int spFeltnr, String spFarve){
     this.feltnr = spFeltnr;
+    this.farve = spFarve;
         this.brikker = new LinkedList<Brik>();
-        for (int i = 0; i < 4; i++) {
-            brikker.add(null);
-        }
+        
     }
     
     /*

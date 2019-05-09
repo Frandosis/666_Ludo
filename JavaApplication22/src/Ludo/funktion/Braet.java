@@ -18,30 +18,34 @@ public class Braet {
     public Braet() {
         this.braet = new ArrayList();
         int i = 0;
-        //indsaet groenne hjemfelter
-        while (i < 4) {
-            braet.add(new Hjemfelt("green", i));
-            i++;
-        }
-
-        //indsaet roede hjemfelter
-        while (i < i + 4) {
-            braet.add(new Hjemfelt("red", i));
-            i++;
-        }
-
         //indsaet blaa hjemfelter
-        while (i < i + 4) {
+        while (i < 4) {
             braet.add(new Hjemfelt("blue", i));
             i++;
         }
-
-        //indsæt gule hjemfelter
-        while (i < i + 4) {
-            braet.add(new Hjemfelt("yellow", i));
-            i++;
+        int tmp = i;
+        //indsaet roede hjemfelter
+        while (tmp < i + 4) {
+            braet.add(new Hjemfelt("red", tmp));
+            tmp++;
         }
-
+        i = tmp;
+        
+        //indsaet gule hjemfelter
+        while (tmp < i + 4) {
+            braet.add(new Hjemfelt("yellow", tmp));
+            tmp++;
+        }
+        
+        i = tmp;
+        //indsæt groenne hjemfelter
+        while (tmp < i + 4) {
+            braet.add(new Hjemfelt("green", tmp));
+            tmp++;
+        }
+        i = tmp;
+        System.out.println("Size after hjemfelt: "+braet.size());
+        /*
         //tilføj grønt startfelt
         braet.add(new Startfelt("green", i));
         i++;
@@ -57,14 +61,78 @@ public class Braet {
         //tilføj gult startfelt
         braet.add(new Startfelt("yellow", i));
         i++;
+        */
         
         //skal taelle hvert op til
         int counter = 0;
-        //tilføj banefelter
-        while (i < i + 6) {
+        //tilføj banefelter og startfelter
+        while (tmp < i + 56) {
             
+            if(counter == 0){
+                braet.add(new Startfelt("blue", tmp));
+            }
+            else if(counter == 14){
+                braet.add(new Startfelt("red", tmp));
+            }
+            else if(counter == 28){
+                braet.add(new Startfelt("yellow", tmp));
+            }
+            else if(counter == 42){
+                braet.add(new Startfelt("green", tmp));
+            }
+            
+            else{
+                    braet.add(new Banefelt(tmp));
+                    }
+            tmp++;
+            counter++;
         }
-
+        i = tmp;
+        counter = 0;
+        System.out.println("Size after Bane and Start: " +  braet.size());
+        
+        //indsaet Endefelter
+        while (tmp < i + 6){
+            braet.add(new Endefelt(tmp, "blue"));
+            tmp++;
+        }
+        
+        i = tmp;
+        
+        while (tmp < i + 6){
+            braet.add(new Endefelt(tmp, "red"));
+            tmp++;
+        }
+        
+        i = tmp;
+        
+        while (tmp < i + 6){
+            braet.add(new Endefelt(tmp, "yellow"));
+            tmp++;
+        }
+        
+        i = tmp;
+        
+        while (tmp < i + 6){
+            braet.add(new Endefelt(tmp, "green"));
+            tmp++;
+        }
+        i = tmp;
+        
+        System.out.println("Size after Endefelt: " + braet.size());
+        
+        //Tilfoej bufferfelter
+        
+        braet.add(new Bufferfelt(i, "blue"));
+        i++;
+        braet.add(new Bufferfelt(i, "red"));
+        i++;
+        braet.add(new Bufferfelt(i, "yellow"));
+        i++;
+        braet.add(new Bufferfelt(i, "green"));
+        
+        System.out.println("Size after Bufferfelt: "+ braet.size());
+         
     }
 
 }
