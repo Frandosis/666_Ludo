@@ -15,7 +15,7 @@ class Feltvisning {
     private int y;
     private int nr;
 
-    Feltvisning(int i, int j, int p) {
+    public Feltvisning(int i, int j, int p) {
         x = i;
         y = j;
         nr = p;
