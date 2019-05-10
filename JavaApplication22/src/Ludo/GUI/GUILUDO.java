@@ -43,17 +43,31 @@ public class GUILUDO {
     GUILUDO() {
         initializeGui();
         model.brikker = new ArrayList<Brik>();
-        Brik b = new Brik("roed", 4, 10, 14, 0);
-        model.brikker.add(b);/*
-        model.brikker.add(new Brik("roed", 6, 10, 14));
-        model.brikker.add(new Brik("roed", 7, 10, 14));
-        model.brikker.add(new Brik("roed", 10, 10, 14));*/
+        Brik b = new Brik("roed", 84, 10, 14, 0);
+        model.brikker.add(b);
+        model.brikker.add(new Brik("roed", 85, 10, 14, 0));
+        model.brikker.add(new Brik("roed", 86, 10, 14, 0));
+        model.brikker.add(new Brik("roed", 87, 10, 14, 0));
 
+        model.brikker.add(new Brik("blaa", 80, 10, 14, 0));
+        model.brikker.add(new Brik("blaa", 81, 10, 14, 0));
+        model.brikker.add(new Brik("blaa", 82, 10, 14, 0));
+        model.brikker.add(new Brik("blaa", 83, 10, 14, 0));
 
-        //model.brikker.get(0).setFeltnr(2);
-        // model.brikker.get(1).setFeltnr(4);
-        // model.brikker.get(2).setFeltnr(5);
-        // model.brikker.get(3).setFeltnr(7);
+        model.brikker.add(new Brik("gul", 88, 10, 14, 0));
+        model.brikker.add(new Brik("gul", 89, 10, 14, 0));
+        model.brikker.add(new Brik("gul", 90, 10, 14, 0));
+        model.brikker.add(new Brik("gul", 91, 10, 14, 0));
+
+        model.brikker.add(new Brik("groen", 92, 10, 14, 0));
+        model.brikker.add(new Brik("groen", 93, 10, 14, 0));
+        model.brikker.add(new Brik("groen", 94, 10, 14, 0));
+        model.brikker.add(new Brik("groen", 95, 10, 14, 0));
+
+        for (Brik plads : model.brikker) {
+            plads.setFeltnr(plads.getHjemFeltnr());
+        }
+
         model.felter = new ArrayList<Feltvisning>();
         model.felter.add(new Feltvisning(8, 1)); // Blaa startfelt
         model.felter.add(new Feltvisning(8, 2));
@@ -157,7 +171,7 @@ public class GUILUDO {
     //Maybe optimize later
     private void opdaterGuiFraModel() {
         for (Feltvisning fv : model.felter) {
-            JButton b = LudoBoardSquares[fv.x][fv.y];
+            JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
             b.setText("t");
             b.setIcon(ingenBrik);
         }
@@ -166,9 +180,19 @@ public class GUILUDO {
             int fn = brik.getFeltnr();
             Feltvisning fv = model.felter.get(fn);
 
-            JButton b = LudoBoardSquares[fv.x][fv.y];
+            JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
+
             b.setText("b");
-            b.setIcon(redBrik);
+            if (brik.getFarve().equals("roed")) {
+                b.setIcon(redBrik);
+            } else if (brik.getFarve().equals("groen")) {
+                b.setIcon(greenBrik);
+            } else if (brik.getFarve().equals("gul")) {
+                b.setIcon(yellowBrik);
+            } else if (brik.getFarve().equals("blaa")) {
+                b.setIcon(blueBrik);
+            }
+
         }
 
     }
