@@ -43,128 +43,129 @@ public class GUILUDO {
     GUILUDO() {
         initializeGui();
         model.brikker = new ArrayList<Brik>();
-        Brik b = new Brik("roed", 84, 10, 14, 0);
+        Brik b = new Brik("roed", 4, 10, 14, 0);
         model.brikker.add(b);
-        model.brikker.add(new Brik("roed", 85, 10, 14, 0));
-        model.brikker.add(new Brik("roed", 86, 10, 14, 0));
-        model.brikker.add(new Brik("roed", 87, 10, 14, 0));
+        model.brikker.add(new Brik("roed", 5, 10, 14, 0));
+        model.brikker.add(new Brik("roed", 6, 10, 14, 0));
+        model.brikker.add(new Brik("roed", 7, 10, 14, 0));
 
-        model.brikker.add(new Brik("blaa", 80, 10, 14, 0));
-        model.brikker.add(new Brik("blaa", 81, 10, 14, 0));
-        model.brikker.add(new Brik("blaa", 82, 10, 14, 0));
-        model.brikker.add(new Brik("blaa", 83, 10, 14, 0));
+        model.brikker.add(new Brik("blaa", 0, 10, 14, 0));
+        model.brikker.add(new Brik("blaa", 1, 10, 14, 0));
+        model.brikker.add(new Brik("blaa", 2, 10, 14, 0));
+        model.brikker.add(new Brik("blaa", 3, 10, 14, 0));
 
-        model.brikker.add(new Brik("gul", 88, 10, 14, 0));
-        model.brikker.add(new Brik("gul", 89, 10, 14, 0));
-        model.brikker.add(new Brik("gul", 90, 10, 14, 0));
-        model.brikker.add(new Brik("gul", 91, 10, 14, 0));
+        model.brikker.add(new Brik("gul", 8, 10, 14, 0));
+        model.brikker.add(new Brik("gul", 9, 10, 14, 0));
+        model.brikker.add(new Brik("gul", 10, 10, 14, 0));
+        model.brikker.add(new Brik("gul", 11, 10, 14, 0));
 
-        model.brikker.add(new Brik("groen", 92, 10, 14, 0));
-        model.brikker.add(new Brik("groen", 93, 10, 14, 0));
-        model.brikker.add(new Brik("groen", 94, 10, 14, 0));
-        model.brikker.add(new Brik("groen", 95, 10, 14, 0));
+        model.brikker.add(new Brik("groen", 12, 10, 14, 0));
+        model.brikker.add(new Brik("groen", 13, 10, 14, 0));
+        model.brikker.add(new Brik("groen", 14, 10, 14, 0));
+        model.brikker.add(new Brik("groen", 15, 10, 14, 0));
 
         for (Brik plads : model.brikker) {
             plads.setFeltnr(plads.getHjemFeltnr());
         }
 
         model.felter = new ArrayList<Feltvisning>();
-        model.felter.add(new Feltvisning(8, 1)); // Blaa startfelt
-        model.felter.add(new Feltvisning(8, 2));
-        model.felter.add(new Feltvisning(8, 3));
-        model.felter.add(new Feltvisning(8, 4));
-        model.felter.add(new Feltvisning(8, 5));
-        model.felter.add(new Feltvisning(8, 6));
-        model.felter.add(new Feltvisning(9, 6));
-        model.felter.add(new Feltvisning(10, 6));
-        model.felter.add(new Feltvisning(11, 6));
-        model.felter.add(new Feltvisning(12, 6));
-        model.felter.add(new Feltvisning(13, 6));
-        model.felter.add(new Feltvisning(14, 6));
-        model.felter.add(new Feltvisning(14, 7)); // Roed safefelt indgang
-        model.felter.add(new Feltvisning(14, 8));
-        model.felter.add(new Feltvisning(13, 8)); // Roed startfelt
-        model.felter.add(new Feltvisning(12, 8));
-        model.felter.add(new Feltvisning(11, 8));
-        model.felter.add(new Feltvisning(10, 8));
-        model.felter.add(new Feltvisning(9, 8));
-        model.felter.add(new Feltvisning(8, 8));
-        model.felter.add(new Feltvisning(8, 9));
-        model.felter.add(new Feltvisning(8, 10));
-        model.felter.add(new Feltvisning(8, 11));
-        model.felter.add(new Feltvisning(8, 12));
-        model.felter.add(new Feltvisning(8, 13));
-        model.felter.add(new Feltvisning(8, 14));
-        model.felter.add(new Feltvisning(7, 14)); // Gul safefelt indgang
-        model.felter.add(new Feltvisning(6, 14));
-        model.felter.add(new Feltvisning(6, 13)); // Gul startfelt
-        model.felter.add(new Feltvisning(6, 12));
-        model.felter.add(new Feltvisning(6, 11));
-        model.felter.add(new Feltvisning(6, 10));
-        model.felter.add(new Feltvisning(6, 9));
-        model.felter.add(new Feltvisning(6, 8));
-        model.felter.add(new Feltvisning(5, 8));
-        model.felter.add(new Feltvisning(4, 8));
-        model.felter.add(new Feltvisning(3, 8));
-        model.felter.add(new Feltvisning(2, 8));
-        model.felter.add(new Feltvisning(1, 8));
-        model.felter.add(new Feltvisning(0, 8));
-        model.felter.add(new Feltvisning(0, 7)); // Groen safefelt indgang
-        model.felter.add(new Feltvisning(0, 6));
-        model.felter.add(new Feltvisning(1, 6)); // Groen startfel
-        model.felter.add(new Feltvisning(2, 6));
-        model.felter.add(new Feltvisning(3, 6));
-        model.felter.add(new Feltvisning(4, 6));
-        model.felter.add(new Feltvisning(5, 6));
-        model.felter.add(new Feltvisning(6, 6));
-        model.felter.add(new Feltvisning(6, 5));
-        model.felter.add(new Feltvisning(6, 4));
-        model.felter.add(new Feltvisning(6, 3));
-        model.felter.add(new Feltvisning(6, 2));
-        model.felter.add(new Feltvisning(6, 1));
-        model.felter.add(new Feltvisning(6, 0));
-        model.felter.add(new Feltvisning(7, 0)); // Blaa safefelt indgang
-        model.felter.add(new Feltvisning(8, 0));// ende
-        model.felter.add(new Feltvisning(7, 1));// Blaa endefelt top
-        model.felter.add(new Feltvisning(7, 2));
-        model.felter.add(new Feltvisning(7, 3));
-        model.felter.add(new Feltvisning(7, 4));
-        model.felter.add(new Feltvisning(7, 5));
-        model.felter.add(new Feltvisning(7, 6)); // Blaa slut felt
-        model.felter.add(new Feltvisning(1, 7)); // Groent endefelt top
-        model.felter.add(new Feltvisning(2, 7));
-        model.felter.add(new Feltvisning(3, 7));
-        model.felter.add(new Feltvisning(4, 7));
-        model.felter.add(new Feltvisning(5, 7));
-        model.felter.add(new Feltvisning(6, 7)); // Groent endefelt
-        model.felter.add(new Feltvisning(7, 13)); // Gul endefelt top
-        model.felter.add(new Feltvisning(7, 12));
-        model.felter.add(new Feltvisning(7, 11));
-        model.felter.add(new Feltvisning(7, 10));
-        model.felter.add(new Feltvisning(7, 9));
-        model.felter.add(new Feltvisning(7, 8)); // Gul endefelt
-        model.felter.add(new Feltvisning(13, 7)); // Roed endefelt top
-        model.felter.add(new Feltvisning(12, 7));
-        model.felter.add(new Feltvisning(11, 7));
-        model.felter.add(new Feltvisning(10, 7));
-        model.felter.add(new Feltvisning(9, 7));
-        model.felter.add(new Feltvisning(8, 7)); // Groent endefelt
-        model.felter.add(new Feltvisning(11, 2)); // Blaa Start 1
-        model.felter.add(new Feltvisning(12, 2)); // Blaa Start 2
-        model.felter.add(new Feltvisning(11, 3)); // Blaa Start 3
-        model.felter.add(new Feltvisning(12, 3)); // Blaa Start 4
-        model.felter.add(new Feltvisning(11, 11)); // Roed Start 1
-        model.felter.add(new Feltvisning(12, 11)); // Roed Start 2
-        model.felter.add(new Feltvisning(11, 12)); // Roed Start 3
-        model.felter.add(new Feltvisning(12, 12)); // Roed Start 4
-        model.felter.add(new Feltvisning(2, 11));  // Gul Start 1
-        model.felter.add(new Feltvisning(3, 11)); // Gul start 2
-        model.felter.add(new Feltvisning(2, 12)); // Gul start 3
-        model.felter.add(new Feltvisning(3, 12)); // Gul start 4
-        model.felter.add(new Feltvisning(2, 2)); // Groen start 1
-        model.felter.add(new Feltvisning(3, 2)); // Groen start 2
-        model.felter.add(new Feltvisning(2, 3)); // Groen start 3
-        model.felter.add(new Feltvisning(3, 3)); // Groen start 4
+        model.felter.add(new Feltvisning(11, 2, 0)); // Blaa Start 1
+        model.felter.add(new Feltvisning(12, 2, 1)); // Blaa Start 2
+        model.felter.add(new Feltvisning(11, 3, 2)); // Blaa Start 3
+        model.felter.add(new Feltvisning(12, 3, 3)); // Blaa Start 4
+        model.felter.add(new Feltvisning(11, 11, 4)); // Roed Start 1
+        model.felter.add(new Feltvisning(12, 11, 5)); // Roed Start 2
+        model.felter.add(new Feltvisning(11, 12, 6)); // Roed Start 3
+        model.felter.add(new Feltvisning(12, 12, 7)); // Roed Start 4
+        model.felter.add(new Feltvisning(2, 11, 8));  // Gul Start 1
+        model.felter.add(new Feltvisning(3, 11, 9)); // Gul start 2
+        model.felter.add(new Feltvisning(2, 12, 10)); // Gul start 3
+        model.felter.add(new Feltvisning(3, 12, 11)); // Gul start 4
+        model.felter.add(new Feltvisning(2, 2, 12)); // Groen start 1
+        model.felter.add(new Feltvisning(3, 2, 13)); // Groen start 2
+        model.felter.add(new Feltvisning(2, 3, 14)); // Groen start 3
+        model.felter.add(new Feltvisning(3, 3, 15)); // Groen start 4
+        model.felter.add(new Feltvisning(8, 1, 16)); // Blaa startfelt
+        model.felter.add(new Feltvisning(8, 2, 17));
+        model.felter.add(new Feltvisning(8, 3, 18));
+        model.felter.add(new Feltvisning(8, 4, 19));
+        model.felter.add(new Feltvisning(8, 5, 20));
+        model.felter.add(new Feltvisning(8, 6, 21));
+        model.felter.add(new Feltvisning(9, 6, 22));
+        model.felter.add(new Feltvisning(10, 6, 23));
+        model.felter.add(new Feltvisning(11, 6, 24));
+        model.felter.add(new Feltvisning(12, 6, 25));
+        model.felter.add(new Feltvisning(13, 6, 26));
+        model.felter.add(new Feltvisning(14, 6, 27));
+        model.felter.add(new Feltvisning(14, 7, 28)); // Roed safefelt indgang
+        model.felter.add(new Feltvisning(14, 8, 29));
+        model.felter.add(new Feltvisning(13, 8, 30)); // Roed startfelt
+        model.felter.add(new Feltvisning(12, 8, 31));
+        model.felter.add(new Feltvisning(11, 8, 32));
+        model.felter.add(new Feltvisning(10, 8, 33));
+        model.felter.add(new Feltvisning(9, 8, 34));
+        model.felter.add(new Feltvisning(8, 8, 35));
+        model.felter.add(new Feltvisning(8, 9, 36));
+        model.felter.add(new Feltvisning(8, 10, 37));
+        model.felter.add(new Feltvisning(8, 11, 38));
+        model.felter.add(new Feltvisning(8, 12, 39));
+        model.felter.add(new Feltvisning(8, 13, 40));
+        model.felter.add(new Feltvisning(8, 14, 41));
+        model.felter.add(new Feltvisning(7, 14, 42)); // Gul safefelt indgang
+        model.felter.add(new Feltvisning(6, 14, 43));
+        model.felter.add(new Feltvisning(6, 13, 44)); // Gul startfelt
+        model.felter.add(new Feltvisning(6, 12, 45));
+        model.felter.add(new Feltvisning(6, 11, 46));
+        model.felter.add(new Feltvisning(6, 10, 47));
+        model.felter.add(new Feltvisning(6, 9, 48));
+        model.felter.add(new Feltvisning(6, 8, 49));
+        model.felter.add(new Feltvisning(5, 8, 50));
+        model.felter.add(new Feltvisning(4, 8, 51));
+        model.felter.add(new Feltvisning(3, 8, 52));
+        model.felter.add(new Feltvisning(2, 8, 53));
+        model.felter.add(new Feltvisning(1, 8, 54));
+        model.felter.add(new Feltvisning(0, 8, 55));
+        model.felter.add(new Feltvisning(0, 7, 56)); // Groen safefelt indgang
+        model.felter.add(new Feltvisning(0, 6, 57));
+        model.felter.add(new Feltvisning(1, 6, 58)); // Groen startfel
+        model.felter.add(new Feltvisning(2, 6, 59));
+        model.felter.add(new Feltvisning(3, 6, 60));
+        model.felter.add(new Feltvisning(4, 6, 61));
+        model.felter.add(new Feltvisning(5, 6, 62));
+        model.felter.add(new Feltvisning(6, 6, 63));
+        model.felter.add(new Feltvisning(6, 5, 64));
+        model.felter.add(new Feltvisning(6, 4, 65));
+        model.felter.add(new Feltvisning(6, 3, 66));
+        model.felter.add(new Feltvisning(6, 2, 67));
+        model.felter.add(new Feltvisning(6, 1, 68));
+        model.felter.add(new Feltvisning(6, 0, 69));
+        model.felter.add(new Feltvisning(7, 0, 70)); // Blaa safefelt indgang
+        model.felter.add(new Feltvisning(8, 0, 71));// ende
+        model.felter.add(new Feltvisning(7, 1, 72));// Blaa endefelt top
+        model.felter.add(new Feltvisning(7, 2, 73));
+        model.felter.add(new Feltvisning(7, 3, 74));
+        model.felter.add(new Feltvisning(7, 4, 75));
+        model.felter.add(new Feltvisning(7, 5, 76));
+        model.felter.add(new Feltvisning(7, 6, 77)); // Blaa slut felt
+        model.felter.add(new Feltvisning(1, 7, 78)); // roed endefelt top
+        model.felter.add(new Feltvisning(2, 7, 79));
+        model.felter.add(new Feltvisning(3, 7, 80));
+        model.felter.add(new Feltvisning(4, 7, 81));
+        model.felter.add(new Feltvisning(5, 7, 82));
+        model.felter.add(new Feltvisning(6, 7, 83)); // roed endefelt
+        model.felter.add(new Feltvisning(7, 13, 84)); // Gul endefelt top
+        model.felter.add(new Feltvisning(7, 12, 85));
+        model.felter.add(new Feltvisning(7, 11, 86));
+        model.felter.add(new Feltvisning(7, 10, 87));
+        model.felter.add(new Feltvisning(7, 9, 88));
+        model.felter.add(new Feltvisning(7, 8, 89)); // Gul endefelt
+        model.felter.add(new Feltvisning(13, 7, 90)); // Roed endefelt top
+        model.felter.add(new Feltvisning(12, 7, 91));
+        model.felter.add(new Feltvisning(11, 7, 92));
+        model.felter.add(new Feltvisning(10, 7, 93));
+        model.felter.add(new Feltvisning(9, 7, 94));
+        model.felter.add(new Feltvisning(8, 7, 95)); // Groent endefelt
+
         opdaterGuiFraModel();
     }
 
@@ -200,15 +201,6 @@ public class GUILUDO {
     // Print koordinater on click
     private void knapTrykketPaaKoordinat(int x, int y) {
         System.out.println("Der blev trykket paa " + x + " , " + y);
-        Feltvisning tmp = new Feltvisning(x, y);
-        int test = model.felter.indexOf(tmp);
-        System.out.println(test);
-    }
-
-    private void checkfelt(int x, int y) {
-        Feltvisning tmp = new Feltvisning(x, y);
-        model.felter.indexOf(tmp);
-
     }
 
     public final void initializeGui() {
@@ -253,6 +245,7 @@ public class GUILUDO {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         knapTrykketPaaKoordinat(x, y);
+
                     }
                 });
                 // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) );
