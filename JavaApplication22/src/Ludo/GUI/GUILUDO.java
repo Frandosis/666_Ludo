@@ -1,14 +1,5 @@
 package Ludo.GUI;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Jeppe
- */
 import Ludo.GUI.LudoSpilModel;
 import Ludo.enheder.Brik;
 import java.awt.*;
@@ -29,12 +20,10 @@ public class GUILUDO {
     private final JPanel gui = new JPanel(new BorderLayout(3, 3));
     private JButton[][] LudoBoardSquares = new JButton[15][15];
     private JPanel LudoBoard;
-    private final JLabel message = new JLabel(
-            "LudoManSpillet");
+    private final JLabel message = new JLabel("LudoManSpillet");
 
     LudoSpilModel model = new LudoSpilModel();
     private ImageIcon ingenBrik;
-    private ImageIcon lillaBrik;
     private ImageIcon redBrik;
     private ImageIcon greenBrik;
     private ImageIcon yellowBrik;
@@ -165,25 +154,20 @@ public class GUILUDO {
         model.felter.add(new Feltvisning(10, 7, 93));
         model.felter.add(new Feltvisning(9, 7, 94));
         model.felter.add(new Feltvisning(8, 7, 95)); // Groent endefelt
-
         opdaterGuiFraModel();
     }
 
-    //Maybe optimize later
     private void opdaterGuiFraModel() {
         for (Feltvisning fv : model.felter) {
             JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
-            b.setText("t");
             b.setIcon(ingenBrik);
         }
 
         for (Brik brik : model.brikker) {
             int fn = brik.getFeltnr();
             Feltvisning fv = model.felter.get(fn);
-
             JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
-
-            b.setText("b");
+            b.setText("b"); // need for number of brikker
             if (brik.getFarve().equals("roed")) {
                 b.setIcon(redBrik);
             } else if (brik.getFarve().equals("groen")) {
@@ -193,9 +177,7 @@ public class GUILUDO {
             } else if (brik.getFarve().equals("blaa")) {
                 b.setIcon(blueBrik);
             }
-
         }
-
     }
 
     // Print koordinater on click
@@ -204,14 +186,11 @@ public class GUILUDO {
     }
 
     public final void initializeGui() {
-        ingenBrik = new ImageIcon(
-                new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));
-        lillaBrik = new ImageIcon("ludobrik.png");
+        ingenBrik = new ImageIcon(new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));
         redBrik = new ImageIcon("ludobrikRed.png");
         blueBrik = new ImageIcon("ludobrikBlue.png");
         yellowBrik = new ImageIcon("ludobrikYellow.png");
         greenBrik = new ImageIcon("ludobrikGreen.png");
-        // set up the main GUI
         gui.setBorder(new EmptyBorder(size, size, size, size));
         JToolBar tools = new JToolBar();
         tools.setFloatable(false);
@@ -245,7 +224,6 @@ public class GUILUDO {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         knapTrykketPaaKoordinat(x, y);
-
                     }
                 });
                 // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) );
@@ -329,7 +307,7 @@ public class GUILUDO {
             @Override
             public void run() {
 
-                JFrame f = new JFrame("LudoChamp");
+                JFrame f = new JFrame("LudoGame");
                 f.add(LudoBoard.getGui());
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 f.setLocationByPlatform(true);
