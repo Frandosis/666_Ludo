@@ -16,6 +16,7 @@ public class ClassicLudo {
     ArrayList<Spiller> spillere;
     ArrayList<Felt> braet;
     Regler regler;
+    int spillerstur;
     
     public ClassicLudo (){
         this.spillere = new ArrayList();
@@ -24,6 +25,7 @@ public class ClassicLudo {
         
         this.regler = new Regler();
         
+        this.spillerstur= 0;
         
     }
     
@@ -82,30 +84,32 @@ public class ClassicLudo {
         
     }
     
+    public void setSpillerName(String name, int index){
+        spillere.get(index).setName(name);
+    }
     
     
-    public void spillerKaster(int index){
-        spillere.get(index).kast();
+    
+    
+    public void spillerKaster(int spillerindex){
+        spillere.get(spillerindex).kast();
         
         
     }
     
-    public int getSpillerSlag(int index){
-        return spillere.get(index).getSlag();
+    public int getSpillerSlag(int spillerindex){
+        return spillere.get(spillerindex).getSlag();
     }
+
     
-    //problemer det er ikke sikkert den fjerner den rigtige brik når den forlader det gamle felt.
     public void rykBrik (int spillerindex , int brikindex, int slag){
         var brik = spillere.get(spillerindex).getBrik(brikindex);
         int gammelfelt = brik.getFeltnr();
         int nyfelt = gammelfelt + slag;
-        braet.get(gammelfelt).forlader();
-        
+        braet.get(gammelfelt).forlader(brik);
         
         brik.setFeltnr(nyfelt);
-        
         braet.get(nyfelt).landet(brik);
-        
         
     }
     
@@ -117,6 +121,23 @@ public class ClassicLudo {
                 this.braet.get(brik.getFeltnr()).landet(brik);
             }
         }
+        
+    }
+    public boolean checkWinner(int spillerindex){
+        int antalBrikker = 0;
+        
+        var spiller = spillere.get(spillerindex);
+        for (Brik brik: spiller.getBrikker()){
+            if(brik.getFeltnr()== brik.getBufferfeltnr()){
+                antalBrikker++;
+            }
+            
+        }
+        if(antalBrikker >= 4){
+            return true;
+            
+        }
+        return false;
         
     }
 }
