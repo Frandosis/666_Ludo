@@ -285,7 +285,6 @@ public class GUILUDO {
         for (int ii = 0; ii < sizeboard; ii++) {
             for (int jj = 0; jj < sizeboard; jj++) {
                 LudoBoard.add(LudoBoardSquares[jj][ii]);
-
             }
         }
 
@@ -323,15 +322,18 @@ public class GUILUDO {
         SwingUtilities.invokeLater(r);
         while (start == true) {
 
-            /*for (int i = 0; i < 100; i++) {
-            Thread.sleep(500);
-            LudoBoard.model.brikker.get(0).setFeltnr(i);
-            LudoBoard.opdaterGuiFraModel();
-            if (i == LudoBoard.model.felter.size() - 1) {
-                i = -1;
-                 }
+            for (int i = 0; i < LudoBoard.model.felter.size() - 1; i++) {
+                Thread.sleep(500);
+                LudoBoard.model.brikker.get(0).setFeltnr(i);
+                LudoBoard.model.brikker.get(4).setFeltnr(i + 2);
+                LudoBoard.model.brikker.get(8).setFeltnr(i + 4);
+                LudoBoard.model.brikker.get(12).setFeltnr(i + 6);
+                LudoBoard.opdaterGuiFraModel();
+                if (i == LudoBoard.model.felter.size() - 1) {
+                    i = -1;
+                }
             }
-             */
+
         }
 
     }
