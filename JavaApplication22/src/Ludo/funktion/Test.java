@@ -21,8 +21,8 @@ public class Test {
         
         Braet braet = new Braet();
         
-        main.brikker.add(new Brik("green", 0, 2, 8, 9));
-        main.brikker.add(new Brik ("red", 1, 3, 5, 6));
+       main.brikker.add(new Brik("green", 0, 2, 4, 6));
+       main.brikker.add(new Brik ("red", 1, 3, 5, 7));
         
         
         
@@ -34,7 +34,11 @@ public class Test {
         main.felter.add(new Banefelt(i));
         }
         main.felter.add(new Endefelt("green",8));
-        main.felter.add(new Bufferfelt("green",9));
+        //main.felter.add(new Endefelt("green",9));
+        //main.felter.add(new Endefelt("red",10));
+        main.felter.add(new Bufferfelt("green",11));
+        //main.felter.add(new Bufferfelt("red",12));
+        
         
         var tmp = main.felter.get(main.brikker.get(0).getHjemFeltnr());
         System.out.println("cf= " + main.brikker.get(0).getFeltnr()+ "hf= "+ main.brikker.get(0).getHjemFeltnr());
@@ -60,10 +64,12 @@ public class Test {
         var tmp2 = main.felter.get(main.brikker.get(0).getEndefeltnr());
         main.brikker.get(0).setFeltnr(main.brikker.get(0).getEndefeltnr());
         tmp.landet(main.brikker.get(0));
-        System.out.println("cf= " + main.brikker.get(0).getFeltnr()+ "hf= "+ main.brikker.get(0).getEndefeltnr());
+        
+        System.out.println("cf= " + main.brikker.get(0).getFeltnr()+ " ef= "+ main.brikker.get(0).getEndefeltnr() + " bf= "+ main.brikker.get(0).getBufferfeltnr());
         
         main.opdaterBraettet();
         
+        System.out.println("cf= " + main.brikker.get(0).getFeltnr()+ " hf= "+ main.brikker.get(0).getEndefeltnr());
         System.out.println("hej");
         
         }

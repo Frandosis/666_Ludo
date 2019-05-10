@@ -21,7 +21,7 @@ public class EndefeltTest {
     
     public EndefeltTest() {
     }
-    
+    /*
     @BeforeAll
     public static void setUpClass() {
     }
@@ -37,7 +37,7 @@ public class EndefeltTest {
     @AfterEach
     public void tearDown() {
     }
-
+*/
     /**
      * Test of landet method, of class Hjemfelt.
      */
