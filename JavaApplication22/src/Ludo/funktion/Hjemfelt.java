@@ -37,9 +37,11 @@ public class Hjemfelt implements Felt {
     }
     
     @Override
-    public void forlader(){
+    public void forlader(Brik brikUd){
         this.brik.setHelle(false);
         this.brik = null;
+        brikUd.setHelle(false);
+        
         
     }
     

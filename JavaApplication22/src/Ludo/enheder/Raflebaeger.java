@@ -45,7 +45,7 @@ public class Raflebaeger {
         Terning terning = raflebaeger.get(index);
         return terning.getVaerdi();
     }
-/* // skal ikke bruges i dette projekt 
+ // skal ikke bruges i dette projekt 
     public String getAlleVaerdier() {
         String s = "";
         for (int i = 0; i < raflebaeger.size(); i++) {
@@ -81,5 +81,5 @@ public class Raflebaeger {
             
         }
     }
-   */ 
+   
 }

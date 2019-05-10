@@ -21,7 +21,7 @@ public class Test {
         
         Braet braet = new Braet();
         
-        main.brikker.add(new Brik("green", 0, 2, 5, 7));
+        main.brikker.add(new Brik("green", 0, 2, 8, 9));
         main.brikker.add(new Brik ("red", 1, 3, 5, 6));
         
         
@@ -33,8 +33,11 @@ public class Test {
         for(int i = 4; i < 8; i++){
         main.felter.add(new Banefelt(i));
         }
+        main.felter.add(new Endefelt("green",8));
+        main.felter.add(new Bufferfelt("green",9));
         
         var tmp = main.felter.get(main.brikker.get(0).getHjemFeltnr());
+        System.out.println("cf= " + main.brikker.get(0).getFeltnr()+ "hf= "+ main.brikker.get(0).getHjemFeltnr());
         main.brikker.get(0).setFeltnr(main.brikker.get(0).getHjemFeltnr());
         tmp.landet(main.brikker.get(0));
         
@@ -42,21 +45,26 @@ public class Test {
         main.brikker.get(1).setFeltnr(main.brikker.get(1).getHjemFeltnr());
         tmp1.landet(main.brikker.get(1));
         
-        main.felter.get(main.brikker.get(1).getFeltnr()).forlader();
+        //main.felter.get(main.brikker.get(1).getFeltnr()).forlader();
         main.brikker.get(1).setFeltnr(3);
         main.felter.get(main.brikker.get(1).getFeltnr()).landet(main.brikker.get(1));
         
-        main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
+        //main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
         main.brikker.get(0).setFeltnr(2);
         main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
         
-        main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
+       // main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
         main.brikker.get(0).setFeltnr(3);
         main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
         
+        var tmp2 = main.felter.get(main.brikker.get(0).getEndefeltnr());
+        main.brikker.get(0).setFeltnr(main.brikker.get(0).getEndefeltnr());
+        tmp.landet(main.brikker.get(0));
+        System.out.println("cf= " + main.brikker.get(0).getFeltnr()+ "hf= "+ main.brikker.get(0).getEndefeltnr());
+        
         main.opdaterBraettet();
         
-        
+        System.out.println("hej");
         
         }
         catch(Exception e){

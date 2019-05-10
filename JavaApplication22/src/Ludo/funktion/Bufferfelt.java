@@ -20,7 +20,7 @@ public class Bufferfelt implements Felt {
     Queue<Brik> brikker;
     boolean win = false;
     
-    public Bufferfelt (int spFeltnr, String spFarve){
+    public Bufferfelt (String spFarve, int spFeltnr){
     this.feltnr = spFeltnr;
     this.farve = spFarve;
         this.brikker = new LinkedList<Brik>();
@@ -47,7 +47,7 @@ public class Bufferfelt implements Felt {
     }
 
     @Override
-    public void forlader() {
+    public void forlader(Brik brikUd) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

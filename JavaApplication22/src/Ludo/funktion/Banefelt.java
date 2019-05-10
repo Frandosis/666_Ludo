@@ -6,8 +6,7 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,13 +15,13 @@ import java.util.LinkedList;
 public class Banefelt implements Felt {
 
     final int feltnr;
-    Queue<Brik> brikker;
+    ArrayList<Brik> brikker;
     Regler regler;
     boolean angrebVandt;
 
     public Banefelt(int spFeltnr) {
         this.feltnr = spFeltnr;
-        this.brikker = new LinkedList<Brik>();
+        this.brikker = new ArrayList();
         for (int i = 0; i < 4; i++) {
             brikker.add(null);
         }
@@ -42,7 +41,7 @@ public class Banefelt implements Felt {
 
         } //Der er brikker paa feltet i forvejen.
         else {
-            var forsvarer = brikker.peek();
+            var forsvarer = brikker.get(0);
             //Check om brikkerne der er i forvejen er ens med den brik der lander.
             if (forsvarer.getFarve().equals(brikInd.getFarve())) {
                 brikker.add(brikInd);
@@ -55,18 +54,17 @@ public class Banefelt implements Felt {
     }
 
     @Override
-    public void forlader() {
-        brikker.poll();
+    public void forlader(Brik brikUd) {
+        brikker.remove(brikUd);
 
     }
 
     public void rykEfterKamp(Brik brikInd) {
          if (angrebVandt == true) {
-            while (brikker.isEmpty() == false) {
-                var brik = brikker.poll();
+            for(Brik brik : brikker){
                 brik.setFeltnr(brik.getHjemFeltnr());
-                brik = null;
             }
+            brikker.clear();
             brikker.add(brikInd);
         } else {
             brikInd.setFeltnr(brikInd.getHjemFeltnr());

@@ -6,8 +6,8 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -17,14 +17,14 @@ public class Startfelt implements Felt {
 
     final String farve;
     final int feltnr;
-    Queue<Brik> brikker;
+    ArrayList<Brik> brikker;
     Regler regler;
     boolean angrebVandt;
 
     public Startfelt(String spFarve, int spFeltnr) {
         this.farve = spFarve;
         this.feltnr = spFeltnr;
-        this.brikker = new LinkedList<>();
+        this.brikker = new ArrayList();
         this.regler = new Regler();
         this.angrebVandt = false;
 
@@ -48,7 +48,7 @@ public class Startfelt implements Felt {
         } // Der er brikker paa feltet.
         else {
 
-            Brik tmp = brikker.peek();
+            Brik tmp = brikker.get(0);
 
             //Check om brikken/erne har samme farve som feltet.
             if (tmp.getFarve().equals(this.farve)) {
@@ -88,22 +88,19 @@ public class Startfelt implements Felt {
     }
 
     @Override
-    public void forlader() {
-        var brikUd = brikker.poll();
+    public void forlader(Brik brikUd) {
+        brikker.remove(brikUd);
         brikUd.setHelle(false);
-        brikUd = null;
-        
 
     }
 
     public void rykEfterKamp(Brik brikInd) {
         if (angrebVandt == true) {
-            while (brikker.isEmpty() == false) {
-                var brik = brikker.poll();
+            for(Brik brik : brikker){
                 brik.setFeltnr(brik.getHjemFeltnr());
                 brik.setHelle(false);
-                brik = null;
             }
+            brikker.clear();
             brikker.add(brikInd);
         } else {
             brikInd.setFeltnr(brikInd.getHjemFeltnr());
