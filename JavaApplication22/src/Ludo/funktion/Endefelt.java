@@ -6,8 +6,7 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
 /**
  *
  * @author s184805
@@ -17,13 +16,13 @@ public class Endefelt implements Felt {
         final int feltnr;
         int antalBrikker;
         boolean out = false;
-        Queue<Brik> brikker;
+        ArrayList<Brik> brikker;
         
         
     public Endefelt (String spFarve,int spFeltnr){
     this.feltnr = spFeltnr;
     this.farve = spFarve;
-        this.brikker = new LinkedList<Brik>();
+        this.brikker = new ArrayList();
         for (int i = 0; i < 4; i++) {
             brikker.add(null);
         }
@@ -42,8 +41,9 @@ public class Endefelt implements Felt {
     }
 
     @Override
-    public void forlader() {
-         brikker.poll();
+    public void forlader(Brik brikUd) {
+         brikker.remove(brikUd);
+         
         
 }
 }

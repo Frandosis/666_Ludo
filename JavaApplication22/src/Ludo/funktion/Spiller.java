@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Spiller {
     
-    final String name;
+    String name;
     final String farve;
     ArrayList<Brik> brikker;
     boolean vundet;
@@ -30,12 +30,21 @@ public class Spiller {
         vundet = false;
     }
     
+    public void setName(String newName){
+        this.name = newName;
+        
+    }
+    
     public void addBrik(int hjemfeltnr, int startfeltnr, int endefeltnr, int bufferfeltnr){
         brikker.add(new Brik(this.farve, hjemfeltnr, startfeltnr, endefeltnr, bufferfeltnr));
         return;
     }
     
-    public ArrayList getBrikker(){
+    public Brik getBrik(int index){
+        return this.brikker.get(index);
+    }
+    
+    public ArrayList<Brik> getBrikker(){
         return this.brikker;
     }
     

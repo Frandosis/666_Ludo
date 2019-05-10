@@ -49,15 +49,15 @@ public class Test {
         main.brikker.get(1).setFeltnr(main.brikker.get(1).getHjemFeltnr());
         tmp1.landet(main.brikker.get(1));
         
-        main.felter.get(main.brikker.get(1).getFeltnr()).forlader();
+        //main.felter.get(main.brikker.get(1).getFeltnr()).forlader();
         main.brikker.get(1).setFeltnr(3);
         main.felter.get(main.brikker.get(1).getFeltnr()).landet(main.brikker.get(1));
         
-        main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
+        //main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
         main.brikker.get(0).setFeltnr(2);
         main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
         
-        main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
+       // main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
         main.brikker.get(0).setFeltnr(3);
         main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
         
