@@ -40,6 +40,10 @@ public class Brik {
         return this.hjemfeltnr;
     }
     
+    public int getStartFeltnr(){
+        return this.startfeltnr;
+    }
+    
     public int getFeltnr(){
         return this.feltnr;
     }
