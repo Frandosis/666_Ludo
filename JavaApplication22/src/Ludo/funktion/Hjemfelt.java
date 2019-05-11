@@ -22,7 +22,12 @@ public class Hjemfelt implements Felt {
         this.feltnr = spFeltnr;
         this.brik = null;
     }
-
+    
+    @Override
+    public int getFeltnr(){
+        return this.feltnr;
+    }
+    
     @Override
     public void landet(Brik brikInd) {
         if(brik == null && this.farve.equals(brikInd.getFarve())){
