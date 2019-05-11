@@ -21,23 +21,58 @@ public class Braet1 {
         Vertex(Felt nyfelt) {
             this.felt = nyfelt;
         }
-
+        
+        public int getFeltnr(){
+            return this.felt.getFeltnr();
+        }
+        
+        public Felt getFelt(){
+            return this.felt;
+        }
+        @Override
+        public boolean equals(Object o){
+            
+		// null check
+		if (o == null) {
+			return false;
+		}
+ 
+		// this instance check
+		if (this == o) {
+			return true;
+		}
+ 
+		// instanceof Check and actual value check
+		if ((o instanceof Vertex) && (((Vertex) o).getFelt() == this.felt)) {
+			return true;
+		} else {
+			return false;
+		}
+        }
+        @Override
+        public int hashCode() {
+		int result = 0;
+		result = (int) (this.getFeltnr() / 11);
+		return result;
+	}
+        
     }
 
     public class Graph {
 
-        private Map<Vertex, List<Vertex>> adjVertices;
+        public Map<Vertex, List<Vertex>> adjVertices;
         Graph(){
             adjVertices = new LinkedHashMap();
             
         }
 
         // standard constructor, getters, setters
-        void addVertex(Felt felt) {
-            adjVertices.put(new Vertex(felt), new ArrayList<Vertex>());
+        public void addVertex(Felt felt) {
+            
+            adjVertices.put(new Vertex(felt), new ArrayList<>());
         }
 
-        void removeVertex(Felt felt) {
+        public void removeVertex(Felt felt) {
             Vertex v = new Vertex(felt);
             adjVertices.values()
                     .stream()
@@ -46,20 +81,22 @@ public class Braet1 {
             adjVertices.remove(new Vertex(felt));
         }
 
-        void addDirectedEdge(Felt felt1, Felt felt2) {
+        public void addDirectedEdge(Felt felt1, Felt felt2) {
             Vertex v1 = new Vertex(felt1);
             Vertex v2 = new Vertex(felt2);
-            adjVertices.get(v1).add(v2);
+            boolean containskey = adjVertices.containsKey(v1);
+            var list = adjVertices.get(v1);
+            list.add(v2);
         }
 
-        void addUndirectedEdge(Felt felt1, Felt felt2) {
+        public void addUndirectedEdge(Felt felt1, Felt felt2) {
             Vertex v1 = new Vertex(felt1);
             Vertex v2 = new Vertex(felt2);
             adjVertices.get(v1).add(v2);
             adjVertices.get(v2).add(v1);
         }
 
-        void removeEdge(Felt felt1, Felt felt2) {
+        public void removeEdge(Felt felt1, Felt felt2) {
             Vertex v1 = new Vertex(felt1);
             Vertex v2 = new Vertex(felt2);
             List<Vertex> eV1 = adjVertices.get(v1);
@@ -71,12 +108,23 @@ public class Braet1 {
                 eV2.remove(v1);
             }
         }
+        
+        public Felt getFelt(int index){
+            for(Map.Entry<Vertex, List<Vertex>> entry : adjVertices.entrySet()){
+                Vertex key = entry.getKey();
+                if(key.getFeltnr() == index){
+                    return key.getFelt();
+                }
+            } 
+            
+            return null;
+        }
 
-        List<Vertex> getAdjVertices(Felt felt) {
+        public List<Vertex> getAdjVertices(Felt felt) {
             return adjVertices.get(new Vertex(felt));
         }
 
-        int size() {
+        public int size() {
             return adjVertices.size();
         }
 

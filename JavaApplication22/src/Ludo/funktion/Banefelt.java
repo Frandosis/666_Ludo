@@ -50,7 +50,17 @@ public class Banefelt implements Felt {
             }
         }
     }
+    
+    @Override
+    public String getFarve(){
+        return "";
+    }
 
+    @Override
+    public int getFeltnr(){
+        return this.feltnr;
+    }
+    
     @Override
     public void forlader(Brik brikUd) {
         brikker.remove(brikUd);

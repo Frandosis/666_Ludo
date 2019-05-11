@@ -17,6 +17,10 @@ public class TestLudo {
     public static void main(String [] arg){
         Braet1 braet1 = new Braet1();
        Graph braet = braet1.getGraph();
+       Brik groen = new Brik("green", 12, 58, 95, 99);
+       
+       braet.getFelt(groen.getHjemFeltnr()).landet(groen);
+       braet.getFelt(groen.getHjemFeltnr()).forlader(groen);
         
         
     }

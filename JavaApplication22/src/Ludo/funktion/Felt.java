@@ -11,6 +11,10 @@ import Ludo.enheder.*;
  */
 public interface Felt {
     
+    public int getFeltnr();
+    
+    public String getFarve();
+    
     public void landet(Brik brikInd);
     
     public void forlader(Brik brikUd);
