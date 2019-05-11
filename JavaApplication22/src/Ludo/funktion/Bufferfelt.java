@@ -41,6 +41,11 @@ public class Bufferfelt implements Felt {
     }
 */
     @Override
+    public int getFeltnr(){
+        return this.feltnr;
+    }
+    
+    @Override
     public void landet(Brik brikInd) {
         brikker.add(brikInd); 
     }

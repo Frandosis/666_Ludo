@@ -12,13 +12,13 @@ import javax.swing.border.*;
 
 public class GUILUDO {
 
-    private final int H = 15;
-    private final int L = 15;
-    private final int size = 5;
-    private final int sizeboard = 15;
-    private final int feltsize = 42;
-    private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-    private JButton[][] LudoBoardSquares = new JButton[15][15];
+    private final int H = 15; // Sætter højde
+    private final int L = 15; // Sætter længeden
+    private final int size = 5; // Str på kanten rundet om spillet og jpanlet
+    private final int sizeboard = 15; // bruges som str af board og Jbuttons/knapper
+    private final int feltsize = 42; // sætter felt str
+    private final JPanel gui = new JPanel(new BorderLayout(size, size)); //
+    private JButton[][] LudoBoardSquares = new JButton[sizeboard][sizeboard];
     private JPanel LudoBoard;
     private final JLabel message = new JLabel("LudoManSpillet");
 
@@ -184,6 +184,7 @@ public class GUILUDO {
 
     // Print koordinater on click
     private void knapTrykketPaaKoordinat(int x, int y) {
+
         System.out.println("Der blev trykket paa " + x + " , " + y);
     }
 
@@ -227,6 +228,7 @@ public class GUILUDO {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         knapTrykketPaaKoordinat(x, y);
+
                     }
                 });
                 // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) );
@@ -287,10 +289,10 @@ public class GUILUDO {
 
     }
 
+    /*
     public final JComponent getLudoBoard() {
         return LudoBoard;
-    }
-
+    }*/
     public final JComponent getGui() {
         return gui;
     }

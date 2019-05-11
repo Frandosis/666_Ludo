@@ -29,6 +29,11 @@ public class Startfelt implements Felt {
         this.angrebVandt = false;
 
     }
+    
+    @Override
+    public int getFeltnr(){
+        return this.feltnr;
+    }
 
     @Override
     public void landet(Brik brikInd) {
