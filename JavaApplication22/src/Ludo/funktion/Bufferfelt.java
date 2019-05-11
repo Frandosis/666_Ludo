@@ -41,6 +41,11 @@ public class Bufferfelt implements Felt {
     }
 */
     @Override
+    public String getFarve(){
+        return this.farve;
+    }
+    
+    @Override
     public int getFeltnr(){
         return this.feltnr;
     }
