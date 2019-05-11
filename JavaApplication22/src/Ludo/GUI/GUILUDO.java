@@ -161,6 +161,8 @@ public class GUILUDO {
         for (Feltvisning fv : model.felter) {
             JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
             b.setIcon(ingenBrik);
+            b.setText(""); // clear text
+
         }
 
         for (Brik brik : model.brikker) {
@@ -212,14 +214,15 @@ public class GUILUDO {
 
         // create the Ludo board squares
         Insets buttonMargin = new Insets(0, 0, 0, 0);
-        for (int ii = 0; ii < LudoBoardSquares.length; ii++) {
-            for (int jj = 0; jj < LudoBoardSquares[ii].length; jj++) {
+        for (int i = 0; i < LudoBoardSquares.length; i++) {
+            for (int j = 0; j < LudoBoardSquares[i].length; j++) {
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
                 b.setIcon(ingenBrik);
-                LudoBoardSquares[jj][ii] = b;
-                final int x = jj;
-                final int y = ii;
+                b.setEnabled(false);
+                LudoBoardSquares[j][i] = b;
+                final int x = j;
+                final int y = i;
                 b.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -235,12 +238,10 @@ public class GUILUDO {
             for (int j = 0; j < H; j++) {
                 JButton b = LudoBoardSquares[i][j];
                 b.setBackground(Color.BLACK);
-            }
-        }
-        for (int i = H / 2 - 1; i < H / 2 + 2; i++) {
-            for (int j = 0; j < L; j++) {
-                JButton b = LudoBoardSquares[j][i];
+                b.setEnabled(true);
+                b = LudoBoardSquares[j][i];
                 b.setBackground(Color.BLACK);
+                b.setEnabled(true);
             }
         }
 
@@ -248,43 +249,39 @@ public class GUILUDO {
         for (int i = 1; i < 7; i++) {//blue
             JButton b = LudoBoardSquares[H / 2][i];
             b.setBackground(Color.BLUE);
+            b.setEnabled(true);
         }
         for (int i = H - 2; i > H - 8; i--) {//yellow
             JButton b = LudoBoardSquares[H / 2][i];
             b.setBackground(Color.YELLOW);
+            b.setEnabled(true);
         }
         for (int i = 1; i < 7; i++) {//green
             JButton b = LudoBoardSquares[i][L / 2];
             b.setBackground(Color.GREEN);
+            b.setEnabled(true);
         }
         for (int i = H - 2; i > L - 8; i--) {//red
             JButton b = LudoBoardSquares[i][L / 2];
             b.setBackground(Color.RED);
+            b.setEnabled(true);
+        }
+        //Color start
+        colorStart(8, 1, 1);
+        colorStart(13, 8, 2);
+        colorStart(6, 13, 3);
+        colorStart(1, 6, 4);
 
-        }
-        for (int i = 0; i < 4; i++) {
-            if (i == 0) {
-                JButton b = LudoBoardSquares[L / 2 - 1][13];
-                b.setBackground(Color.YELLOW);
-            }
-            if (i == 1) {
-                JButton b = LudoBoardSquares[L / 2 + 1][1];
-                b.setBackground(Color.BLUE);
-            }
-            if (i == 2) {
-                JButton b = LudoBoardSquares[13][8];
-                b.setBackground(Color.RED);
-            }
-            if (i == 3) {
-                JButton b = LudoBoardSquares[1][6];
-                b.setBackground(Color.GREEN);
-            }
-        }
+        //Color the 4 bases
+        colorBase(11, 2, 1);
+        colorBase(11, 11, 2);
+        colorBase(2, 11, 3);
+        colorBase(2, 2, 4);
 
         // fill the board out with all the stuff we made
-        for (int ii = 0; ii < sizeboard; ii++) {
-            for (int jj = 0; jj < sizeboard; jj++) {
-                LudoBoard.add(LudoBoardSquares[jj][ii]);
+        for (int i = 0; i < sizeboard; i++) {
+            for (int j = 0; j < sizeboard; j++) {
+                LudoBoard.add(LudoBoardSquares[j][i]);
             }
         }
 
@@ -336,5 +333,57 @@ public class GUILUDO {
 
         }
 
+    }
+
+    private void colorBase(int x, int y, int color) {
+        for (int i = 0; i < 4; i++) {
+            if (i == 2) {
+                y++;
+                x--;
+            } else if (i == 1 || i == 3) {
+                x++;
+            }
+            JButton b = LudoBoardSquares[x][y];
+            switch (color) {
+                case 1:
+                    b.setBackground(Color.BLUE);
+                    break;
+                case 2:
+                    b.setBackground(Color.RED);
+                    break;
+                case 3:
+                    b.setBackground(Color.YELLOW);
+                    break;
+                case 4:
+                    b.setBackground(Color.GREEN);
+                    break;
+                default:
+                    b.setBackground(Color.black);
+            }
+            b.setEnabled(true);
+        }
+
+    }
+
+    private void colorStart(int x, int y, int color) {
+
+        JButton b = LudoBoardSquares[x][y];
+        switch (color) {
+            case 1:
+                b.setBackground(Color.BLUE);
+                break;
+            case 2:
+                b.setBackground(Color.RED);
+                break;
+            case 3:
+                b.setBackground(Color.YELLOW);
+                break;
+            case 4:
+                b.setBackground(Color.GREEN);
+                break;
+            default:
+                b.setBackground(Color.black);
+        }
+        b.setEnabled(true);
     }
 }

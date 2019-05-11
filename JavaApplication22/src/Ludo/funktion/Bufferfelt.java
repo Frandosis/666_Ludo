@@ -6,8 +6,7 @@
 package Ludo.funktion;
 
 import Ludo.enheder.*;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
 /**
  *
  * @author jcall
@@ -17,13 +16,13 @@ public class Bufferfelt implements Felt {
     int antalbuffer;
     final String farve;
     final int feltnr;
-    Queue<Brik> brikker;
+    ArrayList<Brik> brikker;
     boolean win = false;
     
     public Bufferfelt (String spFarve, int spFeltnr){
     this.feltnr = spFeltnr;
     this.farve = spFarve;
-        this.brikker = new LinkedList<Brik>();
+        this.brikker = new ArrayList();
         
     }
     

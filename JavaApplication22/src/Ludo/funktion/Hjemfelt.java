@@ -20,7 +20,7 @@ public class Hjemfelt implements Felt {
     public Hjemfelt(String spFarve, int spFeltnr) {
         this.farve = spFarve;
         this.feltnr = spFeltnr;
-
+        this.brik = null;
     }
 
     @Override
