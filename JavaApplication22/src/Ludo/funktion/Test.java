@@ -78,19 +78,19 @@ public class Test {
     
     public void testBufferfelt(){
         System.out.println("\n-----Test af Ende- og Bufferfelt----\n");
-        Felt tmp = felter.get(brikker.get(0).getHjemFeltnr());
-        Felt tmp2 = felter.get(brikker.get(2).getEndefeltnr());
+       // Felt tmp = felter.get(brikker.get(0).getEndefeltnr());
+       // Felt tmp2 = felter.get(brikker.get(2).getEndefeltnr());
         
         //test af endefelt til bufferfelt med flere brikker i buffer felt.
         brikker.get(0).setFeltnr(3);
         brikker.get(2).setFeltnr(3);
-        tmp.landet(brikker.get(0));
-        tmp2.landet(brikker.get(0));
+        //tmp.landet(brikker.get(0));
+        //tmp2.landet(brikker.get(2));
         opdaterBraettet();
         
-            System.out.println("Efter landet green brik 1: cf= " + brikker.get(0).getFeltnr()+ " ef= "+ brikker.get(0).getEndefeltnr());
+            System.out.println("Efter landet green brik 1: cf= " + brikker.get(0).getFeltnr()+ " ef= "+ brikker.get(0).getEndefeltnr() + " bf= "+ brikker.get(0).getBufferfeltnr());
             
-            System.out.println("Efter landet green brik 2: cf= " + brikker.get(2).getFeltnr()+ " ef= "+ brikker.get(2).getEndefeltnr());
+            System.out.println("Efter landet green brik 2: cf= " + brikker.get(2).getFeltnr()+ " ef= "+ brikker.get(2).getEndefeltnr()+ " bf= "+ brikker.get(0).getBufferfeltnr());
             
             System.out.println("brik 1= " + brikker.get(0).getFeltnr()+ " brik 2= "+ brikker.get(2).getFeltnr());
            
@@ -100,13 +100,15 @@ public class Test {
     
     public void testStartfelt(){
         System.out.println("\n-----Test af Startfelt----\n");
-        Felt tmp = felter.get(brikker.get(0).getHjemFeltnr());
-        Felt tmp1 = felter.get(brikker.get(1).getHjemFeltnr());
-        Felt tmp2 = felter.get(brikker.get(2).getEndefeltnr());
+        //Felt tmp = felter.get(brikker.get(0).getHjemFeltnr());
+        //Felt tmp1 = felter.get(brikker.get(1).getHjemFeltnr());
+        //Felt tmp2 = felter.get(brikker.get(2).getEndefeltnr());
         
-        brikker.get(0).setFeltnr(brikker.get(0).get);
-        
-    
+        brikker.get(0).setFeltnr(brikker.get(0).getStartFeltnr());
+        System.out.println("Efter landet green brik 1: cf= " + brikker.get(0).getFeltnr()+ " sf= "+ brikker.get(0).getStartFeltnr()+ " hf= "+ brikker.get(0).getHjemFeltnr());
+        brikker.get(0).setFeltnr(brikker.get(0).getHjemFeltnr());
+        brikker.get(1).setFeltnr(brikker.get(0).getStartFeltnr());
+        System.out.println("Efter landet green brik 1: cf= " + brikker.get(1).getFeltnr()+ " sf= "+ brikker.get(1).getStartFeltnr()+ " hf= "+ brikker.get(1).getHjemFeltnr());
     }
 }
 
