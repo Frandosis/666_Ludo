@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  */
 public class Braet1 {
 
-    class Vertex {
+   public class Vertex {
 
         Felt felt;
 
@@ -24,13 +24,17 @@ public class Braet1 {
 
     }
 
-    class Graph {
+    public class Graph {
 
         private Map<Vertex, List<Vertex>> adjVertices;
+        Graph(){
+            adjVertices = new LinkedHashMap();
+            
+        }
 
         // standard constructor, getters, setters
         void addVertex(Felt felt) {
-            adjVertices.putIfAbsent(new Vertex(felt), new ArrayList<>());
+            adjVertices.put(new Vertex(felt), new ArrayList<Vertex>());
         }
 
         void removeVertex(Felt felt) {
@@ -42,13 +46,13 @@ public class Braet1 {
             adjVertices.remove(new Vertex(felt));
         }
 
-        void addSingleEdge(Felt felt1, Felt felt2) {
+        void addDirectedEdge(Felt felt1, Felt felt2) {
             Vertex v1 = new Vertex(felt1);
             Vertex v2 = new Vertex(felt2);
             adjVertices.get(v1).add(v2);
         }
 
-        void addDoubleEdge(Felt felt1, Felt felt2) {
+        void addUndirectedEdge(Felt felt1, Felt felt2) {
             Vertex v1 = new Vertex(felt1);
             Vertex v2 = new Vertex(felt2);
             adjVertices.get(v1).add(v2);
@@ -111,12 +115,12 @@ public class Braet1 {
 
             //skal taelle hvert op til
             int counter = 0;
-            Felt lastfelt;
-            Felt firstbane;
-            Felt baneToRedEnd;
-            Felt baneToYellowEnd;
-            Felt baneToGreenEnd;
-            Felt baneToBlueEnd;
+            Felt lastfelt = null;
+            Felt firstbane = null;
+            Felt baneToRedEnd = null;
+            Felt baneToYellowEnd = null;
+            Felt baneToGreenEnd = null;
+            Felt baneToBlueEnd = null;
             //tilføj banefelter og startfelter
             while (tmp < i + 56) {
 
@@ -127,69 +131,58 @@ public class Braet1 {
                 } else if (counter == 14) {
                     Felt newfelt = new Startfelt("red", tmp);
                     graph.addVertex(newfelt);
-                    graph.addSingleEdge(lastfelt, newfelt);
+                    graph.addDirectedEdge(lastfelt, newfelt);
                     lastfelt = newfelt;
 
                 } else if (counter == 28) {
                     Felt newfelt = new Startfelt("yellow", tmp);
                     graph.addVertex(newfelt);
-                    graph.addSingleEdge(lastfelt, newfelt);
+                    graph.addDirectedEdge(lastfelt, newfelt);
                     lastfelt = newfelt;
 
                 } else if (counter == 42) {
 
                     Felt newfelt = new Startfelt("green", tmp);
                     graph.addVertex(newfelt);
-                    graph.addSingleEdge(lastfelt, newfelt);
+                    graph.addDirectedEdge(lastfelt, newfelt);
                     lastfelt = newfelt;
 
                 } else {
-                    if(counter == 12){
+                    if (counter == 12) {
                         Felt newfelt = new Banefelt(tmp);
                         baneToRedEnd = newfelt;
                         graph.addVertex(newfelt);
-                        graph.addSingleEdge(lastfelt, newfelt);
+                        graph.addDirectedEdge(lastfelt, newfelt);
                         lastfelt = newfelt;
-                    }
-                    else
-                    if(counter == 26){
+                    } else if (counter == 26) {
                         Felt newfelt = new Banefelt(tmp);
                         baneToYellowEnd = newfelt;
                         graph.addVertex(newfelt);
-                        graph.addSingleEdge(lastfelt, newfelt);
+                        graph.addDirectedEdge(lastfelt, newfelt);
                         lastfelt = newfelt;
-                    }
-                    else
-                    if(counter == 40){
+                    } else if (counter == 40) {
                         Felt newfelt = new Banefelt(tmp);
                         baneToGreenEnd = newfelt;
                         graph.addVertex(newfelt);
-                        graph.addSingleEdge(lastfelt, newfelt);
+                        graph.addDirectedEdge(lastfelt, newfelt);
                         lastfelt = newfelt;
-                    }
-                    else
-                    if(counter == 54){
+                    } else if (counter == 54) {
                         Felt newfelt = new Banefelt(tmp);
                         baneToBlueEnd = newfelt;
                         graph.addVertex(newfelt);
-                        graph.addSingleEdge(lastfelt, newfelt);
+                        graph.addDirectedEdge(lastfelt, newfelt);
                         lastfelt = newfelt;
-                    }
-
-                    else
-                    
-                    if (counter == 55) {
+                    } else if (counter == 55) {
                         Felt newfelt = new Banefelt(tmp);
                         graph.addVertex(newfelt);
-                        graph.addSingleEdge(lastfelt, newfelt);
-                        graph.addSingleEdge(newfelt, firstbane);
+                        graph.addDirectedEdge(lastfelt, newfelt);
+                        graph.addDirectedEdge(newfelt, firstbane);
                         lastfelt = newfelt;
-                        
-                        
+
                     } else {
                         Felt newfelt = new Banefelt(tmp);
                         graph.addVertex(newfelt);
-                        graph.addSingleEdge(lastfelt, newfelt);
+                        graph.addDirectedEdge(lastfelt, newfelt);
                         lastfelt = newfelt;
                     }
 
@@ -199,38 +192,103 @@ public class Braet1 {
             }
             i = tmp;
             counter = 0;
-            System.out.println("Size after Bane and Start: " + braet.size());
+            System.out.println("Size after Bane and Start: " + graph.size());
 
+            //indsaet Endefelter
+            while (tmp < i + 6) {
+                if (tmp == i) {
+                    Felt newfelt = new Endefelt("blue", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addDirectedEdge(baneToBlueEnd, newfelt);
+                    lastfelt = newfelt;
+                } else {
+                    Felt newfelt = new Endefelt("blue", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addUndirectedEdge(lastfelt, newfelt);
+                    lastfelt = newfelt;
+                }
+                
+                tmp++;
+            }
+
+            i = tmp;
+
+            while (tmp < i + 6) {
+                if (tmp == i) {
+                    Felt newfelt = new Endefelt("red", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addDirectedEdge(baneToRedEnd, newfelt);
+                    lastfelt = newfelt;
+                } else {
+                    Felt newfelt = new Endefelt("red", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addUndirectedEdge(lastfelt, newfelt);
+                    lastfelt = newfelt;
+                }
+                tmp++;
+            }
+
+            i = tmp;
+
+            while (tmp < i + 6) {
+                if (tmp == i) {
+                    Felt newfelt = new Endefelt("yellow", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addDirectedEdge(baneToYellowEnd, newfelt);
+                    lastfelt = newfelt;
+                } else {
+                    Felt newfelt = new Endefelt("yellow", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addUndirectedEdge(lastfelt, newfelt);
+                    lastfelt = newfelt;
+                }
+                tmp++;
+            }
+
+            i = tmp;
+
+            while (tmp < i + 6) {
+                if (tmp == i) {
+                    Felt newfelt = new Endefelt("green", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addDirectedEdge(baneToGreenEnd, newfelt);
+                    lastfelt = newfelt;
+                } else {
+                    Felt newfelt = new Endefelt("green", tmp);
+                    graph.addVertex(newfelt);
+                    graph.addUndirectedEdge(lastfelt, newfelt);
+                    lastfelt = newfelt;
+                }
+                tmp++;
+            }
+            i = tmp;
+            
+            System.out.println("Size after Endefelt: " + graph.size());
+            
+             graph.addVertex(new Bufferfelt("blue", i));
+        i++;
+        graph.addVertex(new Bufferfelt("red", i));
+        i++;
+        graph.addVertex(new Bufferfelt("yellow", i));
+        i++;
+        graph.addVertex(new Bufferfelt("green", i));
+        
+        System.out.println("Size after Bufferfelt: "+ graph.size());
+        
             return graph;
         }
     }
-    private int V;
-    private LinkedList<Felt> adj[];
-    private int lag = 1;
-
-    public Braet1(int v) {
-        V = v;
-        adj = new LinkedList[v];
-        for (int i = 0; i < v; i++) {
-            adj[i] = new LinkedList<Felt>();
-        }
-        setUpBraet();
+    
+    Graph graph;
+    
+    public Braet1() {
+        graph = new Graph();
+        graph = graph.createGraph();
+        
     }
 
-    public void setUpBraet() {
-
-        //Lav blaa hjemfelter
-        int i = 0;
-        //indsaet blaa hjemfelter
-        while (i < 4) {
-            adj[i].add(new Hjemfelt("blue", i));
-            i++;
-        }
-        int tmp = i;
-
+    public Graph getGraph(){
+        return this.graph;
     }
-
-    public void addEdge(int v, Felt W) {
-        adj[v].add(W);
-    }
+    
 }

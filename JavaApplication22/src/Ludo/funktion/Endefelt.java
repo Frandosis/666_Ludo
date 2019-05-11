@@ -22,10 +22,8 @@ public class Endefelt implements Felt {
     public Endefelt (String spFarve,int spFeltnr){
     this.feltnr = spFeltnr;
     this.farve = spFarve;
-        this.brikker = new ArrayList();
-        for (int i = 0; i < 4; i++) {
-            brikker.add(null);
-        }
+    this.brikker = new ArrayList();
+       
     }
         
 

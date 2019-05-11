@@ -22,10 +22,8 @@ public class Banefelt implements Felt {
     public Banefelt(int spFeltnr) {
         this.feltnr = spFeltnr;
         this.brikker = new ArrayList();
-        for (int i = 0; i < 4; i++) {
-            brikker.add(null);
-        }
-        angrebVandt = false;
+        this.regler = new Regler();
+        this.angrebVandt = false;
 
     }
 
