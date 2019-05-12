@@ -108,16 +108,55 @@ public class ClassicLudo {
         return spillere.get(spillerindex).getSlag();
     }
     
-    //Faa ændret denne til TestLudo maade at rykke brikker paa.
     public void rykBrik(int spillerindex, int brikindex, int slag) {
-        var brik = spillere.get(spillerindex).getBrik(brikindex);
-        
-        int gammelfelt = brik.getFeltnr();
-        int nyfelt = gammelfelt + slag;
-        braet.get(gammelfelt).forlader(brik);
+        Brik brik = spillere.get(spillerindex).getBrik(brikindex);
+        int feltnr = brik.getFeltnr();
+        boolean gåTilbage = false;
+        this.braet.getFelt(feltnr).forlader(brik);
+        List<Vertex> list = null;
+        for (int i = 1; i <= slag; i++) {
+            list = this.braet.getAdjVertices(feltnr);
+            if (list.size() != 0) {
+                if (list.size() == 1) {
+                    Vertex vertex = list.get(0);
+                    if (feltnr == brik.getEndefeltnr() && i != slag) {
+                        gåTilbage = true;
+                    }
+                    feltnr = vertex.getFeltnr();
 
-        brik.setFeltnr(nyfelt);
-        braet.get(nyfelt).landet(brik);
+                }
+                if (list.size() >= 2) {
+                    for (Vertex vertex : list) {
+                        if (vertex.getFelt() instanceof Endefelt && brik.getFarve().equals(vertex.getFelt().getFarve())) {
+                            if (gåTilbage == true && vertex.getFeltnr() < feltnr) {
+                                feltnr = vertex.getFeltnr();
+                            }
+                            if (gåTilbage == false && vertex.getFeltnr() > feltnr) {
+                                feltnr = vertex.getFeltnr();
+                            }
+
+                        } else if (vertex.getFelt() instanceof Endefelt == false) {
+                            feltnr = vertex.getFeltnr();
+                        }
+                    }
+                }
+            }
+
+        }
+
+        brik.setFeltnr(feltnr);
+        braet.getFelt(brik.getFeltnr()).landet(brik);
+
+    }
+
+    public void rykUdAfHjem(int slag, Brik brik) {
+        if (slag == 6) {
+            this.braet.getFelt(brik.getFeltnr()).forlader(brik);
+            brik.setFeltnr(brik.getStartFeltnr());
+            this.braet.getFelt(brik.getFeltnr()).landet(brik);
+            return;
+        }
+        return;
 
     }
     public int getSpillersTur(){
