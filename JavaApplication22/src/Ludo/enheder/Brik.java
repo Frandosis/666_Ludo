@@ -78,4 +78,12 @@ public class Brik {
         return this.endefeltnr;
     }
     
+    public boolean getErHjemme(){
+        return this.erHjemme;
+    }
+    
+    public void setErHjemme(boolean bool){
+        this.erHjemme = bool;
+    }
+    
 }

@@ -64,6 +64,7 @@ public class Banefelt implements Felt {
     @Override
     public void forlader(Brik brikUd) {
         brikker.remove(brikUd);
+        return;
 
     }
 

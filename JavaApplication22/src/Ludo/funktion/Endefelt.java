@@ -38,18 +38,24 @@ public class Endefelt implements Felt {
 
     @Override
     public void landet(Brik brikInd) {
+        if(brikker.contains(brikInd)){
+            return;
+        }
+        
         if(brikInd.getEndefeltnr() == feltnr){
             brikInd.setFeltnr(brikInd.getBufferfeltnr());
+            return;
         }
         
         brikker.add(brikInd);
-        
+        return;
         
     }
 
     @Override
     public void forlader(Brik brikUd) {
          brikker.remove(brikUd);
+         return;
          
         
 }

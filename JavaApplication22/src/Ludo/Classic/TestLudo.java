@@ -17,19 +17,25 @@ import Ludo.funktion.Braet1.*;
 public class TestLudo {
 
     public Graph braet;
-
+    
+    public TestLudo (){
+        Braet1 braet1 = new Braet1();
+        this.braet = braet1.getGraph();
+    }
+    
+    
     public static void main(String[] arg) {
         TestLudo test = new TestLudo();
 
-        Braet1 braet1 = new Braet1();
-        test.braet = braet1.getGraph();
         Brik groen = new Brik("green", 12, 58, 95, 99);
         Raflebaeger raflebaeger = new Raflebaeger(1);
-
+        
+        groen.setFeltnr(groen.getHjemFeltnr());
         test.braet.getFelt(groen.getHjemFeltnr()).landet(groen);
-
-        while (raflebaeger.getTerningVaerdi(0) != 6) {
+        int oejne = 0;
+        while (oejne != 6) {
             raflebaeger.ryst();
+            oejne = raflebaeger.getTerningVaerdi(0);
             test.rykUdAfHjem(raflebaeger.getTerningVaerdi(0), groen);
 
         }
@@ -38,7 +44,8 @@ public class TestLudo {
         
         while(true){
          raflebaeger.ryst();
-         
+         test.rykBrik(raflebaeger.getTerningVaerdi(0), groen);
+         test.opdaterBraettet(groen);
          
         }
 
@@ -46,10 +53,10 @@ public class TestLudo {
 
     public void rykBrik(int slag, Brik brik) {
         int feltnr = brik.getFeltnr();
-        braet.getFelt(feltnr).forlader(brik);
+        this.braet.getFelt(feltnr).forlader(brik);
         List<Vertex> list = null;
         for (int i = 0; i < slag; i++) {
-            list = braet.getAdjVertices(feltnr);
+            list = this.braet.getAdjVertices(feltnr);
             if (list.size() != 0) {
                 if (list.size() == 1) {
                     Vertex vertex = list.get(0);
@@ -76,13 +83,19 @@ public class TestLudo {
 
     public void rykUdAfHjem(int slag, Brik brik) {
         if (slag == 6) {
-            braet.getFelt(brik.getFeltnr()).forlader(brik);
+            this.braet.getFelt(brik.getFeltnr()).forlader(brik);
             brik.setFeltnr(brik.getStartFeltnr());
-            braet.getFelt(brik.getFeltnr()).landet(brik);
+            this.braet.getFelt(brik.getFeltnr()).landet(brik);
             return;
         }
         return;
 
     }
 
+    
+    public void opdaterBraettet(Brik brik) {
+
+       this.braet.getFelt(brik.getFeltnr()).landet(brik);
+
+    }
 }

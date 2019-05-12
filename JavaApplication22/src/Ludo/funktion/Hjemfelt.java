@@ -15,12 +15,12 @@ public class Hjemfelt implements Felt {
 
     final String farve;
     final int feltnr;
-    Brik brik;
+    boolean containsBrik;
 
     public Hjemfelt(String spFarve, int spFeltnr) {
         this.farve = spFarve;
         this.feltnr = spFeltnr;
-        this.brik = null;
+        this.containsBrik = false;
     }
     
     @Override
@@ -35,12 +35,21 @@ public class Hjemfelt implements Felt {
     
     @Override
     public void landet(Brik brikInd) {
-        if(brik == null && this.farve.equals(brikInd.getFarve())){
-            this.brik = brikInd;
-            this.brik.setHelle(true);
+        if(containsBrik == false && this.farve.equals(brikInd.getFarve())){
+            this.containsBrik = true;
+            brikInd.setErHjemme(true);
             return;
         }
-        if(brik.equals(brikInd)){
+        if(containsBrik == true || brikInd.getErHjemme() == true){
+            if(brikInd.getErHjemme() == true && containsBrik == false){
+                containsBrik = true;
+                return;
+            }
+            if(brikInd.getErHjemme() == false && containsBrik == true){
+                brikInd.setErHjemme(true);
+                return;
+            }
+            
             return;
         }
         
@@ -48,9 +57,8 @@ public class Hjemfelt implements Felt {
     
     @Override
     public void forlader(Brik brikUd){
-        this.brik.setHelle(false);
-        this.brik = null;
-        brikUd.setHelle(false);
+        this.containsBrik = false;
+        brikUd.setErHjemme(false);
         
         
     }
