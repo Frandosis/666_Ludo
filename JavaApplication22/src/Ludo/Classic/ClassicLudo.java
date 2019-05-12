@@ -87,6 +87,13 @@ public class ClassicLudo {
         opdaterBraettet();
 
     }
+    public String getSpillerFarve(int index){
+        return spillere.get(index).getFarve();
+    }
+    
+    public String getSpillerName(int index){
+        return spillere.get(index).getName();
+    }
 
     public void setSpillerName(String name, int index) {
         spillere.get(index).setName(name);
@@ -100,9 +107,11 @@ public class ClassicLudo {
     public int getSpillerSlag(int spillerindex) {
         return spillere.get(spillerindex).getSlag();
     }
-
+    
+    //Faa ændret denne til TestLudo maade at rykke brikker paa.
     public void rykBrik(int spillerindex, int brikindex, int slag) {
         var brik = spillere.get(spillerindex).getBrik(brikindex);
+        
         int gammelfelt = brik.getFeltnr();
         int nyfelt = gammelfelt + slag;
         braet.get(gammelfelt).forlader(brik);
@@ -121,7 +130,7 @@ public class ClassicLudo {
         for (Spiller spiller : spillere) {
             var brikker = spiller.getBrikker();
             for (var brik : brikker) {
-                this.braet.get(brik.getFeltnr()).landet(brik);
+                this.braet.getFelt(brik.getFeltnr()).landet(brik);
             }
         }
 
@@ -129,7 +138,7 @@ public class ClassicLudo {
     
     public void skiftTur(){
         spillerstur++;
-        if(spillerstur >= 4){
+        if(spillerstur >= spillere.size()){
             spillerstur = 0;
         }
         return;

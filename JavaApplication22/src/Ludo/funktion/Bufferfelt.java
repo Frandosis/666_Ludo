@@ -7,25 +7,28 @@ package Ludo.funktion;
 
 import Ludo.enheder.*;
 import java.util.ArrayList;
+
 /**
  *
  * @author jcall
  */
 public class Bufferfelt implements Felt {
 
+    int forladeraktion;
     int antalbuffer;
     final String farve;
     final int feltnr;
     ArrayList<Brik> brikker;
     boolean win = false;
-    
-    public Bufferfelt (String spFarve, int spFeltnr){
-    this.feltnr = spFeltnr;
-    this.farve = spFarve;
+
+    public Bufferfelt(String spFarve, int spFeltnr) {
+        this.feltnr = spFeltnr;
+        this.farve = spFarve;
         this.brikker = new ArrayList();
-        
+        this.forladeraktion = 0;
+
     }
-    
+
     /*
     public Boolean checkWin() {
         
@@ -39,28 +42,29 @@ public class Bufferfelt implements Felt {
         }
         return win;
     }
-*/
+     */
     @Override
-    public String getFarve(){
+    public String getFarve() {
         return this.farve;
     }
-    
+
     @Override
-    public int getFeltnr(){
+    public int getFeltnr() {
         return this.feltnr;
     }
-    
+
     @Override
     public void landet(Brik brikInd) {
-        if(brikker.contains(brikInd)){
+        if (brikker.contains(brikInd)) {
             return;
         }
-        
-        brikker.add(brikInd); 
+
+        brikker.add(brikInd);
+
     }
 
     @Override
     public void forlader(Brik brikUd) {
-        return;
+        forladeraktion++;
     }
 }

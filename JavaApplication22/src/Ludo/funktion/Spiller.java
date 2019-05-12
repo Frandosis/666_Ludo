@@ -30,6 +30,14 @@ public class Spiller {
         vundet = false;
     }
     
+    public String getFarve(){
+        return this.farve;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
     public void setName(String newName){
         this.name = newName;
         
