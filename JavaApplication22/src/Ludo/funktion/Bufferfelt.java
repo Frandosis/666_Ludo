@@ -57,7 +57,6 @@ public class Bufferfelt implements Felt {
         }
         
         brikker.add(brikInd); 
-        return;
     }
 
     @Override
