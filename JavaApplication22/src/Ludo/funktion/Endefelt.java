@@ -30,6 +30,11 @@ public class Endefelt implements Felt {
     public int getFeltnr(){
         return this.feltnr;
     }
+    
+    @Override
+    public String getFarve(){
+        return this.farve;
+    }
 
     @Override
     public void landet(Brik brikInd) {

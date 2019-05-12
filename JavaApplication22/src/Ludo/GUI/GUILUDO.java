@@ -12,22 +12,19 @@ import javax.swing.border.*;
 
 public class GUILUDO {
 
-    private final int H = 15; // Sætter højde
-    private final int L = 15; // Sætter længeden
-    private final int size = 5; // Str på kanten rundet om spillet og jpanlet
-    private final int sizeboard = 15; // bruges som str af board og Jbuttons/knapper
-    private final int feltsize = 42; // sætter felt str
-    private final JPanel gui = new JPanel(new BorderLayout(size, size)); //
+    private int H = 15; // Sætter højde
+    private int L = 15; // Sætter længeden
+    private int size = 5; // Str på kanten rundet om spillet og jpanlet
+    private int sizeboard = 15; // bruges som str af board og Jbuttons/knapper
+    private int feltsize = 42; // sætter felt str
+    private JPanel gui = new JPanel(new BorderLayout(size, size)); //
     private JButton[][] LudoBoardSquares = new JButton[sizeboard][sizeboard];
     private JPanel LudoBoard;
-    private final JLabel message = new JLabel("LudoManSpillet");
+    private JLabel message = new JLabel("LudoManSpillet");
 
-    LudoSpilModel model = new LudoSpilModel();
-    private ImageIcon ingenBrik;
-    private ImageIcon redBrik;
-    private ImageIcon greenBrik;
-    private ImageIcon yellowBrik;
-    private ImageIcon blueBrik;
+    LudoSpilModel model = new LudoSpilModel(); // Opsætter model til at lagere brikker og felter i
+    // opsætter brikker
+    private ImageIcon ingenBrik, redBrik, greenBrik, yellowBrik, blueBrik;
 
     GUILUDO() {
         initializeGui();
