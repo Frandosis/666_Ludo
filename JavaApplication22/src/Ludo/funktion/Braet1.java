@@ -109,6 +109,7 @@ public class Braet1 {
             }
         }
         
+        //Maybe optimize
         public Felt getFelt(int index){
             for(Map.Entry<Vertex, List<Vertex>> entry : adjVertices.entrySet()){
                 Vertex key = entry.getKey();
@@ -120,8 +121,9 @@ public class Braet1 {
             return null;
         }
 
-        public List<Vertex> getAdjVertices(Felt felt) {
-            return adjVertices.get(new Vertex(felt));
+        public List<Vertex> getAdjVertices(int index) {
+            
+            return adjVertices.get(new Vertex (getFelt(index)));
         }
 
         public int size() {

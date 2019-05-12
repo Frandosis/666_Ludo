@@ -20,9 +20,10 @@ public class ClassicLudo {
     Braet1 braet1;
     Graph braet;
     Regler regler;
+    int antalspillere;
     int spillerstur;
 
-    public ClassicLudo() {
+    public ClassicLudo(int startantalspillere) {
         this.spillere = new ArrayList();
 
         this.braet1 = new Braet1();
@@ -30,6 +31,8 @@ public class ClassicLudo {
         this.regler = new Regler();
 
         this.spillerstur = 0;
+        
+        this.antalspillere = startantalspillere;
 
     }
 
@@ -81,6 +84,7 @@ public class ClassicLudo {
                 brik.setFeltnr(brik.getHjemFeltnr());
             }
         }
+        opdaterBraettet();
 
     }
 
@@ -107,6 +111,10 @@ public class ClassicLudo {
         braet.get(nyfelt).landet(brik);
 
     }
+    public int getSpillersTur(){
+        return spillerstur;
+        
+    }
 
     public void opdaterBraettet() {
 
@@ -117,6 +125,14 @@ public class ClassicLudo {
             }
         }
 
+    }
+    
+    public void skiftTur(){
+        spillerstur++;
+        if(spillerstur >= 4){
+            spillerstur = 0;
+        }
+        return;
     }
 
     public boolean checkWinner(int spillerindex) {
