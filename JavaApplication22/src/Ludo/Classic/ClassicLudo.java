@@ -118,6 +118,15 @@ public class ClassicLudo {
         return spillere.get(spillerindex).getSlag();
     }
     
+    public int getfeltnr(int x, int y) {
+        for (Feltvisning nr : felter) {
+            if (nr.isthisfeltnr(x, y)) {
+                return nr.getNR();
+            }
+        }
+        return -1;
+    }
+    
     public void rykBrik(int spillerindex, int brikindex, int slag) {
         Brik brik = spillere.get(spillerindex).getBrik(brikindex);
         int feltnr = brik.getFeltnr();

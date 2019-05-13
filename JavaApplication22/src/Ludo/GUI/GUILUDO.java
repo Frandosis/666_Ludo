@@ -198,8 +198,14 @@ public class GUILUDO {
 
     // Print koordinater on click
     private void knapTrykketPaaKoordinat(int x, int y) {
-
-        System.out.println("Der blev trykket paa " + x + " , " + y);
+        
+        int feltnr = spil.getfeltnr(x, y);
+        if(feltnr != -1){
+        System.out.println("Der blev trykket paa feltnummer " + feltnr);
+        }
+        else {
+            System.out.println("Der er trykket på " + x + " og " + y);
+        }
     }
 
     public final void initializeGui() {
@@ -342,7 +348,7 @@ public class GUILUDO {
                 LudoBoard.spil.getBrik(0, 0).setFeltnr(i);
                 LudoBoard.spil.getBrik(1, 0).setFeltnr(i + 2);
                 LudoBoard.spil.getBrik(2, 0).setFeltnr(i + 4);
-                LudoBoard.spil.getBrik(0, 0).setFeltnr(i + 6);
+                LudoBoard.spil.getBrik(3, 0).setFeltnr(i + 6);
                 LudoBoard.opdaterGuiFraModel();
                 if (i == LudoBoard.spil.felter.size() - 1) {
                     i = -1;

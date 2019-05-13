@@ -34,10 +34,9 @@ public class Feltvisning {
     }
 
     public boolean isthisfeltnr(int x, int y) {
-        boolean lol = false;
-        if (this.x == x & this.y == y) {
-            lol = true;
+        if (this.x == x && this.y == y) {
+            return true;
         }
-        return lol;
+        return false;
     }
 }
