@@ -3,8 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ludo.funktion;
+package Test;
 import Ludo.enheder.*;
+import Ludo.funktion.Banefelt;
+import Ludo.funktion.Braet;
+import Ludo.funktion.Bufferfelt;
+import Ludo.funktion.Endefelt;
+import Ludo.funktion.Felt;
+import Ludo.funktion.Hjemfelt;
+import Ludo.funktion.Startfelt;
 import java.util.*;
 /**
  *
