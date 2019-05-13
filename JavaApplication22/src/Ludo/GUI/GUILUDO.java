@@ -13,13 +13,17 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class GUILUDO {
-
+    private boolean vundet = false;
+    private boolean erKastet = false;
     private int H = 15; // Sætter højde
     private int L = 15; // Sætter længeden
     private int size = 5; // Str på kanten rundet om spillet og jpanlet
     private int sizeboard = 15; // bruges som str af board og Jbuttons/knapper
     private int feltsize = 42; // sætter felt str
     private JPanel gui = new JPanel(new BorderLayout(size, size)); //
+    private JLabel terningvaerdi = new JLabel();
+    private JLabel spillertur = new JLabel();
+    private JButton kastTerning;
     private JButton[][] LudoBoardSquares = new JButton[sizeboard][sizeboard]; // sætte en matrix af jbuttons op i 15x15
     private JPanel LudoBoard;
     //private JLabel message = new JLabel("LudoManSpillet"); // Sætter text til toppen af panelet
@@ -69,107 +73,7 @@ public class GUILUDO {
             plads.setFeltnr(plads.getHjemFeltnr());
         }
          */
-        spil.felter = new ArrayList<Feltvisning>();
-        spil.felter.add(new Feltvisning(11, 2, 0)); // Blaa Start 1
-        spil.felter.add(new Feltvisning(12, 2, 1)); // Blaa Start 2
-        spil.felter.add(new Feltvisning(11, 3, 2)); // Blaa Start 3
-        spil.felter.add(new Feltvisning(12, 3, 3)); // Blaa Start 4
-        spil.felter.add(new Feltvisning(11, 11, 4)); // Roed Start 1
-        spil.felter.add(new Feltvisning(12, 11, 5)); // Roed Start 2
-        spil.felter.add(new Feltvisning(11, 12, 6)); // Roed Start 3
-        spil.felter.add(new Feltvisning(12, 12, 7)); // Roed Start 4
-        spil.felter.add(new Feltvisning(2, 11, 8));  // Gul Start 1
-        spil.felter.add(new Feltvisning(3, 11, 9)); // Gul start 2
-        spil.felter.add(new Feltvisning(2, 12, 10)); // Gul start 3
-        spil.felter.add(new Feltvisning(3, 12, 11)); // Gul start 4
-        spil.felter.add(new Feltvisning(2, 2, 12)); // Groen start 1
-        spil.felter.add(new Feltvisning(3, 2, 13)); // Groen start 2
-        spil.felter.add(new Feltvisning(2, 3, 14)); // Groen start 3
-        spil.felter.add(new Feltvisning(3, 3, 15)); // Groen start 4
-        spil.felter.add(new Feltvisning(8, 1, 16)); // Blaa startfelt
-        spil.felter.add(new Feltvisning(8, 2, 17));
-        spil.felter.add(new Feltvisning(8, 3, 18));
-        spil.felter.add(new Feltvisning(8, 4, 19));
-        spil.felter.add(new Feltvisning(8, 5, 20));
-        spil.felter.add(new Feltvisning(8, 6, 21));
-        spil.felter.add(new Feltvisning(9, 6, 22));
-        spil.felter.add(new Feltvisning(10, 6, 23));
-        spil.felter.add(new Feltvisning(11, 6, 24));
-        spil.felter.add(new Feltvisning(12, 6, 25));
-        spil.felter.add(new Feltvisning(13, 6, 26));
-        spil.felter.add(new Feltvisning(14, 6, 27));
-        spil.felter.add(new Feltvisning(14, 7, 28)); // Roed safefelt indgang
-        spil.felter.add(new Feltvisning(14, 8, 29));
-        spil.felter.add(new Feltvisning(13, 8, 30)); // Roed startfelt
-        spil.felter.add(new Feltvisning(12, 8, 31));
-        spil.felter.add(new Feltvisning(11, 8, 32));
-        spil.felter.add(new Feltvisning(10, 8, 33));
-        spil.felter.add(new Feltvisning(9, 8, 34));
-        spil.felter.add(new Feltvisning(8, 8, 35));
-        spil.felter.add(new Feltvisning(8, 9, 36));
-        spil.felter.add(new Feltvisning(8, 10, 37));
-        spil.felter.add(new Feltvisning(8, 11, 38));
-        spil.felter.add(new Feltvisning(8, 12, 39));
-        spil.felter.add(new Feltvisning(8, 13, 40));
-        spil.felter.add(new Feltvisning(8, 14, 41));
-        spil.felter.add(new Feltvisning(7, 14, 42)); // Gul safefelt indgang
-        spil.felter.add(new Feltvisning(6, 14, 43));
-        spil.felter.add(new Feltvisning(6, 13, 44)); // Gul startfelt
-        spil.felter.add(new Feltvisning(6, 12, 45));
-        spil.felter.add(new Feltvisning(6, 11, 46));
-        spil.felter.add(new Feltvisning(6, 10, 47));
-        spil.felter.add(new Feltvisning(6, 9, 48));
-        spil.felter.add(new Feltvisning(6, 8, 49));
-        spil.felter.add(new Feltvisning(5, 8, 50));
-        spil.felter.add(new Feltvisning(4, 8, 51));
-        spil.felter.add(new Feltvisning(3, 8, 52));
-        spil.felter.add(new Feltvisning(2, 8, 53));
-        spil.felter.add(new Feltvisning(1, 8, 54));
-        spil.felter.add(new Feltvisning(0, 8, 55));
-        spil.felter.add(new Feltvisning(0, 7, 56)); // Groen safefelt indgang
-        spil.felter.add(new Feltvisning(0, 6, 57));
-        spil.felter.add(new Feltvisning(1, 6, 58)); // Groen startfel
-        spil.felter.add(new Feltvisning(2, 6, 59));
-        spil.felter.add(new Feltvisning(3, 6, 60));
-        spil.felter.add(new Feltvisning(4, 6, 61));
-        spil.felter.add(new Feltvisning(5, 6, 62));
-        spil.felter.add(new Feltvisning(6, 6, 63));
-        spil.felter.add(new Feltvisning(6, 5, 64));
-        spil.felter.add(new Feltvisning(6, 4, 65));
-        spil.felter.add(new Feltvisning(6, 3, 66));
-        spil.felter.add(new Feltvisning(6, 2, 67));
-        spil.felter.add(new Feltvisning(6, 1, 68));
-        spil.felter.add(new Feltvisning(6, 0, 69));
-        spil.felter.add(new Feltvisning(7, 0, 70)); // Blaa safefelt indgang
-        spil.felter.add(new Feltvisning(8, 0, 71));// ende
-        spil.felter.add(new Feltvisning(7, 1, 72));// Blaa endefelt top
-        spil.felter.add(new Feltvisning(7, 2, 73));
-        spil.felter.add(new Feltvisning(7, 3, 74));
-        spil.felter.add(new Feltvisning(7, 4, 75));
-        spil.felter.add(new Feltvisning(7, 5, 76));
-        spil.felter.add(new Feltvisning(7, 6, 77)); // Blaa slut felt
-        spil.felter.add(new Feltvisning(13, 7, 78)); // roed endefelt top
-        spil.felter.add(new Feltvisning(12, 7, 79));
-        spil.felter.add(new Feltvisning(11, 7, 80));
-        spil.felter.add(new Feltvisning(10, 7, 81));
-        spil.felter.add(new Feltvisning(9, 7, 82));
-        spil.felter.add(new Feltvisning(8, 7, 83)); // roed endefelt
-        spil.felter.add(new Feltvisning(7, 13, 84)); // Gul endefelt top
-        spil.felter.add(new Feltvisning(7, 12, 85));
-        spil.felter.add(new Feltvisning(7, 11, 86));
-        spil.felter.add(new Feltvisning(7, 10, 87));
-        spil.felter.add(new Feltvisning(7, 9, 88));
-        spil.felter.add(new Feltvisning(7, 8, 89)); // Gul endefelt
-        spil.felter.add(new Feltvisning(1, 7, 90)); // Groen endefelt top
-        spil.felter.add(new Feltvisning(2, 7, 91));
-        spil.felter.add(new Feltvisning(3, 7, 92));
-        spil.felter.add(new Feltvisning(4, 7, 93));
-        spil.felter.add(new Feltvisning(5, 7, 94));
-        spil.felter.add(new Feltvisning(6, 7, 95)); // Groent endefelt
-        spil.felter.add(new Feltvisning(14, 0, 96)); // blaa buffer felt
-        spil.felter.add(new Feltvisning(14, 14, 97)); // roed buffer felt
-        spil.felter.add(new Feltvisning(0, 14, 98)); // gul buffer felt
-        spil.felter.add(new Feltvisning(0, 0, 99)); // Groent endefelt
+        
         opdaterGuiFraModel();
     }
 
@@ -202,10 +106,20 @@ public class GUILUDO {
 
     // Print koordinater on click
     private void knapTrykketPaaKoordinat(int x, int y) {
-
+        
         int feltnr = spil.getfeltnr(x, y);
         if (feltnr != -1) {
-            System.out.println("Der blev trykket paa feltnummer " + feltnr);
+            spil.rykBrik(spil.getSpillersTur(), feltnr, spil.getSpillerSlag(spil.getSpillersTur()));
+            
+            spil.opdaterBraettet();
+            
+            opdaterGuiFraModel();
+            
+            vundet = spil.checkWinner(spil.getSpillersTur());
+            
+            spil.skiftTur();
+            spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
+            
         } else {
             System.out.println("Der er trykket på " + x + " og " + y);
         }
@@ -223,16 +137,37 @@ public class GUILUDO {
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
         // opretter knapper til mulig brug senere
+       /*
         tools.add(new JButton("Brik 1"));
         tools.add(new JButton("Brik 2"));
         tools.add(new JButton("Brik 3"));
         tools.add(new JButton("Brik 4"));
         tools.addSeparator(); // sætter en adskiller i baren
-        tools.add(new JButton("Kast terning"));
+        */
+        
+       
+       kastTerning = new JButton("Kast terning");
+        
+        kastTerning.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(erKastet == false){
+                erKastet = true;
+                spil.spillerKaster(spil.getSpillersTur());
+                JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
+                terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
+                
+                }
+            }
+        });
+        tools.add(kastTerning);
         tools.add(new JButton("Genstart"));
         tools.addSeparator();
-        tools.add(new JLabel("LudoManSpillet")); // Sætter text til toppen af panelet
-
+        //tools.add(new JLabel("LudoManSpillet")); // Sætter text til toppen af panelet
+        tools.add(terningvaerdi);
+        tools.addSeparator();
+        tools.add(spillertur);
+        
         //  gui.add(new JLabel("?"), BorderLayout.LINE_START);
         LudoBoard = new JPanel(new GridLayout(0, 15)); // sætter længden på gridet/matrix
         LudoBoard.setBorder(new LineBorder(Color.BLACK)); // sætter kanten til sort
@@ -252,7 +187,11 @@ public class GUILUDO {
                 b.addActionListener(new ActionListener() { // actionlisterner til knapperne i b
                     @Override // overskriver den orginale funktion
                     public void actionPerformed(ActionEvent e) {
+                        if(erKastet == true){
                         knapTrykketPaaKoordinat(x, y); // udprinter kordinaterne
+                        
+                        erKastet = false;
+                        }
                     }
                 });
                 // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) ); // gøre samme som koden ovenfor kan evt. slettes
@@ -270,7 +209,9 @@ public class GUILUDO {
                 b.setEnabled(true);
             }
         }
-
+        JButton b1 = LudoBoardSquares[7] [7];
+        b1.setEnabled(false);
+        
         // Opsaetter safefelter
         for (int i = 1; i < 7; i++) {//blue
             JButton b = LudoBoardSquares[H / 2][i];
@@ -343,22 +284,16 @@ public class GUILUDO {
             }
         };
         SwingUtilities.invokeLater(r);
-
-        while (start == true) {
-
-            for (int i = 0; i < LudoBoard.spil.felter.size() - 1; i++) {
-                Thread.sleep(500);
-                LudoBoard.spil.getBrik(0, 0).setFeltnr(i);
-                LudoBoard.spil.getBrik(1, 0).setFeltnr(i + 2);
-                LudoBoard.spil.getBrik(2, 0).setFeltnr(i + 4);
-                LudoBoard.spil.getBrik(3, 0).setFeltnr(i + 6);
-                LudoBoard.opdaterGuiFraModel();
-                if (i == LudoBoard.spil.felter.size() - 1) {
-                    i = -1;
-                }
-            }
-
+        LudoBoard.spil.setSpillerName("blue", 0);
+        LudoBoard.spil.setSpillerName("red", 1);
+        LudoBoard.spil.setSpillerName("yellow", 2);
+        LudoBoard.spil.setSpillerName("green", 3);
+        
+        
+        while(LudoBoard.vundet == false){
+            
         }
+        
 
     }
 
