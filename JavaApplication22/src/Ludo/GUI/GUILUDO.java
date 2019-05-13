@@ -18,9 +18,9 @@ public class GUILUDO {
     private int sizeboard = 15; // bruges som str af board og Jbuttons/knapper
     private int feltsize = 42; // sætter felt str
     private JPanel gui = new JPanel(new BorderLayout(size, size)); //
-    private JButton[][] LudoBoardSquares = new JButton[sizeboard][sizeboard];
+    private JButton[][] LudoBoardSquares = new JButton[sizeboard][sizeboard]; // sætte en matrix af jbuttons op i 15x15
     private JPanel LudoBoard;
-    private JLabel message = new JLabel("LudoManSpillet");
+    //private JLabel message = new JLabel("LudoManSpillet"); // Sætter text til toppen af panelet
 
     LudoSpilModel model = new LudoSpilModel(); // Opsætter model til at lagere brikker og felter i
     // opsætter brikker
@@ -28,9 +28,10 @@ public class GUILUDO {
 
     GUILUDO() {
         initializeGui();
-        model.brikker = new ArrayList<Brik>();
-        Brik b = new Brik("roed", 4, 10, 14, 0);
-        model.brikker.add(b);
+        model.brikker = new ArrayList<Brik>(); // laver en arraylist af Brik under model.brikker
+        //Brik b = new Brik("roed", 4, 10, 14, 0); // laver
+        // tilføjer de forskellige brikker
+        model.brikker.add(new Brik("roed", 4, 10, 14, 0));
         model.brikker.add(new Brik("roed", 5, 10, 14, 0));
         model.brikker.add(new Brik("roed", 6, 10, 14, 0));
         model.brikker.add(new Brik("roed", 7, 10, 14, 0));
@@ -186,49 +187,50 @@ public class GUILUDO {
     }
 
     public final void initializeGui() {
-        ingenBrik = new ImageIcon(new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB));
+        ingenBrik = new ImageIcon(new BufferedImage(feltsize, feltsize, BufferedImage.TYPE_INT_ARGB)); // laver en tomfelt type til at clear felter
+        // Sætter png filer til de tilsavrende brikker
         redBrik = new ImageIcon("ludobrikRed.png");
         blueBrik = new ImageIcon("ludobrikBlue.png");
         yellowBrik = new ImageIcon("ludobrikYellow.png");
         greenBrik = new ImageIcon("ludobrikGreen.png");
-        gui.setBorder(new EmptyBorder(size, size, size, size));
-        JToolBar tools = new JToolBar();
+        gui.setBorder(new EmptyBorder(size, size, size, size)); // set kanterne omkring brættet
+        JToolBar tools = new JToolBar(); // laver et felt for oven til evt. knapper
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
+        // opretter knapper til mulig brug senere
         tools.add(new JButton("Brik 1"));
         tools.add(new JButton("Brik 2"));
         tools.add(new JButton("Brik 3"));
         tools.add(new JButton("Brik 4"));
-        tools.addSeparator();
+        tools.addSeparator(); // sætter en adskiller i baren
         tools.add(new JButton("Kast terning"));
         tools.add(new JButton("Genstart"));
         tools.addSeparator();
-        tools.add(message);
+        tools.add(new JLabel("LudoManSpillet")); // Sætter text til toppen af panelet
 
         //  gui.add(new JLabel("?"), BorderLayout.LINE_START);
-        LudoBoard = new JPanel(new GridLayout(0, 15));
-        LudoBoard.setBorder(new LineBorder(Color.BLACK));
-        gui.add(LudoBoard);
+        LudoBoard = new JPanel(new GridLayout(0, 15)); // sætter længden på gridet/matrix
+        LudoBoard.setBorder(new LineBorder(Color.BLACK)); // sætter kanten til sort
+        gui.add(LudoBoard); // tilføjer disse ting til gui'en
 
         // create the Ludo board squares
-        Insets buttonMargin = new Insets(0, 0, 0, 0);
-        for (int i = 0; i < LudoBoardSquares.length; i++) {
+        //Insets buttonMargin = new Insets(0, 0, 0, 0);
+        for (int i = 0; i < LudoBoardSquares.length; i++) { // for loop x2 der køre alle felter igennem
             for (int j = 0; j < LudoBoardSquares[i].length; j++) {
-                JButton b = new JButton();
-                b.setMargin(buttonMargin);
-                b.setIcon(ingenBrik);
-                b.setEnabled(false);
-                LudoBoardSquares[j][i] = b;
-                final int x = j;
+                JButton b = new JButton(); // Opretter knapper
+                b.setMargin(new Insets(0, 0, 0, 0));
+                b.setIcon(ingenBrik); // fjerner alle evt. ting der skulle vær epå dem
+                b.setEnabled(false); // slå knap funktionen fra
+                LudoBoardSquares[j][i] = b; // loader den ind
+                final int x = j; // opretter værdier til at brug under
                 final int y = i;
-                b.addActionListener(new ActionListener() {
-                    @Override
+                b.addActionListener(new ActionListener() { // actionlisterner til knapperne i b
+                    @Override // overskriver den orginale funktion
                     public void actionPerformed(ActionEvent e) {
-                        knapTrykketPaaKoordinat(x, y);
-
+                        knapTrykketPaaKoordinat(x, y); // udprinter kordinaterne
                     }
                 });
-                // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) );
+                // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) ); // gøre samme som koden ovenfor kan evt. slettes
             }
         }
 
@@ -265,7 +267,7 @@ public class GUILUDO {
             b.setBackground(Color.RED);
             b.setEnabled(true);
         }
-        //Color start
+        //Color startfelter 
         colorStart(8, 1, 1);
         colorStart(13, 8, 2);
         colorStart(6, 13, 3);
