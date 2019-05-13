@@ -89,7 +89,7 @@ public class Test {
         //test af endefelt til bufferfelt med flere brikker i buffer felt.
         brikker.get(0).setFeltnr(3);
         landet.landet(brikker.get(0));
-        System.out.println("test om der kan veare mere end en brik på buffer");
+        System.out.println("test om der kan veare mere end en brik paa buffer");
         System.out.println("brik 1: cf= " + brikker.get(0).getFeltnr()+ " ef= "+ brikker.get(0).getEndefeltnr() + " buf= "+ brikker.get(0).getBufferfeltnr());
         
         
@@ -98,7 +98,7 @@ public class Test {
         System.out.println("brik 2: cf= " + brikker.get(2).getFeltnr()+ " ef= "+ brikker.get(2).getEndefeltnr()+ " buf= "+ brikker.get(2).getBufferfeltnr());
         
         
-        System.out.println("brik 1 er på felt= " + brikker.get(0).getFeltnr()+ " brik 2 er på felt= "+ brikker.get(2).getFeltnr());
+        System.out.println("brik 1 er paa felt= " + brikker.get(0).getFeltnr()+ " brik 2 er paa felt= "+ brikker.get(2).getFeltnr());
         
         brikker.get(0).setFeltnr(brikker.get(0).getHjemFeltnr());
         brikker.get(2).setFeltnr(brikker.get(2).getHjemFeltnr());
@@ -129,7 +129,7 @@ public class Test {
         
         brikker.get(1).setFeltnr(1);
         opdaterBraettet();
-        System.out.println("\nTest om reod brik kan lande på groen start felt:");
+        System.out.println("\nTest om reod brik kan lande paa groen start felt:");
         System.out.println("roed brik 1: cf= " + brikker.get(1).getFeltnr()+ " sf= "+ brikker.get(1).getStartFeltnr()+ " hf= "+ brikker.get(1).getHjemFeltnr());
         tmp1 = felter.get(brikker.get(1).getFeltnr());
         
@@ -143,7 +143,7 @@ public class Test {
         tmp2 = felter.get(brikker.get(0).getStartFeltnr());
         brikker.get(2).setFeltnr(brikker.get(2).getStartFeltnr());
         landet.landet(brikker.get(2));
-        System.out.println("\nTest om groen brik kan lande på groen start felt med en groen brik paa:");
+        System.out.println("\nTest om groen brik kan lande paa groen start felt med en groen brik paa:");
         System.out.println("groen brik 0: cf= " + brikker.get(0).getFeltnr()+ " sf= "+ brikker.get(0).getStartFeltnr()+ " hf= "+ brikker.get(0).getHjemFeltnr());
         System.out.println("groen brik 2: cf= " + brikker.get(2).getFeltnr()+ " sf= "+ brikker.get(2).getStartFeltnr()+ " hf= "+ brikker.get(2).getHjemFeltnr());
         
@@ -155,7 +155,7 @@ public class Test {
         tmp1 = felter.get(brikker.get(0).getStartFeltnr());
         brikker.get(1).setFeltnr(brikker.get(0).getStartFeltnr());
         landet.landet(brikker.get(1));
-        System.out.println("\nTest om roed brik kan lande på groen start felt med en groen brik paa:");
+        System.out.println("\nTest om roed brik kan lande paa groen start felt med en groen brik paa:");
         System.out.println("groen brik 0: cf= " + brikker.get(0).getFeltnr()+ " sf= "+ brikker.get(0).getStartFeltnr()+ " hf= "+ brikker.get(0).getHjemFeltnr());
         System.out.println("roed brik 1: cf= " + brikker.get(1).getFeltnr()+ " sf= "+ brikker.get(1).getStartFeltnr()+ " hf= "+ brikker.get(1).getHjemFeltnr());
         
@@ -171,7 +171,7 @@ public class Test {
         
         brikker.get(0).setFeltnr(brikker.get(0).getStartFeltnr());
         landet.landet(brikker.get(0));
-        System.out.println("\nTest om groen brik kan lande på groen start felt med en roed brik paa:");
+        System.out.println("\nTest om groen brik kan lande paa groen start felt med en roed brik paa:");
         System.out.println("groen brik 0: cf= " + brikker.get(0).getFeltnr()+ " sf= "+ brikker.get(0).getStartFeltnr()+ " hf= "+ brikker.get(0).getHjemFeltnr() );
         System.out.println("roed brik 1: cf= " + brikker.get(1).getFeltnr()+ " sf= "+ brikker.get(1).getStartFeltnr()+ " hf= "+ brikker.get(1).getHjemFeltnr());
         
@@ -185,7 +185,7 @@ public class Test {
         landet.landet(brikker.get(1));
         brikker.get(3).setFeltnr(brikker.get(0).getStartFeltnr());
         landet.landet(brikker.get(3));
-        System.out.println("\nTest om gul brik kan lande på groen start felt med en roed brik paa:");
+        System.out.println("\nTest om gul brik kan lande paa groen start felt med en roed brik paa:");
         System.out.println("roed brik 1: cf= " + brikker.get(1).getFeltnr()+ " sf= "+ brikker.get(1).getStartFeltnr()+ " hf= "+ brikker.get(1).getHjemFeltnr());
         System.out.println("gul brik 3: cf= " + brikker.get(3).getFeltnr()+ " sf= "+ brikker.get(3).getStartFeltnr()+ " hf= "+ brikker.get(3).getHjemFeltnr());
         
@@ -199,7 +199,7 @@ public class Test {
         landet.landet(brikker.get(1));
         brikker.get(2).setFeltnr(brikker.get(1).getStartFeltnr());
         landet.landet(brikker.get(3));
-        System.out.println("\nTest om groen brik kan lande på roed start felt med en groen brik paa:");
+        System.out.println("\nTest om groen brik kan lande paa roed start felt med en groen brik paa:");
         System.out.println("roed startfelt: " + brikker.get(1).getStartFeltnr());
         System.out.println("groen brik 1: cf= " + brikker.get(0).getFeltnr() + " hf= " + brikker.get(0).getHjemFeltnr());
         System.out.println("groen brik 2: cf= " + brikker.get(2).getFeltnr() + " hf= " + brikker.get(2).getHjemFeltnr());
@@ -227,7 +227,7 @@ public class Test {
         // behover ikke oprydning da test foerste test sætter op til anden test
         brikker.get(2).setFeltnr(11);
         opdaterBraettet();
-        System.out.println("\nTest om groen brik kan lande paa banefelt med en groen brik på:");
+        System.out.println("\nTest om groen brik kan lande paa banefelt med en groen brik paa:");
         System.out.println("groen brik: cf= " + brikker.get(0).getFeltnr()+ " hf= "+ brikker.get(0).getHjemFeltnr());
         System.out.println("groen brik: cf= " + brikker.get(2).getFeltnr()+ " hf= "+ brikker.get(2).getHjemFeltnr());
         
@@ -256,7 +256,7 @@ public class Test {
         opdaterBraettet();
         brikker.get(1).setFeltnr(11);
         opdaterBraettet();
-        System.out.println("\nTest om roed brik kan lande paa banefelt med to groen brik på:");
+        System.out.println("\nTest om roed brik kan lande paa banefelt med to groen brik paa:");
         System.out.println("groen brik: cf= " + brikker.get(0).getFeltnr()+ " hf= "+ brikker.get(0).getHjemFeltnr());
         System.out.println("groen brik: cf= " + brikker.get(2).getFeltnr()+ " hf= "+ brikker.get(2).getHjemFeltnr());
         System.out.println("roed brik: cf= " + brikker.get(1).getFeltnr()+ " hf= "+ brikker.get(1).getHjemFeltnr());
