@@ -1,4 +1,5 @@
 package Ludo.GUI;
+
 import Ludo.funktion.*;
 import Ludo.Classic.ClassicLudo;
 import Ludo.GUI.LudoSpilModel;
@@ -29,9 +30,9 @@ public class GUILUDO {
 
     GUILUDO() {
         initializeGui();
-        
+
         spil.setUpGame();
-        
+
         /*
         spil.spillere.brikker = new ArrayList<Brik>();
         Brik b = new Brik("roed", 4, 10, 14, 0);
@@ -67,8 +68,7 @@ public class GUILUDO {
         for (Brik plads : spil.brikker) {
             plads.setFeltnr(plads.getHjemFeltnr());
         }
-        */
-        
+         */
         spil.felter = new ArrayList<Feltvisning>();
         spil.felter.add(new Feltvisning(11, 2, 0)); // Blaa Start 1
         spil.felter.add(new Feltvisning(12, 2, 1)); // Blaa Start 2
@@ -148,24 +148,28 @@ public class GUILUDO {
         spil.felter.add(new Feltvisning(7, 4, 75));
         spil.felter.add(new Feltvisning(7, 5, 76));
         spil.felter.add(new Feltvisning(7, 6, 77)); // Blaa slut felt
-        spil.felter.add(new Feltvisning(1, 7, 78)); // roed endefelt top
-        spil.felter.add(new Feltvisning(2, 7, 79));
-        spil.felter.add(new Feltvisning(3, 7, 80));
-        spil.felter.add(new Feltvisning(4, 7, 81));
-        spil.felter.add(new Feltvisning(5, 7, 82));
-        spil.felter.add(new Feltvisning(6, 7, 83)); // roed endefelt
+        spil.felter.add(new Feltvisning(13, 7, 78)); // roed endefelt top
+        spil.felter.add(new Feltvisning(12, 7, 79));
+        spil.felter.add(new Feltvisning(11, 7, 80));
+        spil.felter.add(new Feltvisning(10, 7, 81));
+        spil.felter.add(new Feltvisning(9, 7, 82));
+        spil.felter.add(new Feltvisning(8, 7, 83)); // roed endefelt
         spil.felter.add(new Feltvisning(7, 13, 84)); // Gul endefelt top
         spil.felter.add(new Feltvisning(7, 12, 85));
         spil.felter.add(new Feltvisning(7, 11, 86));
         spil.felter.add(new Feltvisning(7, 10, 87));
         spil.felter.add(new Feltvisning(7, 9, 88));
         spil.felter.add(new Feltvisning(7, 8, 89)); // Gul endefelt
-        spil.felter.add(new Feltvisning(13, 7, 90)); // Roed endefelt top
-        spil.felter.add(new Feltvisning(12, 7, 91));
-        spil.felter.add(new Feltvisning(11, 7, 92));
-        spil.felter.add(new Feltvisning(10, 7, 93));
-        spil.felter.add(new Feltvisning(9, 7, 94));
-        spil.felter.add(new Feltvisning(8, 7, 95)); // Groent endefelt
+        spil.felter.add(new Feltvisning(1, 7, 90)); // Groen endefelt top
+        spil.felter.add(new Feltvisning(2, 7, 91));
+        spil.felter.add(new Feltvisning(3, 7, 92));
+        spil.felter.add(new Feltvisning(4, 7, 93));
+        spil.felter.add(new Feltvisning(5, 7, 94));
+        spil.felter.add(new Feltvisning(6, 7, 95)); // Groent endefelt
+        spil.felter.add(new Feltvisning(14, 0, 96)); // blaa buffer felt
+        spil.felter.add(new Feltvisning(14, 14, 97)); // roed buffer felt
+        spil.felter.add(new Feltvisning(0, 14, 98)); // gul buffer felt
+        spil.felter.add(new Feltvisning(0, 0, 99)); // Groent endefelt
         opdaterGuiFraModel();
     }
 
@@ -176,34 +180,33 @@ public class GUILUDO {
             b.setText(""); // clear text
 
         }
-        
-        for (Spiller spiller : spil.spillere){
-        for (Brik brik : spiller.getBrikker()) {
-            int fn = brik.getFeltnr();
-            Feltvisning fv = spil.felter.get(fn);
-            JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
-            b.setText(""+spil.getAntalBrikkerPaaFelt(fn)); // need for number of brikker
-            if (brik.getFarve().equals("red")) {
-                b.setIcon(redBrik);
-            } else if (brik.getFarve().equals("green")) {
-                b.setIcon(greenBrik);
-            } else if (brik.getFarve().equals("yellow")) {
-                b.setIcon(yellowBrik);
-            } else if (brik.getFarve().equals("blue")) {
-                b.setIcon(blueBrik);
+
+        for (Spiller spiller : spil.spillere) {
+            for (Brik brik : spiller.getBrikker()) {
+                int fn = brik.getFeltnr();
+                Feltvisning fv = spil.felter.get(fn);
+                JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
+                b.setText("" + spil.getAntalBrikkerPaaFelt(fn)); // need for number of brikker
+                if (brik.getFarve().equals("red")) {
+                    b.setIcon(redBrik);
+                } else if (brik.getFarve().equals("green")) {
+                    b.setIcon(greenBrik);
+                } else if (brik.getFarve().equals("yellow")) {
+                    b.setIcon(yellowBrik);
+                } else if (brik.getFarve().equals("blue")) {
+                    b.setIcon(blueBrik);
+                }
             }
-        }
         }
     }
 
     // Print koordinater on click
     private void knapTrykketPaaKoordinat(int x, int y) {
-        
+
         int feltnr = spil.getfeltnr(x, y);
-        if(feltnr != -1){
-        System.out.println("Der blev trykket paa feltnummer " + feltnr);
-        }
-        else {
+        if (feltnr != -1) {
+            System.out.println("Der blev trykket paa feltnummer " + feltnr);
+        } else {
             System.out.println("Der er trykket på " + x + " og " + y);
         }
     }
