@@ -15,6 +15,7 @@ import javax.swing.border.*;
 public class GUILUDO {
     private boolean vundet = false;
     private boolean erKastet = false;
+    private int slagAntal = 0;
     private int H = 15; // Sætter højde
     private int L = 15; // Sætter længeden
     private int size = 5; // Str på kanten rundet om spillet og jpanlet
@@ -33,10 +34,10 @@ public class GUILUDO {
     private ImageIcon ingenBrik, redBrik, greenBrik, yellowBrik, blueBrik;
 
     GUILUDO() {
-        initializeGui();
-
+        
         spil.setUpGame();
-
+        
+        initializeGui();
         /*
         spil.spillere.brikker = new ArrayList<Brik>();
         Brik b = new Brik("roed", 4, 10, 14, 0);
@@ -91,6 +92,7 @@ public class GUILUDO {
                 Feltvisning fv = spil.felter.get(fn);
                 JButton b = LudoBoardSquares[fv.getX()][fv.getY()];
                 b.setText("" + spil.getAntalBrikkerPaaFelt(fn)); // need for number of brikker
+                b.setForeground(Color.DARK_GRAY);
                 if (brik.getFarve().equals("red")) {
                     b.setIcon(redBrik);
                 } else if (brik.getFarve().equals("green")) {
@@ -108,6 +110,7 @@ public class GUILUDO {
     private void knapTrykketPaaKoordinat(int x, int y) {
         
         int feltnr = spil.getfeltnr(x, y);
+        
         if (feltnr != -1) {
             if(spil.måRyk(feltnr) == false){
                 return;
@@ -163,9 +166,27 @@ public class GUILUDO {
         kastTerning.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 if(erKastet == false){
-                erKastet = true;
-                spil.spillerKaster(spil.getSpillersTur());
+                    
+                    if(spil.ekstraSlag(spil.getSpillersTur()) == true){
+                        spil.spillerKaster(spil.getSpillersTur());
+                        if( spil.getSpillerSlag(spil.getSpillersTur()) == 6){
+                            slagAntal = 0;
+                            erKastet = true;
+                        } else{
+                            slagAntal++;
+                            
+                            if(slagAntal == 3){
+                                slagAntal = 0;
+                                erKastet = true;
+                            }
+                            
+                        }
+                    } else {
+                        spil.spillerKaster(spil.getSpillersTur());
+                        erKastet = true;
+                    }
                 JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
                 terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
                 
@@ -173,11 +194,17 @@ public class GUILUDO {
             }
         });
         tools.add(kastTerning);
+        
         tools.add(new JButton("Genstart"));
+        
         tools.addSeparator();
         //tools.add(new JLabel("LudoManSpillet")); // Sætter text til toppen af panelet
+        
         tools.add(terningvaerdi);
+        
         tools.addSeparator();
+        
+        spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
         tools.add(spillertur);
         
         //  gui.add(new JLabel("?"), BorderLayout.LINE_START);

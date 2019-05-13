@@ -228,6 +228,20 @@ public class ClassicLudo {
         return -1;
     }
     
+    public boolean ekstraSlag(int spillerindex){
+        int antal = 0;
+        for (Brik brik : spillere.get(spillerindex).getBrikker()){
+            if(brik.getFeltnr() == brik.getBufferfeltnr() || brik.getFeltnr() == brik.getHjemFeltnr()){
+                antal++;
+            }
+        }
+        if(antal == 4){
+            return true;
+        }
+        return false;
+        
+    }
+    
     public boolean rykBrik(int spillerindex, int feltnr, int slag) {
         Brik brik = null;
         for (Brik brik1 : spillere.get(spillerindex).getBrikker()){
