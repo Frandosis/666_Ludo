@@ -1,5 +1,6 @@
 package Ludo.GUI;
 
+import Ludo.Classic.*;
 import Ludo.GUI.LudoSpilModel;
 import Ludo.enheder.Brik;
 import java.awt.*;
@@ -267,7 +268,7 @@ public class GUILUDO {
             b.setBackground(Color.RED);
             b.setEnabled(true);
         }
-        //Color startfelter 
+        //Color startfelter
         colorStart(8, 1, 1);
         colorStart(13, 8, 2);
         colorStart(6, 13, 3);
@@ -318,6 +319,7 @@ public class GUILUDO {
             }
         };
         SwingUtilities.invokeLater(r);
+
         while (start == true) {
 
             for (int i = 0; i < LudoBoard.model.felter.size() - 1; i++) {
