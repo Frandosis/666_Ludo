@@ -109,6 +109,9 @@ public class GUILUDO {
         
         int feltnr = spil.getfeltnr(x, y);
         if (feltnr != -1) {
+            if(spil.måRyk(feltnr) == false){
+                return;
+            }
             spil.rykBrik(spil.getSpillersTur(), feltnr, spil.getSpillerSlag(spil.getSpillersTur()));
             
             spil.opdaterBraettet();
@@ -127,6 +130,7 @@ public class GUILUDO {
             
             spil.skiftTur();
             spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
+            erKastet = false;
             
         } else {
             System.out.println("Der er trykket på " + x + " og " + y);
@@ -198,7 +202,7 @@ public class GUILUDO {
                         if(erKastet == true){
                         knapTrykketPaaKoordinat(x, y); // udprinter kordinaterne
                         
-                        erKastet = false;
+                        
                         }
                     }
                 });

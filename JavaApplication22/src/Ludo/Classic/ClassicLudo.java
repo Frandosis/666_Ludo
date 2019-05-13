@@ -295,6 +295,16 @@ public class ClassicLudo {
         return;
 
     }
+    
+    public boolean måRyk (int feltnr){
+        for (Brik brik : spillere.get(this.spillerstur).getBrikker()){
+            if (brik.getFeltnr() == feltnr){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public int getSpillersTur(){
         return spillerstur;
         
