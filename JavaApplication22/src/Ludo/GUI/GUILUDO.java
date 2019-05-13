@@ -116,6 +116,14 @@ public class GUILUDO {
             opdaterGuiFraModel();
             
             vundet = spil.checkWinner(spil.getSpillersTur());
+            if(vundet == true){
+                String win = "Tillykke med sejren " + spil.getSpillerName(spil.getSpillersTur());
+                
+                JOptionPane.showMessageDialog(new JFrame(), win);
+                
+                System.exit(0);
+                
+            }
             
             spil.skiftTur();
             spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
@@ -289,10 +297,6 @@ public class GUILUDO {
         LudoBoard.spil.setSpillerName("yellow", 2);
         LudoBoard.spil.setSpillerName("green", 3);
         
-        
-        while(LudoBoard.vundet == false){
-            
-        }
         
 
     }
