@@ -5,6 +5,7 @@
  */
 package Ludo.Classic;
 
+import Ludo.GUI.Feltvisning;
 import Ludo.enheder.*;
 import Ludo.funktion.*;
 import Ludo.funktion.Braet1.*;
@@ -16,15 +17,19 @@ import java.util.*;
  */
 public class ClassicLudo {
 
-    ArrayList<Spiller> spillere;
-    Braet1 braet1;
-    Graph braet;
-    Regler regler;
+    public ArrayList<Spiller> spillere;
+    public ArrayList<Feltvisning> felter;
+
+    
+    public Braet1 braet1;
+    public Graph braet;
+    public Regler regler;
     int antalspillere;
-    int spillerstur;
+    public int spillerstur;
 
     public ClassicLudo(int startantalspillere) {
         this.spillere = new ArrayList();
+        this.felter = new ArrayList();
 
         this.braet1 = new Braet1();
 
@@ -87,6 +92,11 @@ public class ClassicLudo {
         opdaterBraettet();
 
     }
+    
+    public int getAntalBrikkerPaaFelt(int feltnr){
+        return braet.getFelt(feltnr).getSize();
+    }
+    
     public String getSpillerFarve(int index){
         return spillere.get(index).getFarve();
     }
@@ -114,6 +124,12 @@ public class ClassicLudo {
         boolean gåTilbage = false;
         this.braet.getFelt(feltnr).forlader(brik);
         List<Vertex> list = null;
+        
+        if(brik.getHjemFeltnr() == brik.getFeltnr()){
+            rykUdAfHjem(slag, brik);
+            return;
+        }
+        
         for (int i = 1; i <= slag; i++) {
             list = this.braet.getAdjVertices(feltnr);
             if (list.size() != 0) {
@@ -141,12 +157,13 @@ public class ClassicLudo {
                     }
                 }
             }
-
+            
         }
 
         brik.setFeltnr(feltnr);
         braet.getFelt(brik.getFeltnr()).landet(brik);
-
+        
+        opdaterBraettet();
     }
 
     public void rykUdAfHjem(int slag, Brik brik) {
@@ -181,6 +198,10 @@ public class ClassicLudo {
             spillerstur = 0;
         }
         return;
+    }
+    
+    public Brik getBrik(int spillerindex, int brikindex){
+        return spillere.get(spillerindex).getBrik(brikindex);
     }
 
     public boolean checkWinner(int spillerindex) {

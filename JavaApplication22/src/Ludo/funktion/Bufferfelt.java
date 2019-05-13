@@ -44,6 +44,10 @@ public class Bufferfelt implements Felt {
     }
      */
     @Override
+    public int getSize(){
+        return brikker.size();
+    }
+    @Override
     public String getFarve() {
         return this.farve;
     }

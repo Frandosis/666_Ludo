@@ -9,7 +9,7 @@ package Ludo.GUI;
  *
  * @author j
  */
-class Feltvisning {
+public class Feltvisning {
 
     private int x;
     private int y;

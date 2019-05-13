@@ -52,6 +52,11 @@ public class Banefelt implements Felt {
     }
     
     @Override
+    public int getSize(){
+        return brikker.size();
+    }
+    
+    @Override
     public String getFarve(){
         return "";
     }

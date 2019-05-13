@@ -11,6 +11,8 @@ import Ludo.enheder.*;
  */
 public interface Felt {
     
+    public int getSize();
+    
     public int getFeltnr();
     
     public String getFarve();

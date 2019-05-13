@@ -24,6 +24,14 @@ public class Hjemfelt implements Felt {
     }
     
     @Override
+    public int getSize(){
+        if(containsBrik == true){
+            return 1;
+        }
+        return 0;
+    }
+    
+    @Override
     public int getFeltnr(){
         return this.feltnr;
     }

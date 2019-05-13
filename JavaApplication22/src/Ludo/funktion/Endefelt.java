@@ -27,6 +27,11 @@ public class Endefelt implements Felt {
     }
         
     @Override
+    public int getSize(){
+        return brikker.size();
+    }
+    
+    @Override
     public int getFeltnr(){
         return this.feltnr;
     }
