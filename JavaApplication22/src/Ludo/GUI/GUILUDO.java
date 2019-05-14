@@ -1,7 +1,7 @@
 package Ludo.GUI;
 
 import Ludo.funktion.*;
-import Ludo.Classic.ClassicLudo;
+import Ludo.Classic.*;
 import Ludo.GUI.LudoSpilModel;
 import Ludo.enheder.Brik;
 import java.awt.*;
@@ -9,10 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.*;
 
 public class GUILUDO {
+    Runnable sound = new PlaySound ();
+    
     private boolean vundet = false;
     private boolean erKastet = false;
     private int slagAntal = 0;
@@ -169,27 +173,29 @@ public class GUILUDO {
                 
                 if(erKastet == false){
                     
-                    if(spil.ekstraSlag(spil.getSpillersTur()) == true){
-                        spil.spillerKaster(spil.getSpillersTur());
-                        if( spil.getSpillerSlag(spil.getSpillersTur()) == 6){
-                            slagAntal = 0;
-                            erKastet = true;
-                        } else{
-                            slagAntal++;
-                            
-                            if(slagAntal == 3){
+                        if(spil.ekstraSlag(spil.getSpillersTur()) == true){
+                            spil.spillerKaster(spil.getSpillersTur());
+                            if( spil.getSpillerSlag(spil.getSpillersTur()) == 6){
                                 slagAntal = 0;
                                 erKastet = true;
+                            } else{
+                                slagAntal++;
+                                
+                                if(slagAntal == 3){
+                                    slagAntal = 0;
+                                    erKastet = true;
+                                }
+                                
                             }
-                            
+                        } else {                            
+                            spil.spillerKaster(spil.getSpillersTur());
+                            erKastet = true;
                         }
-                    } else {
-                        spil.spillerKaster(spil.getSpillersTur());
-                        erKastet = true;
-                    }
-                spil.playSound();
-                JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
-                terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
+                        sound.run();
+                        JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
+                        terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
+                   
+                
                 
                 }
             }
@@ -304,6 +310,10 @@ public class GUILUDO {
 
     public static void main(String[] args) throws InterruptedException {
         GUILUDO LudoBoard = new GUILUDO();
+        LudoBoard.spil.setSpillerName("blue", 0);
+        LudoBoard.spil.setSpillerName("red", 1);
+        LudoBoard.spil.setSpillerName("yellow", 2);
+        LudoBoard.spil.setSpillerName("green", 3);
         boolean start = true;
         Runnable r = new Runnable() {
 
@@ -324,10 +334,9 @@ public class GUILUDO {
             }
         };
         SwingUtilities.invokeLater(r);
-        LudoBoard.spil.setSpillerName("blue", 0);
-        LudoBoard.spil.setSpillerName("red", 1);
-        LudoBoard.spil.setSpillerName("yellow", 2);
-        LudoBoard.spil.setSpillerName("green", 3);
+            
+        
+        
         
         
 

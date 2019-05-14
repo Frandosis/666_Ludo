@@ -33,8 +33,6 @@ public class ClassicLudo {
     public ArrayList<Spiller> spillere;
     public ArrayList<Feltvisning> felter;
     
-    public Mixer mixer;
-    public Clip clip;
 
     
     public Braet1 braet1;
@@ -371,40 +369,7 @@ public class ClassicLudo {
         return s;
     }
     
-    public void playSound(){
-        Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
-        /*
-        for(Mixer.Info info : mixInfos){
-            System.out.println(info.getName() + "---" + info.getDescription());
-        }
-        */
-        
-        mixer = AudioSystem.getMixer(mixInfos[3]);
-        
-        DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
-        try { clip = (Clip) mixer.getLine(dataInfo); }
-        catch (LineUnavailableException lue){ lue.printStackTrace(); }
-        
-        try{
-            File sound = new File(System.getProperty("user.dir"));
-            URI uri = new URI(sound.toURI()+"/DiceShake.wav");
-            URL soundURL = uri.toURL();
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
-            clip.open(audioStream);
-        }
-        catch(LineUnavailableException lue){ lue.printStackTrace();}
-        catch(UnsupportedAudioFileException uafe){ uafe.printStackTrace();}
-        catch(IOException ioe){ioe.printStackTrace();}
-        catch(URISyntaxException use){use.printStackTrace(); }
-        
-        clip.start();
-        
-        do{
-            try{ Thread.sleep(50);}
-            catch (InterruptedException ie){ ie.printStackTrace();}
-        } while(clip.isActive());
-        
-    }
+    
     
     public boolean checkWinner(int spillerindex) {
         int antalBrikker = 0;
