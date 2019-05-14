@@ -162,7 +162,7 @@ public class ClassicLudo {
         felter.add(new Feltvisning(0, 0, 99)); // Groent endefelt
 
         //Gør Blaa spiller klar.
-        this.spillere.add(new Spiller("", "blue"));
+        this.spillere.add(new Spiller("blue", "blue"));
         Spiller blue = this.spillere.get(0);
         for (int i = 0; i < 4; i++) {
 
@@ -171,7 +171,7 @@ public class ClassicLudo {
         }
 
         //Goer roed spiller klar
-        this.spillere.add(new Spiller("", "red"));
+        this.spillere.add(new Spiller("red", "red"));
         Spiller red = this.spillere.get(1);
         for (int i = 4; i < 8; i++) {
 
@@ -180,7 +180,7 @@ public class ClassicLudo {
         }
 
         //Goer gul spiller klar
-        this.spillere.add(new Spiller("", "yellow"));
+        this.spillere.add(new Spiller("yellow", "yellow"));
         Spiller yellow = this.spillere.get(2);
         for (int i = 8; i < 12; i++) {
 
@@ -189,7 +189,7 @@ public class ClassicLudo {
         }
 
         //Goer groen spiller klar
-        this.spillere.add(new Spiller("", "green"));
+        this.spillere.add(new Spiller("green", "green"));
         Spiller green = this.spillere.get(3);
         for (int i = 12; i < 16; i++) {
 
@@ -206,6 +206,23 @@ public class ClassicLudo {
         }
         opdaterBraettet();
 
+    }
+    
+    public void nytSpil(){
+        //Ryd spillet.
+        this.antalspillere = 0;
+        this.felter.clear();
+        this.spillere.clear();
+        this.braet = null;
+        this.braet1 = null;
+        this.spillerstur = 0;
+        
+        // sæt nyt spil op.
+        
+        this.braet1 = new Braet1();
+        
+        setUpGame();
+        
     }
     
     public int getAntalBrikkerPaaFelt(int feltnr){

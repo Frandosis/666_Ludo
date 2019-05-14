@@ -85,13 +85,38 @@ public class GUILUDO {
 
             vundet = spil.checkWinner(spil.getSpillersTur());
             if (vundet == true) {
-                
+
                 String win = "Tillykke med sejren " + spil.getSpillerName(spil.getSpillersTur());
                 sound.setFilename("/Win.wav");
                 sound.run();
-                JOptionPane.showMessageDialog(new JFrame(), win);
+                Object[] options = {"Nyt spil",
+                    "Luk spillet"};
+                int n = JOptionPane.showOptionDialog(new JFrame(),
+                        win,
+                        "Tillykke med sejren!",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null, //do not use a custom Icon
+                        options, //the titles of buttons
+                        options[0]); //default button title
 
-                System.exit(0);
+                switch (n){
+                    //Yes Option
+                    case 0:
+                        spil.nytSpil();
+                        opdaterGuiFraModel();
+                        break;
+                        
+                    //No Option    
+                    case 1:
+                        System.exit(0);
+                        break;
+                    //close Option
+                    case -1:
+                        System.exit(0);
+                        break;
+                }
+                
 
             }
 
@@ -145,7 +170,6 @@ public class GUILUDO {
             }
         });
         tools.add(kastTerning);
-        tools.add(new JButton("Genstart"));
         tools.addSeparator();
         tools.add(terningvaerdi);
         tools.addSeparator();
