@@ -114,7 +114,9 @@ public class GUILUDO {
     private void knapTrykketPaaKoordinat(int x, int y) {
         
         int feltnr = spil.getfeltnr(x, y);
-        
+        if(spil.ekstraSlag(spil.getSpillersTur()) == false && feltnr < 16 && spil.getSpillerSlag(spil.getSpillersTur()) != 6){
+            return;
+        }
         if (feltnr != -1) {
             if(spil.måRyk(feltnr) == false){
                 return;
@@ -187,7 +189,7 @@ public class GUILUDO {
                                 }
                                 
                             }
-                        } else {                            
+                        } else {
                             spil.spillerKaster(spil.getSpillersTur());
                             erKastet = true;
                         }
