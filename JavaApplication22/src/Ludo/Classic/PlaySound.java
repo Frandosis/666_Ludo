@@ -30,25 +30,26 @@ public class PlaySound implements Runnable {
         Mixer mixer = null;
         Clip clip = null;
     
-        
+        /*
         Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
         /*
         for(Mixer.Info info : mixInfos){
             System.out.println(info.getName() + "---" + info.getDescription());
         }
-        */
+        
         
         mixer = AudioSystem.getMixer(mixInfos[3]);
         
         DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
         try { clip = (Clip) mixer.getLine(dataInfo); }
         catch (LineUnavailableException lue){ lue.printStackTrace(); }
-        
+        */
         try{
             File sound = new File(System.getProperty("user.dir"));
             URI uri = new URI(sound.toURI()+"/DiceShake.wav");
             URL soundURL = uri.toURL();
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+            clip = AudioSystem.getClip();
             clip.open(audioStream);
         }
         catch(LineUnavailableException lue){ lue.printStackTrace();}
