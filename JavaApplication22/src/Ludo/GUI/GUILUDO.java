@@ -15,8 +15,9 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class GUILUDO {
-    Runnable sound = new PlaySound ();
-    
+
+    Runnable sound = new PlaySound();
+
     private boolean vundet = false;
     private boolean erKastet = false;
     private int slagAntal = 0;
@@ -38,9 +39,9 @@ public class GUILUDO {
     private ImageIcon ingenBrik, redBrik, greenBrik, yellowBrik, blueBrik;
 
     GUILUDO() {
-        
+
         spil.setUpGame();
-        
+
         initializeGui();
         /*
         spil.spillere.brikker = new ArrayList<Brik>();
@@ -78,7 +79,7 @@ public class GUILUDO {
             plads.setFeltnr(plads.getHjemFeltnr());
         }
          */
-        
+
         opdaterGuiFraModel();
     }
 
@@ -112,35 +113,35 @@ public class GUILUDO {
 
     // Print koordinater on click
     private void knapTrykketPaaKoordinat(int x, int y) {
-        
+
         int feltnr = spil.getfeltnr(x, y);
-        if(spil.ekstraSlag(spil.getSpillersTur()) == false && feltnr < 16 && spil.getSpillerSlag(spil.getSpillersTur()) != 6){
+        if (spil.ekstraSlag(spil.getSpillersTur()) == false && feltnr < 16 && spil.getSpillerSlag(spil.getSpillersTur()) != 6) {
             return;
         }
         if (feltnr != -1) {
-            if(spil.måRyk(feltnr) == false){
+            if (spil.måRyk(feltnr) == false) {
                 return;
             }
             spil.rykBrik(spil.getSpillersTur(), feltnr, spil.getSpillerSlag(spil.getSpillersTur()));
-            
+
             spil.opdaterBraettet();
-            
+
             opdaterGuiFraModel();
-            
+
             vundet = spil.checkWinner(spil.getSpillersTur());
-            if(vundet == true){
+            if (vundet == true) {
                 String win = "Tillykke med sejren " + spil.getSpillerName(spil.getSpillersTur());
-                
+
                 JOptionPane.showMessageDialog(new JFrame(), win);
-                
+
                 System.exit(0);
-                
+
             }
-            
+
             spil.skiftTur();
             spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
             erKastet = false;
-            
+
         } else {
             System.out.println("Der er trykket på " + x + " og " + y);
         }
@@ -158,64 +159,61 @@ public class GUILUDO {
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
         // opretter knapper til mulig brug senere
-       /*
+        /*
         tools.add(new JButton("Brik 1"));
         tools.add(new JButton("Brik 2"));
         tools.add(new JButton("Brik 3"));
         tools.add(new JButton("Brik 4"));
         tools.addSeparator(); // sætter en adskiller i baren
-        */
-        
-       
-       kastTerning = new JButton("Kast terning");
-        
+         */
+
+        kastTerning = new JButton("Kast terning");
+
         kastTerning.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                if(erKastet == false){
-                    
-                        if(spil.ekstraSlag(spil.getSpillersTur()) == true){
-                            spil.spillerKaster(spil.getSpillersTur());
-                            if( spil.getSpillerSlag(spil.getSpillersTur()) == 6){
+
+                if (erKastet == false) {
+
+                    if (spil.ekstraSlag(spil.getSpillersTur()) == true) {
+                        spil.spillerKaster(spil.getSpillersTur());
+                        if (spil.getSpillerSlag(spil.getSpillersTur()) == 6) {
+                            slagAntal = 0;
+                            erKastet = true;
+                        } else {
+                            slagAntal++;
+
+                            if (slagAntal == 3) {
                                 slagAntal = 0;
                                 erKastet = true;
-                            } else{
-                                slagAntal++;
-                                
-                                if(slagAntal == 3){
-                                    slagAntal = 0;
-                                    erKastet = true;
-                                }
-                                
                             }
-                        } else {
-                            spil.spillerKaster(spil.getSpillersTur());
-                            erKastet = true;
+
                         }
-                        sound.run();
-                        JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
-                        terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
-                   
-                
-                
+                    } else {
+                        spil.spillerKaster(spil.getSpillersTur());
+                        erKastet = true;
+                    }
+                    sound.run();
+                    JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
+                    terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
+
                 }
             }
         });
         tools.add(kastTerning);
-        
+
         tools.add(new JButton("Genstart"));
-        
+
         tools.addSeparator();
         //tools.add(new JLabel("LudoManSpillet")); // Sætter text til toppen af panelet
-        
+
         tools.add(terningvaerdi);
-        
+
         tools.addSeparator();
-        
+
         spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
         tools.add(spillertur);
-        
+
         //  gui.add(new JLabel("?"), BorderLayout.LINE_START);
         LudoBoard = new JPanel(new GridLayout(0, 15)); // sætter længden på gridet/matrix
         LudoBoard.setBorder(new LineBorder(Color.BLACK)); // sætter kanten til sort
@@ -235,10 +233,9 @@ public class GUILUDO {
                 b.addActionListener(new ActionListener() { // actionlisterner til knapperne i b
                     @Override // overskriver den orginale funktion
                     public void actionPerformed(ActionEvent e) {
-                        if(erKastet == true){
-                        knapTrykketPaaKoordinat(x, y); // udprinter kordinaterne
-                        
-                        
+                        if (erKastet == true) {
+                            knapTrykketPaaKoordinat(x, y); // udprinter kordinaterne
+
                         }
                     }
                 });
@@ -257,9 +254,9 @@ public class GUILUDO {
                 b.setEnabled(true);
             }
         }
-        JButton b1 = LudoBoardSquares[7] [7];
+        JButton b1 = LudoBoardSquares[7][7];
         b1.setEnabled(false);
-        
+
         // Opsaetter safefelter
         for (int i = 1; i < 7; i++) {//blue
             JButton b = LudoBoardSquares[H / 2][i];
@@ -317,30 +314,18 @@ public class GUILUDO {
         LudoBoard.spil.setSpillerName("yellow", 2);
         LudoBoard.spil.setSpillerName("green", 3);
         boolean start = true;
-        Runnable r = new Runnable() {
 
-            @Override
-            public void run() {
+        JFrame f = new JFrame("LudoGame");
+        f.add(LudoBoard.getGui());
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.setLocationByPlatform(true);
 
-                JFrame f = new JFrame("LudoGame");
-                f.add(LudoBoard.getGui());
-                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                f.setLocationByPlatform(true);
-
-                // ensures the frame is the minimum size it needs to be
-                // in order display the components within it
-                f.pack();
-                // ensures the minimum size is enforced.
-                f.setMinimumSize(f.getSize());
-                f.setVisible(true);
-            }
-        };
-        SwingUtilities.invokeLater(r);
-            
-        
-        
-        
-        
+        // ensures the frame is the minimum size it needs to be
+        // in order display the components within it
+        f.pack();
+        // ensures the minimum size is enforced.
+        f.setMinimumSize(f.getSize());
+        f.setVisible(true);
 
     }
 
