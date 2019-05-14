@@ -15,6 +15,7 @@ public class GUILUDO {
     PlaySound sound = new PlaySound();
 
     private boolean vundet = false;
+    private boolean ekstraKast = false;
     private boolean erKastet = false;
     private int slagAntal = 0;
     private int H = 15; // Sætter højde
@@ -119,8 +120,10 @@ public class GUILUDO {
                 
 
             }
-
+            if( ekstraKast == false){
             spil.skiftTur();
+            ekstraKast = false;
+            }
             spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
             erKastet = false;
 
@@ -145,21 +148,32 @@ public class GUILUDO {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (erKastet == false) {
+                    
                     if (spil.ekstraSlag(spil.getSpillersTur()) == true) {
                         spil.spillerKaster(spil.getSpillersTur());
-                        if (spil.getSpillerSlag(spil.getSpillersTur()) == 6) {
+                        if (spil.getSpillerSlag(spil.getSpillersTur()) == 6 && ekstraKast == false) {
                             slagAntal = 0;
                             erKastet = true;
+                            ekstraKast = true; // muligvis her
                         } else {
+                            if (ekstraKast == true){
+                            ekstraKast = false;
+                            }
                             slagAntal++;
-
+                            
                             if (slagAntal == 3) {
                                 slagAntal = 0;
                                 erKastet = true;
+                                
                             }
                         }
                     } else {
                         spil.spillerKaster(spil.getSpillersTur());
+                        if (spil.getSpillerSlag(spil.getSpillersTur()) == 6 && ekstraKast == false){
+                        ekstraKast = true;
+                    } else{
+                            ekstraKast = false;
+                        }
                         erKastet = true;
                     }
                     sound.setFilename("/DiceShake.wav");
