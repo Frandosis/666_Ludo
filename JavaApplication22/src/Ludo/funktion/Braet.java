@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Ludo.funktion;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Valdemar Landberg
- */
+
 public class Braet {
 
     ArrayList<Felt> braet;
@@ -45,24 +38,7 @@ public class Braet {
         }
         i = tmp;
         System.out.println("Size after hjemfelt: "+braet.size());
-        /*
-        //tilføj grønt startfelt
-        braet.add(new Startfelt("green", i));
-        i++;
-
-        //tilføj roedt startfelt
-        braet.add(new Startfelt("red", i));
-        i++;
-
-        //tilføj blaat startfelt
-        braet.add(new Startfelt("blue", i));
-        i++;
-
-        //tilføj gult startfelt
-        braet.add(new Startfelt("yellow", i));
-        i++;
-        */
-        
+     
         //skal taelle hvert op til
         int counter = 0;
         //tilføj banefelter og startfelter

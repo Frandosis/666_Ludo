@@ -101,13 +101,13 @@ public class GUILUDO {
                         options, //the titles of buttons
                         options[0]); //default button title
 
-                switch (n){
+                switch (n) {
                     //Yes Option
                     case 0:
                         spil.nytSpil();
                         opdaterGuiFraModel();
                         break;
-                        
+
                     //No Option    
                     case 1:
                         System.exit(0);
@@ -117,12 +117,11 @@ public class GUILUDO {
                         System.exit(0);
                         break;
                 }
-                
 
             }
-            if( ekstraKast == false){
-            spil.skiftTur();
-            ekstraKast = false;
+            if (ekstraKast == false) {
+                spil.skiftTur();
+                ekstraKast = false;
             }
             spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
             erKastet = false;
@@ -148,7 +147,7 @@ public class GUILUDO {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (erKastet == false) {
-                    
+
                     if (spil.ekstraSlag(spil.getSpillersTur()) == true) {
                         spil.spillerKaster(spil.getSpillersTur());
                         if (spil.getSpillerSlag(spil.getSpillersTur()) == 6 && ekstraKast == false) {
@@ -156,22 +155,22 @@ public class GUILUDO {
                             erKastet = true;
                             ekstraKast = true; // muligvis her
                         } else {
-                            if (ekstraKast == true){
-                            ekstraKast = false;
+                            if (ekstraKast == true) {
+                                ekstraKast = false;
                             }
                             slagAntal++;
-                            
+
                             if (slagAntal == 3) {
                                 slagAntal = 0;
                                 erKastet = true;
-                                
+
                             }
                         }
                     } else {
                         spil.spillerKaster(spil.getSpillersTur());
-                        if (spil.getSpillerSlag(spil.getSpillersTur()) == 6 && ekstraKast == false){
-                        ekstraKast = true;
-                    } else{
+                        if (spil.getSpillerSlag(spil.getSpillersTur()) == 6 && ekstraKast == false) {
+                            ekstraKast = true;
+                        } else {
                             ekstraKast = false;
                         }
                         erKastet = true;

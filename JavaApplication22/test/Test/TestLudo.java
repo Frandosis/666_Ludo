@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ludo.Classic;
+package Test;
 
+import Ludo.Classic.ClassicLudo;
+import Ludo.Classic.ClassicLudo;
 import java.util.*;
 import Ludo.enheder.*;
 import Ludo.funktion.*;

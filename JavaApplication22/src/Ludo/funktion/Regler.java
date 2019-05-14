@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Ludo.funktion;
 
 import Ludo.enheder.*;
 
-/**
- *
- * @author s184805
- */
+
 public class Regler {
 
     /*
@@ -50,25 +43,4 @@ public class Regler {
         }
         return false;
     }
-    /* udkommenteret indtil den virker
-    public int rykModEndefelt(Brik brikInd){
-        int afstand;
-        int ryk;
-        int nyfeltnr;
-        
-        afstand = brikInd.getEndefeltnr + brikInd.getFeltnr;
-        
-        if(brikInd.getSlag>afstand){       // til at rykke tilbage 
-            ryk=afstand - brikInd.getSlag;
-          return nyfeltnr = brikInd.getEndefeltnr + ryk;
-        }
-        
-        if(brikInd.getSlag < afstand){     // 
-            return nyfeltnr = brikInd.getFeltnr + brikInd.getSlag;
-        }
-        
-        return 0;
-        
-    }
-     */
 }

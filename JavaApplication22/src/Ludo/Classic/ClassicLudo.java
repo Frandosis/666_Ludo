@@ -1,40 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Ludo.Classic;
 
 import Ludo.GUI.Feltvisning;
 import Ludo.enheder.*;
 import Ludo.funktion.*;
 import Ludo.funktion.Braet1.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.*;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.Mixer;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
-/**
- *
- * @author Valdemar Landberg
- */
+import java.util.*;
+
 public class ClassicLudo {
 
     public ArrayList<Spiller> spillere;
     public ArrayList<Feltvisning> felter;
-    
 
-    
     public Braet1 braet1;
     public Graph braet;
     public Regler regler;
@@ -50,7 +27,7 @@ public class ClassicLudo {
         this.regler = new Regler();
 
         this.spillerstur = 0;
-        
+
         this.antalspillere = startantalspillere;
 
     }
@@ -59,7 +36,7 @@ public class ClassicLudo {
 
         //Først lav braettet
         braet = braet1.getGraph();
-        
+
         felter.add(new Feltvisning(11, 2, 0)); // Blaa Start 1
         felter.add(new Feltvisning(12, 2, 1)); // Blaa Start 2
         felter.add(new Feltvisning(11, 3, 2)); // Blaa Start 3
@@ -207,8 +184,8 @@ public class ClassicLudo {
         opdaterBraettet();
 
     }
-    
-    public void nytSpil(){
+
+    public void nytSpil() {
         //Ryd spillet.
         this.antalspillere = 0;
         this.felter.clear();
@@ -216,24 +193,23 @@ public class ClassicLudo {
         this.braet = null;
         this.braet1 = null;
         this.spillerstur = 0;
-        
+
         // sæt nyt spil op.
-        
         this.braet1 = new Braet1();
-        
+
         setUpGame();
-        
+
     }
-    
-    public int getAntalBrikkerPaaFelt(int feltnr){
+
+    public int getAntalBrikkerPaaFelt(int feltnr) {
         return braet.getFelt(feltnr).getSize();
     }
-    
-    public String getSpillerFarve(int index){
+
+    public String getSpillerFarve(int index) {
         return spillere.get(index).getFarve();
     }
-    
-    public String getSpillerName(int index){
+
+    public String getSpillerName(int index) {
         return spillere.get(index).getName();
     }
 
@@ -249,7 +225,7 @@ public class ClassicLudo {
     public int getSpillerSlag(int spillerindex) {
         return spillere.get(spillerindex).getSlag();
     }
-    
+
     public int getfeltnr(int x, int y) {
         for (Feltvisning nr : felter) {
             if (nr.isthisfeltnr(x, y)) {
@@ -258,41 +234,39 @@ public class ClassicLudo {
         }
         return -1;
     }
-    
-    public boolean ekstraSlag(int spillerindex){
+
+    public boolean ekstraSlag(int spillerindex) {
         int antal = 0;
-        for (Brik brik : spillere.get(spillerindex).getBrikker()){
-            if(brik.getFeltnr() == brik.getBufferfeltnr() || brik.getFeltnr() == brik.getHjemFeltnr()){
+        for (Brik brik : spillere.get(spillerindex).getBrikker()) {
+            if (brik.getFeltnr() == brik.getBufferfeltnr() || brik.getFeltnr() == brik.getHjemFeltnr()) {
                 antal++;
             }
         }
-        if(antal == 4){
+        if (antal == 4) {
             return true;
         }
         return false;
-        
+
     }
-    
+
     public boolean rykBrik(int spillerindex, int feltnr, int slag) {
         Brik brik = null;
-        for (Brik brik1 : spillere.get(spillerindex).getBrikker()){
-            if(brik1.getFeltnr() == feltnr){
+        for (Brik brik1 : spillere.get(spillerindex).getBrikker()) {
+            if (brik1.getFeltnr() == feltnr) {
                 brik = brik1;
             }
         }
-        if(brik == null){
+        if (brik == null) {
             return false;
         }
-        if(brik.getHjemFeltnr() == brik.getFeltnr()){
+        if (brik.getHjemFeltnr() == brik.getFeltnr()) {
             rykUdAfHjem(slag, brik);
             return true;
         }
         boolean gåTilbage = false;
         this.braet.getFelt(feltnr).forlader(brik);
         List<Vertex> list = null;
-        
-        
-        
+
         for (int i = 1; i <= slag; i++) {
             list = this.braet.getAdjVertices(feltnr);
             if (list.size() != 0) {
@@ -320,12 +294,12 @@ public class ClassicLudo {
                     }
                 }
             }
-            
+
         }
 
         brik.setFeltnr(feltnr);
         braet.getFelt(brik.getFeltnr()).landet(brik);
-        
+
         opdaterBraettet();
         return true;
     }
@@ -340,19 +314,19 @@ public class ClassicLudo {
         return;
 
     }
-    
-    public boolean måRyk (int feltnr){
-        for (Brik brik : spillere.get(this.spillerstur).getBrikker()){
-            if (brik.getFeltnr() == feltnr){
+
+    public boolean måRyk(int feltnr) {
+        for (Brik brik : spillere.get(this.spillerstur).getBrikker()) {
+            if (brik.getFeltnr() == feltnr) {
                 return true;
             }
         }
         return false;
     }
-    
-    public int getSpillersTur(){
+
+    public int getSpillersTur() {
         return spillerstur;
-        
+
     }
 
     public void opdaterBraettet() {
@@ -365,29 +339,27 @@ public class ClassicLudo {
         }
 
     }
-    
-    public void skiftTur(){
+
+    public void skiftTur() {
         spillerstur++;
-        if(spillerstur >= spillere.size()){
+        if (spillerstur >= spillere.size()) {
             spillerstur = 0;
         }
         return;
     }
-    
-    public Brik getBrik(int spillerindex, int brikindex){
+
+    public Brik getBrik(int spillerindex, int brikindex) {
         return spillere.get(spillerindex).getBrik(brikindex);
     }
 
-    public String getSlagString(int spillerindex){
+    public String getSlagString(int spillerindex) {
         String s = "";
         s += spillere.get(spillerindex).getName();
         s += " har slået ";
         s += spillere.get(spillerindex).getSlag();
         return s;
     }
-    
-    
-    
+
     public boolean checkWinner(int spillerindex) {
         int antalBrikker = 0;
 
