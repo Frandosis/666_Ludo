@@ -158,23 +158,11 @@ public class GUILUDO {
         JToolBar tools = new JToolBar(); // laver et felt for oven til evt. knapper
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
-        // opretter knapper til mulig brug senere
-        /*
-        tools.add(new JButton("Brik 1"));
-        tools.add(new JButton("Brik 2"));
-        tools.add(new JButton("Brik 3"));
-        tools.add(new JButton("Brik 4"));
-        tools.addSeparator(); // sætter en adskiller i baren
-         */
-
         kastTerning = new JButton("Kast terning");
-
         kastTerning.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 if (erKastet == false) {
-
                     if (spil.ekstraSlag(spil.getSpillersTur()) == true) {
                         spil.spillerKaster(spil.getSpillersTur());
                         if (spil.getSpillerSlag(spil.getSpillersTur()) == 6) {
@@ -187,7 +175,6 @@ public class GUILUDO {
                                 slagAntal = 0;
                                 erKastet = true;
                             }
-
                         }
                     } else {
                         spil.spillerKaster(spil.getSpillersTur());
@@ -196,31 +183,20 @@ public class GUILUDO {
                     sound.run();
                     JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
                     terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
-
                 }
             }
         });
         tools.add(kastTerning);
-
         tools.add(new JButton("Genstart"));
-
         tools.addSeparator();
-        //tools.add(new JLabel("LudoManSpillet")); // Sætter text til toppen af panelet
-
         tools.add(terningvaerdi);
-
         tools.addSeparator();
-
         spillertur.setText("Det er nu " + spil.getSpillerName(spil.getSpillersTur()) + " tur.");
         tools.add(spillertur);
-
-        //  gui.add(new JLabel("?"), BorderLayout.LINE_START);
         LudoBoard = new JPanel(new GridLayout(0, 15)); // sætter længden på gridet/matrix
         LudoBoard.setBorder(new LineBorder(Color.BLACK)); // sætter kanten til sort
         gui.add(LudoBoard); // tilføjer disse ting til gui'en
 
-        // create the Ludo board squares
-        //Insets buttonMargin = new Insets(0, 0, 0, 0);
         for (int i = 0; i < LudoBoardSquares.length; i++) { // for loop x2 der køre alle felter igennem
             for (int j = 0; j < LudoBoardSquares[i].length; j++) {
                 JButton b = new JButton(); // Opretter knapper
@@ -235,11 +211,9 @@ public class GUILUDO {
                     public void actionPerformed(ActionEvent e) {
                         if (erKastet == true) {
                             knapTrykketPaaKoordinat(x, y); // udprinter kordinaterne
-
                         }
                     }
                 });
-                // b.addActionListener( (e) -> knapTrykketPaaKoordinat(x, y) ); // gøre samme som koden ovenfor kan evt. slettes
             }
         }
 
@@ -299,10 +273,6 @@ public class GUILUDO {
 
     }
 
-    /*
-    public final JComponent getLudoBoard() {
-        return LudoBoard;
-    }*/
     public final JComponent getGui() {
         return gui;
     }
@@ -314,19 +284,13 @@ public class GUILUDO {
         LudoBoard.spil.setSpillerName("yellow", 2);
         LudoBoard.spil.setSpillerName("green", 3);
         boolean start = true;
-
-        JFrame f = new JFrame("LudoGame");
-        f.add(LudoBoard.getGui());
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setLocationByPlatform(true);
-
-        // ensures the frame is the minimum size it needs to be
-        // in order display the components within it
-        f.pack();
-        // ensures the minimum size is enforced.
-        f.setMinimumSize(f.getSize());
-        f.setVisible(true);
-
+        JFrame Ludogame = new JFrame("LudoGame");
+        Ludogame.add(LudoBoard.getGui());
+        Ludogame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Ludogame.setLocationByPlatform(true);
+        Ludogame.pack();
+        Ludogame.setMinimumSize(Ludogame.getSize());
+        Ludogame.setVisible(true);
     }
 
     private void colorBase(int x, int y, int color) {
