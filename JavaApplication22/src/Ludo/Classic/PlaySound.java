@@ -23,7 +23,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author Valdemar Landberg
  */
 public class PlaySound implements Runnable {
-
+    
+    public String filename;
+    
+    public void setFilename(String file){
+        filename = file;
+    }
     
     @Override
     public void run() {
@@ -46,7 +51,7 @@ public class PlaySound implements Runnable {
         */
         try{
             File sound = new File(System.getProperty("user.dir"));
-            URI uri = new URI(sound.toURI()+"/DiceShake.wav");
+            URI uri = new URI(sound.toURI()+filename);
             URL soundURL = uri.toURL();
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
             clip = AudioSystem.getClip();

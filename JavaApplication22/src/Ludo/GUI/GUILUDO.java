@@ -16,7 +16,7 @@ import javax.swing.border.*;
 
 public class GUILUDO {
 
-    Runnable sound = new PlaySound();
+    PlaySound sound = new PlaySound();
 
     private boolean vundet = false;
     private boolean erKastet = false;
@@ -130,8 +130,10 @@ public class GUILUDO {
 
             vundet = spil.checkWinner(spil.getSpillersTur());
             if (vundet == true) {
+                
                 String win = "Tillykke med sejren " + spil.getSpillerName(spil.getSpillersTur());
-
+                sound.setFilename("/Win.wav");
+                sound.run();
                 JOptionPane.showMessageDialog(new JFrame(), win);
 
                 System.exit(0);
@@ -193,6 +195,7 @@ public class GUILUDO {
                         spil.spillerKaster(spil.getSpillersTur());
                         erKastet = true;
                     }
+                    sound.setFilename("/DiceShake.wav");
                     sound.run();
                     JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
                     terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
