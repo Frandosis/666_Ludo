@@ -17,12 +17,4 @@ public class LudoSpilModel {
     public ArrayList<Brik> brikker;
     public ArrayList<Feltvisning> felter;
 
-    public int getfeltnr(int x, int y) {
-        for (Feltvisning nr : felter) {
-            if (nr.isthisfeltnr(x, y)) {
-                return nr.getNR();
-            }
-        }
-        return -1;
-    }
 }
