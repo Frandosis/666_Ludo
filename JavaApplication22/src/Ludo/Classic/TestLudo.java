@@ -25,6 +25,7 @@ public class TestLudo {
 
     public static void main(String[] arg) {
         TestLudo test = new TestLudo();
+        ClassicLudo cl = new ClassicLudo(4);
 
         Brik groen = new Brik("green", 12, 58, 95, 99);
         Raflebaeger raflebaeger = new Raflebaeger(1);
@@ -38,7 +39,7 @@ public class TestLudo {
             test.rykUdAfHjem(raflebaeger.getTerningVaerdi(0), groen);
 
         }
-
+        /*
         //Nu er groen på startfelt
         while (true) {
             raflebaeger.ryst();
@@ -46,7 +47,8 @@ public class TestLudo {
             test.opdaterBraettet(groen);
 
         }
-
+        */
+        cl.playSound();
     }
 
     public void rykBrik(int slag, Brik brik) {

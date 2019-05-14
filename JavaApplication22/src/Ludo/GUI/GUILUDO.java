@@ -187,6 +187,7 @@ public class GUILUDO {
                         spil.spillerKaster(spil.getSpillersTur());
                         erKastet = true;
                     }
+                spil.playSound();
                 JOptionPane.showMessageDialog(new JFrame(), spil.getSlagString(spil.getSpillersTur()));
                 terningvaerdi.setText(spil.getSpillerName(spil.getSpillersTur()) + " har slået: " + spil.getSpillerSlag(spil.getSpillersTur()));
                 

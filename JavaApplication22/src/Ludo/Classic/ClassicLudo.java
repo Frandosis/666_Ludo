@@ -9,7 +9,20 @@ import Ludo.GUI.Feltvisning;
 import Ludo.enheder.*;
 import Ludo.funktion.*;
 import Ludo.funktion.Braet1.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Mixer;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -19,6 +32,9 @@ public class ClassicLudo {
 
     public ArrayList<Spiller> spillere;
     public ArrayList<Feltvisning> felter;
+    
+    public Mixer mixer;
+    public Clip clip;
 
     
     public Braet1 braet1;
@@ -353,6 +369,41 @@ public class ClassicLudo {
         s += " har slået ";
         s += spillere.get(spillerindex).getSlag();
         return s;
+    }
+    
+    public void playSound(){
+        Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
+        /*
+        for(Mixer.Info info : mixInfos){
+            System.out.println(info.getName() + "---" + info.getDescription());
+        }
+        */
+        
+        mixer = AudioSystem.getMixer(mixInfos[3]);
+        
+        DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
+        try { clip = (Clip) mixer.getLine(dataInfo); }
+        catch (LineUnavailableException lue){ lue.printStackTrace(); }
+        
+        try{
+            File sound = new File(System.getProperty("user.dir"));
+            URI uri = new URI(sound.toURI()+"/DiceShake.wav");
+            URL soundURL = uri.toURL();
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+            clip.open(audioStream);
+        }
+        catch(LineUnavailableException lue){ lue.printStackTrace();}
+        catch(UnsupportedAudioFileException uafe){ uafe.printStackTrace();}
+        catch(IOException ioe){ioe.printStackTrace();}
+        catch(URISyntaxException use){use.printStackTrace(); }
+        
+        clip.start();
+        
+        do{
+            try{ Thread.sleep(50);}
+            catch (InterruptedException ie){ ie.printStackTrace();}
+        } while(clip.isActive());
+        
     }
     
     public boolean checkWinner(int spillerindex) {
