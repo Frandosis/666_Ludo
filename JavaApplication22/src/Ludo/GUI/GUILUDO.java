@@ -2,15 +2,11 @@ package Ludo.GUI;
 
 import Ludo.funktion.*;
 import Ludo.Classic.*;
-import Ludo.GUI.LudoSpilModel;
 import Ludo.enheder.Brik;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -32,54 +28,13 @@ public class GUILUDO {
     private JButton kastTerning;
     private JButton[][] LudoBoardSquares = new JButton[sizeboard][sizeboard]; // sætte en matrix af jbuttons op i 15x15
     private JPanel LudoBoard;
-    //private JLabel message = new JLabel("LudoManSpillet"); // Sætter text til toppen af panelet
-
     ClassicLudo spil = new ClassicLudo(4); // Opsætter spil til at lagere brikker og felter i
     // opsætter brikker
     private ImageIcon ingenBrik, redBrik, greenBrik, yellowBrik, blueBrik;
 
     GUILUDO() {
-
         spil.setUpGame();
-
         initializeGui();
-        /*
-        spil.spillere.brikker = new ArrayList<Brik>();
-        Brik b = new Brik("roed", 4, 10, 14, 0);
-        spil.brikker.add(b);
-        spil.brikker.add(new Brik("roed", 5, 10, 14, 0));
-        spil.brikker.add(new Brik("roed", 6, 10, 14, 0));
-        spil.brikker.add(new Brik("roed", 7, 10, 14, 0));
-=======
-        model.brikker = new ArrayList<Brik>(); // laver en arraylist af Brik under model.brikker
-        //Brik b = new Brik("roed", 4, 10, 14, 0); // laver
-        // tilføjer de forskellige brikker
-        model.brikker.add(new Brik("roed", 4, 10, 14, 0));
-        model.brikker.add(new Brik("roed", 5, 10, 14, 0));
-        model.brikker.add(new Brik("roed", 6, 10, 14, 0));
-        model.brikker.add(new Brik("roed", 7, 10, 14, 0));
->>>>>>> origin/master
-
-        spil.brikker.add(new Brik("blaa", 0, 10, 14, 0));
-        spil.brikker.add(new Brik("blaa", 1, 10, 14, 0));
-        spil.brikker.add(new Brik("blaa", 2, 10, 14, 0));
-        spil.brikker.add(new Brik("blaa", 3, 10, 14, 0));
-
-        spil.brikker.add(new Brik("gul", 8, 10, 14, 0));
-        spil.brikker.add(new Brik("gul", 9, 10, 14, 0));
-        spil.brikker.add(new Brik("gul", 10, 10, 14, 0));
-        spil.brikker.add(new Brik("gul", 11, 10, 14, 0));
-
-        spil.brikker.add(new Brik("groen", 12, 10, 14, 0));
-        spil.brikker.add(new Brik("groen", 13, 10, 14, 0));
-        spil.brikker.add(new Brik("groen", 14, 10, 14, 0));
-        spil.brikker.add(new Brik("groen", 15, 10, 14, 0));
-
-        for (Brik plads : spil.brikker) {
-            plads.setFeltnr(plads.getHjemFeltnr());
-        }
-         */
-
         opdaterGuiFraModel();
     }
 
