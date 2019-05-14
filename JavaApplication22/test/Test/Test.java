@@ -205,11 +205,19 @@ public class Test {
         brikker.get(0).setFeltnr(brikker.get(1).getStartFeltnr());
         landet.landet(brikker.get(1));
         brikker.get(2).setFeltnr(brikker.get(1).getStartFeltnr());
-        landet.landet(brikker.get(3));
+        landet.landet(brikker.get(2));
         System.out.println("\nTest om groen brik kan lande paa roed start felt med en groen brik paa:");
         System.out.println("roed startfelt: " + brikker.get(1).getStartFeltnr());
         System.out.println("groen brik 1: cf= " + brikker.get(0).getFeltnr() + " hf= " + brikker.get(0).getHjemFeltnr());
         System.out.println("groen brik 2: cf= " + brikker.get(2).getFeltnr() + " hf= " + brikker.get(2).getHjemFeltnr());
+        
+        brikker.get(3).setFeltnr(brikker.get(1).getStartFeltnr());
+        landet.landet(brikker.get(3));
+        System.out.println("\nTest om gul brik kan lande paa roed start felt med to groen brik paa:");
+        System.out.println("roed startfelt: " + brikker.get(1).getStartFeltnr());
+        System.out.println("groen brik 1: cf= " + brikker.get(0).getFeltnr() + " hf= " + brikker.get(0).getHjemFeltnr());
+        System.out.println("groen brik 2: cf= " + brikker.get(2).getFeltnr() + " hf= " + brikker.get(2).getHjemFeltnr());
+        System.out.println("groen brik 2: cf= " + brikker.get(3).getFeltnr() + " hf= " + brikker.get(3).getHjemFeltnr());
         
         //oprydning efter test
         tmp = felter.get(brikker.get(1).getStartFeltnr());
@@ -281,20 +289,3 @@ public class Test {
 
     
 
-
- /* ved ikke hvad det skulle bruges til.
-        main.brikker.get(1).setFeltnr(main.brikker.get(1).getHjemFeltnr());
-        tmp1.landet(main.brikker.get(1));
-        
-        //main.felter.get(main.brikker.get(1).getFeltnr()).forlader();
-        main.brikker.get(1).setFeltnr(3);
-        main.felter.get(main.brikker.get(1).getFeltnr()).landet(main.brikker.get(1));
-        
-        //main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
-        main.brikker.get(0).setFeltnr(2);
-        main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
-        
-       // main.felter.get(main.brikker.get(0).getFeltnr()).forlader();
-        main.brikker.get(0).setFeltnr(3);
-        main.felter.get(main.brikker.get(0).getFeltnr()).landet(main.brikker.get(0));
-        */

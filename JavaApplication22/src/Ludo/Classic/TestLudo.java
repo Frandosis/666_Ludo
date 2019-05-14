@@ -48,6 +48,7 @@ public class TestLudo {
 
         }
         */
+       // cl.playSound();
     }
 
     public void rykBrik(int slag, Brik brik) {
